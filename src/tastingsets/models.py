@@ -9,7 +9,15 @@ from __future__ import annotations
 from typing import Annotated, ClassVar
 
 from babel import Locale
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator, model_validator
+from pydantic import (
+    AfterValidator,
+    BaseModel,
+    ConfigDict,
+    Field,
+    HttpUrl,
+    field_validator,
+    model_validator,
+)
 
 SLUG_PATTERN = r"^[a-z0-9]+(-[a-z0-9]+)*$"
 MEMBER_ID_PATTERN = r"^[A-Za-z0-9_-]+$"
@@ -19,8 +27,22 @@ Slug = Annotated[str, Field(pattern=SLUG_PATTERN)]
 NonEmptyStr = Annotated[str, Field(min_length=1)]
 
 
+def _require_default_language(value: dict[str, str]) -> dict[str, str]:
+    if REQUIRED_LANGUAGE not in value:
+        raise ValueError(f"must contain the language '{REQUIRED_LANGUAGE}'")
+    return value
+
+
+#: Text per language (``{"de": "...", "en": "..."}``); ``de`` is required.
+LocalizedText = Annotated[dict[str, NonEmptyStr], AfterValidator(_require_default_language)]
+
+
 class DuplicateMemberIdError(ValueError):
     """Raised when a tasting set contains the same ``member_id`` twice."""
+
+
+class DuplicateGroupIdError(ValueError):
+    """Raised when a tasting set contains the same ``group_id`` twice."""
 
 
 class _Strict(BaseModel):
@@ -56,14 +78,7 @@ class NamedDocument(Document):
 class Category(Document):
     """Kind of spirit (e.g. single malt whisky, grappa) with localized names."""
 
-    names: dict[str, NonEmptyStr]
-
-    @field_validator("names")
-    @classmethod
-    def _require_default_language(cls, value: dict[str, str]) -> dict[str, str]:
-        if REQUIRED_LANGUAGE not in value:
-            raise ValueError(f"names must contain the language '{REQUIRED_LANGUAGE}'")
-        return value
+    names: LocalizedText
 
 
 class Distillery(NamedDocument):
@@ -107,23 +122,65 @@ class SetMember(_Strict):
     notes: NonEmptyStr | None = None
 
 
+class SetGroup(_Strict):
+    """An arbitrary, display-only sub-group of a tasting set (e.g. "wine finish").
+
+    Groups carry no meaning for statistics; they only show readers how the set is organised.
+    """
+
+    group_id: Slug
+    names: LocalizedText
+    description: LocalizedText | None = None
+    members: Annotated[list[SetMember], Field(min_length=1)]
+
+
 class TastingSet(NamedDocument):
-    """A tasting set (e.g. an advent calendar) with its members in file order."""
+    """A tasting set (e.g. an advent calendar).
+
+    Either ``members`` (flat) or ``groups`` (each with its own ``members``) is given, never both.
+    Order is preserved: groups in their defined order, members in file order.
+    ``member_id`` is unique within the whole set, regardless of groups.
+    """
 
     SEPARATOR: ClassVar[str] = "/"
 
     year: int | None = None
-    members: list[SetMember]
+    members: list[SetMember] | None = None
+    groups: Annotated[list[SetGroup], Field(min_length=1)] | None = None
 
-    @field_validator("members")
-    @classmethod
-    def _unique_member_ids(cls, value: list[SetMember]) -> list[SetMember]:
-        seen: set[str] = set()
-        for member in value:
-            if member.member_id in seen:
+    @model_validator(mode="after")
+    def _check_structure(self) -> TastingSet:
+        if (self.members is None) == (self.groups is None):
+            raise ValueError("exactly one of 'members' or 'groups' must be given")
+        seen_groups: set[str] = set()
+        for group in self.groups or []:
+            if group.group_id in seen_groups:
+                raise DuplicateGroupIdError(f"duplicate group_id '{group.group_id}'")
+            seen_groups.add(group.group_id)
+        seen_members: set[str] = set()
+        for member in self.all_members:
+            if member.member_id in seen_members:
                 raise DuplicateMemberIdError(f"duplicate member_id '{member.member_id}'")
-            seen.add(member.member_id)
-        return value
+            seen_members.add(member.member_id)
+        return self
+
+    @property
+    def is_grouped(self) -> bool:
+        return self.groups is not None
+
+    @property
+    def all_members(self) -> list[SetMember]:
+        """Flat list of all members (group by group if grouped)."""
+        if self.groups is not None:
+            return [member for group in self.groups for member in group.members]
+        return list(self.members or [])
+
+    def group_of(self, member_id: str) -> SetGroup | None:
+        """The group containing the member, or ``None`` (ungrouped set or unknown member)."""
+        for group in self.groups or []:
+            if any(member.member_id == member_id for member in group.members):
+                return group
+        return None
 
     def fqn(self, member: SetMember) -> str:
         """Fully qualified, globally unique name of a member: ``<set_id>/<member_id>``."""

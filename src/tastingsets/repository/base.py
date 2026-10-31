@@ -20,7 +20,8 @@ COLLECTIONS: dict[str, type[Document]] = {
 class LoadError:
     """A problem found while loading documents.
 
-    ``code`` is one of ``INVALID_JSON``, ``SCHEMA``, ``DUPLICATE_ID``, ``DUPLICATE_MEMBER_ID``.
+    ``code`` is one of ``INVALID_JSON``, ``SCHEMA``, ``DUPLICATE_ID``, ``DUPLICATE_MEMBER_ID``,
+    ``DUPLICATE_GROUP_ID``.
     """
 
     code: str

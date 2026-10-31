@@ -12,6 +12,7 @@ from tastingsets.models import (
     Category,
     Distillery,
     Document,
+    DuplicateGroupIdError,
     DuplicateMemberIdError,
     Spirit,
     TastingSet,
@@ -33,8 +34,14 @@ def _format_pydantic_errors(exc: ValidationError) -> list[tuple[str, str]]:
     for err in exc.errors():
         location = ".".join(str(part) for part in err["loc"])
         message = f"{location}: {err['msg']}" if location else err["msg"]
-        is_duplicate_member = isinstance(err.get("ctx", {}).get("error"), DuplicateMemberIdError)
-        result.append(("DUPLICATE_MEMBER_ID" if is_duplicate_member else "SCHEMA", message))
+        cause = err.get("ctx", {}).get("error")
+        if isinstance(cause, DuplicateMemberIdError):
+            code = "DUPLICATE_MEMBER_ID"
+        elif isinstance(cause, DuplicateGroupIdError):
+            code = "DUPLICATE_GROUP_ID"
+        else:
+            code = "SCHEMA"
+        result.append((code, message))
     return result
 
 

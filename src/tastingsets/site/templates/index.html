@@ -8,7 +8,10 @@
   {% for entry in entries %}
   <li>
     <a href="{{ url_for(lang ~ '/sets/' ~ entry.set_id ~ '/') }}">{{ entry.label }}</a>
-    <span class="muted">{{ t('index.bottles', count=entry.bottle_count) }}</span>
+    <span class="muted">
+      {{ t('index.bottles', count=entry.bottle_count) }}
+      {% if entry.group_count %}· {{ t('index.group_one' if entry.group_count == 1 else 'index.groups', count=entry.group_count) }}{% endif %}
+    </span>
   </li>
   {% endfor %}
 </ul>

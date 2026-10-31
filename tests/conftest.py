@@ -62,6 +62,39 @@ TASTING_SETS = [
 ]
 
 
+# Same bottles as a flat set would have; groups are display-only.
+GROUPED_SET = {
+    "_id": "grouped-2026",
+    "name": "Grouped 2026",
+    "year": 2026,
+    "groups": [
+        {
+            "group_id": "wine-finish",
+            "names": {"de": "Weinfinish", "en": "Wine finish"},
+            "description": {"de": "Gereift in Weinfässern", "en": "Matured in wine casks"},
+            "members": [
+                {"member_id": "1", "spirit_id": "ardbeg-10"},
+                {"member_id": "2", "spirit_id": "secret-12"},
+            ],
+        },
+        {
+            "group_id": "grappa-round",
+            "names": {"de": "Grappa-Runde"},
+            "members": [
+                {"member_id": "3", "spirit_id": "nonino-grappa"},
+                {"member_id": "4", "spirit_id": "ardbeg-10"},
+            ],
+        },
+    ],
+}
+
+
+def flat_version(tasting_set: dict) -> dict:
+    """The given grouped set as flat set (same id, same bottles in the same order)."""
+    members = [m for group in tasting_set["groups"] for m in group["members"]]
+    return {k: v for k, v in tasting_set.items() if k != "groups"} | {"members": members}
+
+
 def write_json(path: Path, content) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(content), encoding="utf-8")

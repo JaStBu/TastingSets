@@ -19,7 +19,7 @@ class Issue:
     """One validation finding.
 
     Error codes: ``INVALID_JSON``, ``SCHEMA``, ``DUPLICATE_ID``, ``DUPLICATE_MEMBER_ID``,
-    ``UNKNOWN_SPIRIT``, ``UNKNOWN_CATEGORY``, ``UNKNOWN_DISTILLERY``.
+    ``DUPLICATE_GROUP_ID``, ``UNKNOWN_SPIRIT``, ``UNKNOWN_CATEGORY``, ``UNKNOWN_DISTILLERY``.
     Warning codes: ``MISSING_DISTILLERY_ENTRY``, ``DISTILLERY_NAME_MATCHES_ENTRY``,
     ``UNUSED_SPIRIT``.
     """
@@ -105,7 +105,7 @@ def _check_tasting_sets(repo: Repository) -> list[Issue]:
     used: set[str] = set()
 
     for tasting_set in repo.tasting_sets():
-        for member in tasting_set.members:
+        for member in tasting_set.all_members:
             used.add(member.spirit_id)
             if member.spirit_id not in spirit_ids:
                 issues.append(

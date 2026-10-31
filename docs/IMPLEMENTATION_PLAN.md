@@ -14,6 +14,7 @@
 - Elemente desselben Typs dürfen auf mehrere Dateien verteilt sein.
 - Innerhalb eines Tasting Sets sind die IDs der Set Member eindeutig, über mehrere Sets hinweg meist nicht.
 - Ein Schnaps darf eine Brennerei namentlich nennen, auch wenn es zu ihr keinen Eintrag in der Brennerei-Liste gibt.
+- Ein Tasting Set kann optional in Sub-Gruppen gegliedert sein (z.B. 4 Gruppen à 3 Whiskys). Die Gruppen sind willkürlich gewählt und für Auswertungen irrelevant, müssen aber auf der Set-Seite sichtbar sein.
 
 **Features aus Nutzersicht:**
 - Übersicht über ein bestimmtes Tasting Set: welche Nummer (Flasche) welchen Inhalt hat, mit allen Zusatzinformationen.
@@ -39,6 +40,7 @@ cli: validate | build | schema
 - Jeder Ordner unter `data/` entspricht einer späteren MongoDB-Collection.
 - Jedes Dokument hat ein `_id`-Feld mit einem gut lesbaren Kurznamen (Slug), z.B. `ardbeg`.
 - Set Member sind kein eigenes Dokument, sondern stecken direkt im Tasting-Set-Dokument.
+- Optionale Gruppen (`groups`) stecken ebenfalls im Tasting-Set-Dokument und enthalten dann die Members. Intern wird weiter mit der flachen Liste der Members gearbeitet (`TastingSet.all_members`), daher ändern Gruppen weder Statistik noch vollständige Namen.
 - Für die spätere Web-App kommen nur ein `MongoRepository` und eine FastAPI-App dazu, die den Seitengenerator ersetzt. Modelle, Validierung, Statistik und Templates bleiben unverändert.
 
 ### Beispiel-Datenformat
@@ -88,6 +90,25 @@ cli: validate | build | schema
   "members": [
     { "member_id": "1", "spirit_id": "ardbeg-10" },
     { "member_id": "2", "spirit_id": "secret-speyside-12", "notes": "Fassstärke" }
+  ]
+}
+```
+
+Dasselbe Set mit optionalen Gruppen (statt `members` steht `groups`):
+```json
+{
+  "_id": "advent-2026",
+  "name": "Adventskalender 2026",
+  "groups": [
+    {
+      "group_id": "wine-finish",
+      "names": { "de": "Weinfinish", "en": "Wine finish" },
+      "description": { "de": "Gereift in Weinfässern" },
+      "members": [
+        { "member_id": "1", "spirit_id": "ardbeg-10" },
+        { "member_id": "2", "spirit_id": "secret-speyside-12" }
+      ]
+    }
   ]
 }
 ```
@@ -166,6 +187,21 @@ cli: validate | build | schema
    - Die Reihenfolge der Members entspricht der Reihenfolge in der Datei.
    - Hilfseigenschaft `label`: `display_name`, falls gesetzt, sonst `name`. Dasselbe für `Distillery` und `Spirit`.
 
+### Phase 2a – Optionale Gruppen in Tasting Sets (nachträglich ergänzt)
+
+*Hängt an Phase 2 bis 6; umgesetzt in den Phasen A–F unten.*
+
+A. **Modell** (`models.py`):
+   - Typ `LocalizedText` (Sprache → Text, `de` Pflicht); `Category.names` nutzt ihn ebenfalls.
+   - `SetGroup`: `group_id` (Slug), `names: LocalizedText`, optional `description: LocalizedText`, `members` (mindestens 1).
+   - `TastingSet`: `members` und `groups` sind beide optional, genau eines muss gesetzt sein. `group_id` ist im Set eindeutig (`DuplicateGroupIdError`), `member_id` im ganzen Set, auch über Gruppen hinweg.
+   - Hilfsfunktionen: `all_members` (flach, Gruppen in definierter Reihenfolge), `group_of(member_id)`, `is_grouped`.
+B. **Laden und Prüfen:** neuer Fehlercode `DUPLICATE_GROUP_ID`; die Validierung läuft über `all_members`.
+C. **Catalog:** `ResolvedMember.group_id`, `ResolvedGroup` und `Catalog.resolve_groups(set_id)`; ein Set ohne Gruppen liefert genau eine Gruppe mit `group=None`.
+D. **Darstellung:** auf der Set-Seite ein `<tbody>` pro Gruppe mit Kopfzeile (Name, Flaschenzahl, Beschreibung), darüber ein Satz wie „2 Gruppen à 3 Flaschen“ (nur die Gruppenzahl, wenn die Größen verschieden sind); die Übersichtsseite zeigt die Anzahl der Gruppen.
+E. **Schema und Daten:** `schemas/tasting_sets.schema.json` neu generieren, `data/tasting_sets/advent-2026.json` als Beispiel mit 2 Gruppen, README und dieses Dokument anpassen.
+F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite), Fixture-Daten mit doppelter `group_id`, `GROUPED_SET` und `flat_version` in `tests/conftest.py`.
+
 ### Phase 3 – Datenzugriff
 
 *Hängt an Phase 2.*
@@ -201,7 +237,8 @@ cli: validate | build | schema
       - `UNKNOWN_SPIRIT`: `spirit_id` zeigt auf keinen Schnaps
       - `UNKNOWN_CATEGORY`: `category_id` zeigt auf keine Kategorie
       - `UNKNOWN_DISTILLERY`: `distillery_id` zeigt auf keine Brennerei. Das ist fast sicher ein Tippfehler; der erlaubte Fall „Brennerei hat keinen Eintrag“ wird ausdrücklich über `distillery_name` abgebildet.
-      - `DUPLICATE_MEMBER_ID`: doppelte `member_id` innerhalb eines Sets
+      - `DUPLICATE_MEMBER_ID`: doppelte `member_id` innerhalb eines Sets (auch über Gruppen hinweg)
+      - `DUPLICATE_GROUP_ID`: doppelte `group_id` innerhalb eines Sets
     - **WARNING**, mit folgenden Codes:
       - `MISSING_DISTILLERY_ENTRY`: nur `distillery_name` gesetzt, ohne `distillery_id`.
       - `DISTILLERY_NAME_MATCHES_ENTRY`: `distillery_name` entspricht dem Namen einer bereits existierenden Brennerei (Groß-/Kleinschreibung egal); Hinweis, besser `distillery_id` zu verwenden.
@@ -338,6 +375,7 @@ Alle Dateien sind neu.
 - Ein Ordner pro Collection. Die Dateinamen darin sind frei wählbar, es werden alle `*.json` geladen.
 - Lesbare Slugs als `_id`, keine UUIDs.
 - Set Member stecken im Tasting Set. Innerhalb eines Sets sind sie durch das Modell eindeutig, über alle Sets hinweg durch den FQN `<set_id>/<member_id>`.
+- Optionale Gruppen: verschachtelt, ein Set hat entweder `members` oder `groups[].members`. Dadurch gilt „alle Flaschen in Gruppen oder keine“ durch die Struktur. Gruppenname und Beschreibung sind pro Sprache angegeben (`de` Pflicht). Gruppen sind nur für die Anzeige und fließen nicht in die Statistik ein; die Gruppe ist nicht Teil des FQN. Reihenfolge: Gruppen wie definiert, Members wie in der Datei.
 - Brennerei-Referenz über zwei Felder: `distillery_id` und `distillery_name` als Rückfall.
   - Eine `distillery_id` ohne passenden Eintrag ist ein Fehler.
   - Nur `distillery_name` ohne `distillery_id` ist eine Warnung.
@@ -345,7 +383,7 @@ Alle Dateien sind neu.
 - Die Statistik wird vorab gerendert, pro Set und gesamt. Eine freie Auswahl von Sets kommt erst mit der dynamischen App.
 - Mehrsprachigkeit ist technisch vorbereitet, gebaut wird in v1 nur Deutsch.
 - Tooling: uv, `pyproject.toml`, pytest, ruff, Python 3.12 oder neuer.
-- **Nicht enthalten:** FastAPI-App, `MongoRepository`, Import-Skript für Mongo, Filter im Browser, englische Inhalte.
+- **Nicht enthalten:** FastAPI-App, `MongoRepository`, Import-Skript für Mongo, Filter im Browser, englische Inhalte, Statistik pro Gruppe, mehrstufige Gruppen, Gruppen, die über mehrere Sets hinweg wiederverwendet werden.
 
 ## Further Considerations
 
@@ -355,4 +393,5 @@ Alle Dateien sind neu.
    - FastAPI-Routen verwenden `Catalog`, `stats` und dieselben Templates.
    - Da MongoDB keine Referenzen prüft, läuft `validate` dann als Admin- oder CI-Befehl gegen die Datenbank.
 2. **Weitere Felder für später**, z.B. `volume_ml` und `cask` am Spirit oder `opened_on` am Member: `extra="forbid"` sorgt dafür, dass so etwas bewusst im Modell ergänzt wird. Vorschlag: zunächst weglassen.
-3. **Sortierung der Member:** Reihenfolge wie in der Datei (empfohlen, Standard) oder natürliche Sortierung nach `member_id` (1, 2, … 10 statt 1, 10, 2). Kann man im Template umschaltbar machen.
+3. **Gruppen und MongoDB:** Ein Set-Dokument enthält entweder `members` oder `groups[].members`. Abfragen über alle Flaschen dürfen daher nicht direkt auf `members` lesen, sondern gehen über `Catalog` bzw. `TastingSet.all_members`. Alternativ schreibt das `MongoRepository` beim Speichern zusätzlich eine flache Member-Liste; das wird erst bei dessen Umsetzung entschieden. Die Gruppe steht bewusst nicht im FQN (`advent-2026/wine-finish/3` wurde verworfen): die Nummer ist im Set bereits eindeutig und Links bleiben stabil, wenn Gruppen umgebaut werden.
+4. **Sortierung der Member:** Reihenfolge wie in der Datei (empfohlen, Standard) oder natürliche Sortierung nach `member_id` (1, 2, … 10 statt 1, 10, 2). Kann man im Template umschaltbar machen.

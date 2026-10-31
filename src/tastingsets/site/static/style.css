@@ -43,6 +43,16 @@ th { background: #f1eee6; font-weight: 600; }
 .num { text-align: right; white-space: nowrap; }
 .members .nr { font-weight: 700; }
 .members { display: block; overflow-x: auto; }
+.structure { margin-top: -0.5rem; }
+
+.members .group-header th {
+  background: #e8dcc8;
+  border-top: 2px solid var(--accent);
+  padding: 0.6rem 0.7rem;
+}
+.group-name { font-size: 1.05rem; }
+.group-size { margin-left: 0.6rem; font-weight: 400; color: var(--muted); }
+.group-description { display: block; font-weight: 400; color: var(--muted); font-size: 0.9rem; }
 
 .set-list { list-style: none; padding: 0; }
 .set-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }

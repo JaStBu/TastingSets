@@ -21,6 +21,7 @@ def test_valid_data_only_warns_about_missing_distillery_entry(data_dir):
 def test_every_issue_code_is_reported_for_fixture_data():
     issues = validate(JsonRepository(FIXTURES))
     assert codes(issues, Severity.ERROR) == [
+        "DUPLICATE_GROUP_ID",
         "DUPLICATE_ID",
         "DUPLICATE_MEMBER_ID",
         "INVALID_JSON",

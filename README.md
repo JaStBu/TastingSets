@@ -33,11 +33,30 @@ Each folder under `data/` is one collection (= later one MongoDB collection). In
 | `data/categories/` | kind of spirit | `_id`, `names` (language → name, `de` required) |
 | `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2, e.g. `GB`) |
 | `data/spirits/` | spirit | `_id`, `name`, `display_name`?, `category_id`, `abv` (0–100), `distillery_id`?, `distillery_name`?, `url`? |
-| `data/tasting_sets/` | tasting set | `_id`, `name`, `display_name`?, `year`?, `members` |
+| `data/tasting_sets/` | tasting set | `_id`, `name`, `display_name`?, `year`?, and **either** `members` **or** `groups` |
 
 A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`, `notes`?.
 
-- `member_id` is unique inside a set. Across sets, a member is identified by its fully qualified name `<set_id>/<member_id>`, e.g. `advent-2026/24`.
+- `member_id` is unique inside a set (also across groups). Across sets, a member is identified by its fully qualified name `<set_id>/<member_id>`, e.g. `advent-2026/24`.
+- **Groups (optional):** a set can be divided into display-only sub-groups, e.g. 4 groups of 3 bottles. Instead of `members`, the set then has `groups`, each with `group_id`, `names` (language → name, `de` required), `description`? (same format) and its own `members`. So either all bottles of a set are in a group or none. Groups are shown on the set page (header row per group plus a sentence like "2 groups of 3 bottles each") and as a count on the overview page. They have no influence on statistics. Order is preserved: groups as defined, members as in the file.
+
+```json
+{
+  "_id": "advent-2026",
+  "name": "Adventskalender 2026",
+  "groups": [
+    {
+      "group_id": "wine-finish",
+      "names": { "de": "Weinfinish", "en": "Wine finish" },
+      "description": { "de": "Gereift in Weinfässern" },
+      "members": [
+        { "member_id": "1", "spirit_id": "ardbeg-10" },
+        { "member_id": "2", "spirit_id": "ardbeg-uigeadail" }
+      ]
+    }
+  ]
+}
+```
 - A spirit needs `distillery_id` **or** `distillery_name`. If the distillery has no entry in `data/distilleries/`, only give `distillery_name`; this is allowed but produces the warning `MISSING_DISTILLERY_ENTRY`. A `distillery_id` that does not exist is an error (probably a typo).
 - Unknown fields are rejected, so typos in field names are found.
 
@@ -48,7 +67,8 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
 | error | `INVALID_JSON` | file is not valid JSON |
 | error | `SCHEMA` | a document violates the data model |
 | error | `DUPLICATE_ID` | `_id` used twice in a collection (also across files) |
-| error | `DUPLICATE_MEMBER_ID` | `member_id` used twice in one set |
+| error | `DUPLICATE_MEMBER_ID` | `member_id` used twice in one set (also across groups) |
+| error | `DUPLICATE_GROUP_ID` | `group_id` used twice in one set |
 | error | `UNKNOWN_CATEGORY` / `UNKNOWN_DISTILLERY` / `UNKNOWN_SPIRIT` | reference to a non-existing document |
 | warning | `MISSING_DISTILLERY_ENTRY` | spirit names a distillery that has no entry |
 | warning | `DISTILLERY_NAME_MATCHES_ENTRY` | `distillery_name` equals an existing distillery; use `distillery_id` |
@@ -57,7 +77,7 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
 ## Adding data
 
 - **New spirit:** add an object to a file in `data/spirits/` (or create a new file there). Use `distillery_id` if the distillery exists in `data/distilleries/`, otherwise `distillery_name`.
-- **New tasting set:** create `data/tasting_sets/<set-id>.json` with the members in the order they should be displayed.
+- **New tasting set:** create `data/tasting_sets/<set-id>.json` with the members in the order they should be displayed. Use `groups` instead of `members` if the set consists of sub-groups.
 - Run `uv run tastingsets validate` before pushing. With the JSON schemas, VS Code also validates and completes while typing.
 
 ## Publishing (GitHub Pages)
@@ -75,3 +95,5 @@ models → repository (JSON files) → catalog → validation / stats / site bui
 ```
 
 The JSON files have the same structure as the MongoDB documents (`model_dump()` produces `_id`). For the dynamic app only a `MongoRepository` implementing the `Repository` protocol (`src/tastingsets/repository/base.py`) and a web layer (e.g. FastAPI) that reuses `Catalog`, `stats` and the templates are needed. A `seed-mongo` command could import the JSON files into the database. Since MongoDB does not check references, `validate` should then also be run against the database.
+
+A tasting set document contains either `members` or `groups[].members`. Queries over all bottles (statistics) must therefore not read `members` directly, but go through `Catalog` / `TastingSet.all_members`, or the `MongoRepository` stores a flat member list in addition when writing; decide this when the `MongoRepository` is implemented. The group is deliberately not part of the fully qualified member name (`<set_id>/<member_id>`): the number is already unique in the set, and links stay stable if groups are rearranged.

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from tastingsets.models import Category, Distillery, SetMember, Spirit, TastingSet
+from tastingsets.models import Category, Distillery, SetGroup, SetMember, Spirit, TastingSet
 from tastingsets.repository.base import Repository
 
 
@@ -23,6 +23,7 @@ class ResolvedMember:
     spirit: Spirit
     category: Category
     distillery: Distillery | None
+    group_id: str | None = None
 
     @property
     def distillery_label(self) -> str | None:
@@ -35,6 +36,14 @@ class ResolvedMember:
     def country(self) -> str | None:
         """ISO country code, known only if a distillery entry exists."""
         return self.distillery.country if self.distillery is not None else None
+
+
+@dataclass(frozen=True)
+class ResolvedGroup:
+    """Members shown together. ``group`` is ``None`` for sets without groups."""
+
+    group: SetGroup | None
+    members: list[ResolvedMember]
 
 
 @dataclass(frozen=True)
@@ -76,18 +85,29 @@ class Catalog:
             spirit=spirit,
             category=category,
             distillery=distillery,
+            group_id=group.group_id if (group := tasting_set.group_of(member.member_id)) else None,
         )
 
     def resolve_set(self, set_id: str) -> list[ResolvedMember]:
-        """All members of a set in file order."""
+        """All members of a set as flat list (groups in defined order, members in file order)."""
         tasting_set = self._get_set(set_id)
-        return [self.resolve(tasting_set, member) for member in tasting_set.members]
+        return [self.resolve(tasting_set, member) for member in tasting_set.all_members]
+
+    def resolve_groups(self, set_id: str) -> list[ResolvedGroup]:
+        """Members organised for display; one group with ``group=None`` if the set is flat."""
+        tasting_set = self._get_set(set_id)
+        if tasting_set.groups is None:
+            return [ResolvedGroup(None, self.resolve_set(set_id))]
+        return [
+            ResolvedGroup(group, [self.resolve(tasting_set, m) for m in group.members])
+            for group in tasting_set.groups
+        ]
 
     def resolve_member(self, fqn: str) -> ResolvedMember:
         """Resolve ``<set_id>/<member_id>``."""
         set_id, separator, member_id = fqn.partition(TastingSet.SEPARATOR)
         tasting_set = self._get_set(set_id)
-        for member in tasting_set.members:
+        for member in tasting_set.all_members:
             if separator and member.member_id == member_id:
                 return self.resolve(tasting_set, member)
         raise UnknownReferenceError(f"unknown set member '{fqn}'")

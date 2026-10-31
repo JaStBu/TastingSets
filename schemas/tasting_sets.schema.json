@@ -2,6 +2,56 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "tasting_sets file",
   "$defs": {
+    "SetGroup": {
+      "additionalProperties": false,
+      "description": "An arbitrary, display-only sub-group of a tasting set (e.g. \"wine finish\").\n\nGroups carry no meaning for statistics; they only show readers how the set is organised.",
+      "properties": {
+        "group_id": {
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "title": "Group Id",
+          "type": "string"
+        },
+        "names": {
+          "additionalProperties": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Names",
+          "type": "object"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "members": {
+          "items": {
+            "$ref": "#/$defs/SetMember"
+          },
+          "minItems": 1,
+          "title": "Members",
+          "type": "array"
+        }
+      },
+      "required": [
+        "group_id",
+        "names",
+        "members"
+      ],
+      "title": "SetGroup",
+      "type": "object"
+    },
     "SetMember": {
       "additionalProperties": false,
       "description": "One numbered bottle of a tasting set. Unique only within its tasting set.",
@@ -39,7 +89,7 @@
     },
     "TastingSet": {
       "additionalProperties": false,
-      "description": "A tasting set (e.g. an advent calendar) with its members in file order.",
+      "description": "A tasting set (e.g. an advent calendar).\n\nEither ``members`` (flat) or ``groups`` (each with its own ``members``) is given, never both.\nOrder is preserved: groups in their defined order, members in file order.\n``member_id`` is unique within the whole set, regardless of groups.",
       "properties": {
         "_id": {
           "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
@@ -77,17 +127,40 @@
           "title": "Year"
         },
         "members": {
-          "items": {
-            "$ref": "#/$defs/SetMember"
-          },
-          "title": "Members",
-          "type": "array"
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/SetMember"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Members"
+        },
+        "groups": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/SetGroup"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Groups"
         }
       },
       "required": [
         "_id",
-        "name",
-        "members"
+        "name"
       ],
       "title": "TastingSet",
       "type": "object"

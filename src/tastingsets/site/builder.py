@@ -13,6 +13,7 @@ from jinja2 import Environment, FileSystemLoader
 
 from tastingsets.catalog import Catalog
 from tastingsets.i18n import DEFAULT_LOCALES_DIR, Translator, country_name, localized
+from tastingsets.models import TastingSet
 from tastingsets.repository.base import Repository
 from tastingsets.stats import build_report
 from tastingsets.validation import Issue, has_errors, validate
@@ -36,6 +37,13 @@ class SetListEntry:
     label: str
     year: int | None
     bottle_count: int
+    group_count: int = 0
+
+
+def uniform_group_size(tasting_set: TastingSet) -> int | None:
+    """Number of bottles per group if all groups are equally large, otherwise ``None``."""
+    sizes = {len(group.members) for group in tasting_set.groups or []}
+    return sizes.pop() if len(sizes) == 1 else None
 
 
 def normalize_base_url(base_url: str) -> str:
@@ -98,6 +106,7 @@ def build(
                 "page_path": page_path,
                 "t": translator.t,
                 "category_name": lambda category: localized(category.names, lang),
+                "localized_text": lambda texts: localized(texts, lang),
                 "country_name": lambda code: country_name(code, lang),
                 "format_abv": lambda value: _format_abv(value, lang),
                 **extra,
@@ -105,7 +114,7 @@ def build(
 
         lang_dir = out / lang
         entries = [
-            SetListEntry(ts.id, ts.label, ts.year, len(ts.members))
+            SetListEntry(ts.id, ts.label, ts.year, len(ts.all_members), len(ts.groups or []))
             for ts in catalog.tasting_sets.values()
         ]
         overall = build_report(catalog, None, lang)
@@ -122,7 +131,8 @@ def build(
                 context(
                     f"sets/{tasting_set.id}/",
                     tasting_set=tasting_set,
-                    members=catalog.resolve_set(tasting_set.id),
+                    groups=catalog.resolve_groups(tasting_set.id),
+                    group_size=uniform_group_size(tasting_set),
                     report=build_report(catalog, [tasting_set.id], lang),
                 ),
             )
