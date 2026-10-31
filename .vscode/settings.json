@@ -1,9 +1,0 @@
-{
-  "json.schemas": [
-    { "fileMatch": ["/data/categories/*.json"], "url": "./schemas/categories.schema.json" },
-    { "fileMatch": ["/data/distilleries/*.json"], "url": "./schemas/distilleries.schema.json" },
-    { "fileMatch": ["/data/spirits/*.json"], "url": "./schemas/spirits.schema.json" },
-    { "fileMatch": ["/data/tasting_sets/*.json"], "url": "./schemas/tasting_sets.schema.json" }
-  ],
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
-}
