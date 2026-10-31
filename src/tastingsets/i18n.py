@@ -12,6 +12,14 @@ DEFAULT_LANGUAGE = "de"
 DEFAULT_LOCALES_DIR = Path(__file__).resolve().parents[2] / "locales"
 
 
+def available_languages(locales_dir: Path | str = DEFAULT_LOCALES_DIR) -> list[str]:
+    languages = sorted(path.stem for path in Path(locales_dir).glob("*.json"))
+    if DEFAULT_LANGUAGE in languages:
+        languages.remove(DEFAULT_LANGUAGE)
+        languages.insert(0, DEFAULT_LANGUAGE)
+    return languages
+
+
 class Translator:
     """Looks up UI strings: requested language, then ``de``, then the key itself."""
 

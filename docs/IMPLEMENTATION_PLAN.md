@@ -268,9 +268,9 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
     - Lädt `locales/<lang>.json` (flache Key-Value-Paare) und stellt `t(key)` bereit. Fehlt ein Key, wird auf `de` zurückgefallen, danach auf den Key selbst.
     - `localized(names, lang)` für Kategorienamen.
     - `country_name(code, lang)` über `babel.Locale(lang).territories`.
-    - Die Sprachen kommen aus einer Konfiguration (Konstante bzw. CLI-Option), in v1 nur `["de"]`.
+    - Die Sprachen werden standardmäßig aus den JSON-Dateien in `locales/` ermittelt; die CLI-Option `--languages` kann eine Teilmenge auswählen. Deutsch steht, sofern vorhanden, an erster Stelle.
 16. `site/builder.py`:
-    - `build(repo, out_dir, base_url="/", languages=["de"])`. Zuerst läuft die Validierung; bei Fehlern wird mit einer Exception abgebrochen.
+    - `build(repo, out_dir, base_url="/", languages=None)`. Ohne explizite Sprachen werden alle Locale-Dateien gebaut. Zuerst läuft die Validierung; bei Fehlern wird mit einer Exception abgebrochen.
     - Jinja2-Environment mit `autoescape=True` und den Funktionen `t`, `localized`, `country_name` und `url_for(path)`; `url_for` beachtet `base_url`.
     - Ergebnis für jede Sprache:
       - `/<lang>/index.html`: Liste der Sets und kurze Gesamtstatistik

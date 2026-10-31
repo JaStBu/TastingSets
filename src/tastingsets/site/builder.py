@@ -12,7 +12,13 @@ from babel.numbers import format_decimal
 from jinja2 import Environment, FileSystemLoader
 
 from tastingsets.catalog import Catalog
-from tastingsets.i18n import DEFAULT_LOCALES_DIR, Translator, country_name, localized
+from tastingsets.i18n import (
+    DEFAULT_LOCALES_DIR,
+    Translator,
+    available_languages,
+    country_name,
+    localized,
+)
 from tastingsets.models import TastingSet
 from tastingsets.repository.base import Repository
 from tastingsets.stats import build_report
@@ -68,7 +74,7 @@ def build(
     repo: Repository,
     out_dir: Path | str,
     base_url: str = "/",
-    languages: Sequence[str] = ("de",),
+    languages: Sequence[str] | None = None,
     locales_dir: Path | str = DEFAULT_LOCALES_DIR,
 ) -> list[Path]:
     """Generate the site and return all written files.
@@ -78,6 +84,8 @@ def build(
     issues = validate(repo)
     if has_errors(issues):
         raise BuildError(issues)
+    if languages is None:
+        languages = available_languages(locales_dir)
     if not languages:
         raise ValueError("at least one language is required")
 

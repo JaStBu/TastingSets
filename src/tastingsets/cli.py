@@ -14,7 +14,6 @@ from tastingsets.site.builder import BuildError, build
 from tastingsets.validation import Issue, Severity, has_errors, validate
 
 DEFAULT_DATA_DIR = "data"
-DEFAULT_LANGUAGES = ["de"]
 
 
 def format_issue(issue: Issue) -> str:
@@ -97,7 +96,7 @@ def build_parser() -> argparse.ArgumentParser:
     build_parser_.add_argument("--data", type=Path, default=Path(DEFAULT_DATA_DIR))
     build_parser_.add_argument("--out", type=Path, default=Path("dist"))
     build_parser_.add_argument("--base-url", default="/", help="e.g. /TastingSets/")
-    build_parser_.add_argument("--languages", nargs="+", default=DEFAULT_LANGUAGES)
+    build_parser_.add_argument("--languages", nargs="+")
     build_parser_.set_defaults(func=cmd_build)
 
     schema_parser = subparsers.add_parser("schema", help="write JSON schemas of the data files")

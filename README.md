@@ -21,7 +21,7 @@ Commands:
 | Command | Purpose |
 | --- | --- |
 | `tastingsets validate [--data DIR] [--strict]` | Validates all data files. Exit code 1 on errors (with `--strict` also on warnings). Inside GitHub Actions, findings are also printed as annotations. |
-| `tastingsets build [--data DIR] [--out DIR] [--base-url /TastingSets/] [--languages de en]` | Validates and generates the static site. Aborts on errors. |
+| `tastingsets build [--data DIR] [--out DIR] [--base-url /TastingSets/] [--languages LANG ...]` | Validates and generates the static site. By default, builds every language with a JSON file in `locales/`; `--languages` selects a subset. Aborts on errors. |
 | `tastingsets schema [--out DIR]` | Writes the JSON schemas to `schemas/` (optional, editor support only, see [Editor support](#editor-support-optional)). |
 
 ## Data model

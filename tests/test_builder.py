@@ -28,6 +28,24 @@ def test_build_writes_expected_files(data_dir, tmp_path):
     assert out / "de" / "index.html" in written
 
 
+def test_default_build_includes_all_locale_files(data_dir, tmp_path):
+    locales_dir = tmp_path / "locales"
+    locales_dir.mkdir()
+    source_locales = Path(__file__).parents[1] / "locales"
+    for language in ("de", "fr"):
+        source = source_locales / ("en.json" if language == "fr" else "de.json")
+        contents = source.read_text(encoding="utf-8")
+        (locales_dir / f"{language}.json").write_text(contents, encoding="utf-8")
+
+    out = tmp_path / "dist"
+    build(JsonRepository(data_dir), out, locales_dir=locales_dir)
+
+    assert (out / "de" / "index.html").is_file()
+    assert (out / "fr" / "index.html").is_file()
+    assert not (out / "en" / "index.html").exists()
+    assert "url=/de/" in (out / "index.html").read_text(encoding="utf-8")
+
+
 def test_set_page_lists_members_with_details(data_dir, tmp_path):
     out = tmp_path / "dist"
     build(JsonRepository(data_dir), out)
@@ -55,6 +73,7 @@ def test_base_url_is_used_in_links(data_dir, tmp_path):
     out = tmp_path / "dist"
     build(JsonRepository(data_dir), out, base_url="/TastingSets")
     index = (out / "de" / "index.html").read_text(encoding="utf-8")
+    assert (out / "en" / "index.html").is_file()
     assert 'href="/TastingSets/de/sets/advent-2025/"' in index
     assert 'href="/TastingSets/static/style.css"' in index
     root = (out / "index.html").read_text(encoding="utf-8")
@@ -95,6 +114,7 @@ def test_cli_build(data_dir, tmp_path, capsys):
     out = tmp_path / "dist"
     assert main(["build", "--data", str(data_dir), "--out", str(out), "--base-url", "/x/"]) == 0
     assert (out / "de" / "index.html").is_file()
+    assert (out / "en" / "index.html").is_file()
     assert "wrote" in capsys.readouterr().out
 
 
