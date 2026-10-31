@@ -1,0 +1,31 @@
+[
+  {
+    "_id": "ardbeg-10",
+    "name": "Ardbeg 10 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "ardbeg",
+    "abv": 46.0,
+    "url": "https://www.ardbeg.com/"
+  },
+  {
+    "_id": "ardbeg-uigeadail",
+    "name": "Ardbeg Uigeadail",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "ardbeg",
+    "abv": 54.2
+  },
+  {
+    "_id": "johnnie-walker-black-label",
+    "name": "Johnnie Walker Black Label",
+    "category_id": "blended-scotch",
+    "distillery_name": "Johnnie Walker",
+    "abv": 40.0
+  },
+  {
+    "_id": "nonino-grappa-riserva",
+    "name": "Nonino Grappa Riserva",
+    "category_id": "grappa",
+    "distillery_id": "nonino",
+    "abv": 41.0
+  }
+]

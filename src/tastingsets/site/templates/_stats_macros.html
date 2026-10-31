@@ -1,0 +1,64 @@
+{% macro count_table(title, entries) %}
+<section class="card">
+  <h3>{{ title }}</h3>
+  <table>
+    <tbody>
+      {% for entry in entries %}
+      <tr>
+        <td>{% if entry.key == 'unknown' %}{{ t('stats.unknown') }}{% else %}{{ entry.label }}{% endif %}</td>
+        <td class="num">{{ entry.count }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endmacro %}
+
+{% macro repeated_table(entries) %}
+<section class="card wide">
+  <h3>{{ t('stats.repeated') }}</h3>
+  {% if entries %}
+  <table>
+    <thead>
+      <tr><th>{{ t('table.spirit') }}</th><th class="num">{{ t('table.count') }}</th><th>{{ t('table.occurrences') }}</th></tr>
+    </thead>
+    <tbody>
+      {% for entry in entries %}
+      <tr>
+        <td>{{ entry.spirit.label }}</td>
+        <td class="num">{{ entry.count }}</td>
+        <td>{{ entry.fqns|join(', ') }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">{{ t('stats.no_repeated') }}</p>
+  {% endif %}
+</section>
+{% endmacro %}
+
+{% macro abv_box(abv) %}
+{% if abv %}
+<section class="card">
+  <h3>{{ t('stats.abv') }}</h3>
+  <table>
+    <tbody>
+      <tr><td>{{ t('stats.abv_min') }}</td><td class="num">{{ format_abv(abv.minimum) }}</td></tr>
+      <tr><td>{{ t('stats.abv_max') }}</td><td class="num">{{ format_abv(abv.maximum) }}</td></tr>
+      <tr><td>{{ t('stats.abv_mean') }}</td><td class="num">{{ format_abv(abv.mean) }}</td></tr>
+    </tbody>
+  </table>
+</section>
+{% endif %}
+{% endmacro %}
+
+{% macro report_grid(report) %}
+<div class="grid">
+  {{ count_table(t('stats.by_distillery'), report.by_distillery) }}
+  {{ count_table(t('stats.by_category'), report.by_category) }}
+  {{ count_table(t('stats.by_country'), report.by_country) }}
+  {{ abv_box(report.abv) }}
+  {{ repeated_table(report.repeated) }}
+</div>
+{% endmacro %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ t('index.heading') }}</h1>
+<p class="muted">{{ t('index.totals', sets=report.totals.sets, members=report.totals.members, spirits=report.totals.distinct_spirits) }}</p>
+<h2>{{ t('index.sets') }}</h2>
+{% if entries %}
+<ul class="set-list">
+  {% for entry in entries %}
+  <li>
+    <a href="{{ url_for(lang ~ '/sets/' ~ entry.set_id ~ '/') }}">{{ entry.label }}</a>
+    <span class="muted">
+      {{ t('index.bottles', count=entry.bottle_count) }}
+      {% if entry.group_count %}· {{ t('index.group_one' if entry.group_count == 1 else 'index.groups', count=entry.group_count) }}{% endif %}
+    </span>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="muted">{{ t('index.empty') }}</p>
+{% endif %}
+{% endblock %}
