@@ -1,0 +1,5 @@
+[
+  { "_id": "single-malt-scotch", "names": { "de": "Single Malt Scotch Whisky", "en": "Single Malt Scotch Whisky" } },
+  { "_id": "blended-scotch", "names": { "de": "Blended Scotch Whisky", "en": "Blended Scotch Whisky" } },
+  { "_id": "grappa", "names": { "de": "Grappa", "en": "Grappa" } }
+]

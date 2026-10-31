@@ -1,0 +1,9 @@
+[
+  { "_id": "ardbeg-10", "name": "Ardbeg 10", "category_id": "single-malt", "distillery_id": "ardbeg", "abv": 46 },
+  { "_id": "unused-one", "name": "Unused", "category_id": "grappa", "distillery_id": "nonino", "abv": 40 },
+  { "_id": "no-entry", "name": "No Entry", "category_id": "single-malt", "distillery_name": "Mystery", "abv": 43 },
+  { "_id": "matches", "name": "Matches", "category_id": "single-malt", "distillery_name": "ardbeg", "abv": 43 },
+  { "_id": "bad-category", "name": "Bad Category", "category_id": "whisky-x", "distillery_id": "ardbeg", "abv": 43 },
+  { "_id": "bad-distillery", "name": "Bad Distillery", "category_id": "single-malt", "distillery_id": "ardbag", "abv": 43 },
+  { "_id": "bad-abv", "name": "Bad ABV", "category_id": "single-malt", "distillery_id": "ardbeg", "abv": 150 }
+]

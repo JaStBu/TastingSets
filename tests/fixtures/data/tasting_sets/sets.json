@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "set-a",
+    "name": "Set A",
+    "members": [
+      { "member_id": "1", "spirit_id": "ardbeg-10" },
+      { "member_id": "2", "spirit_id": "no-entry" },
+      { "member_id": "3", "spirit_id": "matches" },
+      { "member_id": "4", "spirit_id": "bad-category" },
+      { "member_id": "5", "spirit_id": "bad-distillery" },
+      { "member_id": "6", "spirit_id": "ghost" }
+    ]
+  },
+  {
+    "_id": "set-b",
+    "name": "Set B",
+    "members": [
+      { "member_id": "1", "spirit_id": "ardbeg-10" },
+      { "member_id": "1", "spirit_id": "ardbeg-10" }
+    ]
+  }
+]

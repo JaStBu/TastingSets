@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_stats_macros.html" import report_grid with context %}
+{% block title %}{{ tasting_set.label }} – {{ t('site.title') }}{% endblock %}
+{% block content %}
+<p><a href="{{ url_for(lang ~ '/') }}">← {{ t('set.back') }}</a></p>
+<h1>{{ tasting_set.label }}</h1>
+<table class="members">
+  <thead>
+    <tr>
+      <th>{{ t('table.number') }}</th>
+      <th>{{ t('table.spirit') }}</th>
+      <th>{{ t('table.category') }}</th>
+      <th>{{ t('table.distillery') }}</th>
+      <th>{{ t('table.country') }}</th>
+      <th class="num">{{ t('table.abv') }}</th>
+      <th>{{ t('table.notes') }}</th>
+      <th>{{ t('table.link') }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for m in members %}
+    <tr id="member-{{ m.member_id }}">
+      <td class="nr">{{ m.member_id }}</td>
+      <td>{{ m.spirit.label }}</td>
+      <td>{{ category_name(m.category) }}</td>
+      <td>
+        {% if m.distillery %}{{ m.distillery_label }}{% else %}<em title="{{ t('table.distillery_without_entry') }}">{{ m.distillery_label }}</em>{% endif %}
+      </td>
+      <td>{% if m.country %}{{ country_name(m.country) }}{% else %}–{% endif %}</td>
+      <td class="num">{{ format_abv(m.spirit.abv) }}</td>
+      <td>{{ m.notes or '' }}</td>
+      <td>{% if m.spirit.url %}<a href="{{ m.spirit.url }}" rel="noopener">↗</a>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h2>{{ t('set.heading_stats') }}</h2>
+{{ report_grid(report) }}
+{% endblock %}

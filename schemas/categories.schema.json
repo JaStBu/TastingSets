@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "categories file",
+  "$defs": {
+    "Category": {
+      "additionalProperties": false,
+      "description": "Kind of spirit (e.g. single malt whisky, grappa) with localized names.",
+      "properties": {
+        "_id": {
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "names": {
+          "additionalProperties": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Names",
+          "type": "object"
+        }
+      },
+      "required": [
+        "_id",
+        "names"
+      ],
+      "title": "Category",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/Category"
+    },
+    {
+      "items": {
+        "$ref": "#/$defs/Category"
+      },
+      "type": "array"
+    }
+  ]
+}

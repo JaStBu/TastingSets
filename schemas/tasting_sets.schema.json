@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "tasting_sets file",
+  "$defs": {
+    "SetMember": {
+      "additionalProperties": false,
+      "description": "One numbered bottle of a tasting set. Unique only within its tasting set.",
+      "properties": {
+        "member_id": {
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Member Id",
+          "type": "string"
+        },
+        "spirit_id": {
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "title": "Spirit Id",
+          "type": "string"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        }
+      },
+      "required": [
+        "member_id",
+        "spirit_id"
+      ],
+      "title": "SetMember",
+      "type": "object"
+    },
+    "TastingSet": {
+      "additionalProperties": false,
+      "description": "A tasting set (e.g. an advent calendar) with its members in file order.",
+      "properties": {
+        "_id": {
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "display_name": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Display Name"
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Year"
+        },
+        "members": {
+          "items": {
+            "$ref": "#/$defs/SetMember"
+          },
+          "title": "Members",
+          "type": "array"
+        }
+      },
+      "required": [
+        "_id",
+        "name",
+        "members"
+      ],
+      "title": "TastingSet",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/TastingSet"
+    },
+    {
+      "items": {
+        "$ref": "#/$defs/TastingSet"
+      },
+      "type": "array"
+    }
+  ]
+}

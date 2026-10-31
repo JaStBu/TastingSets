@@ -1,0 +1,38 @@
+name: CI
+
+# Checks for everything except main (main is handled by pages.yml).
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Lint
+        run: uv run ruff check
+
+      - name: Check formatting
+        run: uv run ruff format --check
+
+      - name: Unit tests
+        run: uv run pytest
+
+      # Warnings (e.g. a spirit whose distillery has no entry) show up as annotations,
+      # the job only fails on errors.
+      - name: Validate data
+        run: uv run tastingsets validate
+
+      - name: Build site (smoke test)
+        run: uv run tastingsets build --out dist

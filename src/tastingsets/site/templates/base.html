@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ t('site.title') }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static/style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for(lang ~ '/') }}">{{ t('site.title') }}</a>
+    <nav>
+      <a href="{{ url_for(lang ~ '/') }}">{{ t('nav.home') }}</a>
+      <a href="{{ url_for(lang ~ '/stats/') }}">{{ t('nav.stats') }}</a>
+      {% if languages|length > 1 %}
+      <span class="langs">
+        {% for l in languages %}
+        <a href="{{ url_for(l ~ '/' ~ page_path) }}"{% if l == lang %} aria-current="true"{% endif %}>{{ l }}</a>
+        {% endfor %}
+      </span>
+      {% endif %}
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>{{ t('footer.generated') }}</footer>
+</body>
+</html>
