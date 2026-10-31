@@ -308,7 +308,7 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
 *Hängt an Phase 4 und 6.*
 
 20. `.github/workflows/ci.yml`:
-    - Läuft bei `push` auf alle Branches außer `main` (`branches-ignore: [main]`) und bei `pull_request`.
+    - Läuft bei `pull_request` (Typen `opened`, `synchronize`, `reopened`: neu erstellt, neue Commits im Branch mit offenem PR, wieder geöffnet) und als wiederverwendbarer Workflow (`workflow_call`). Kein eigener `push`-Trigger: Pushes auf `main` prüft `pages.yml`, indem es `ci.yml` aufruft. Ein Push auf einen Feature-Branch ohne PR löst nichts aus.
     - Schritte:
       1. `actions/checkout`
       2. `astral-sh/setup-uv`
@@ -322,7 +322,8 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
     - Läuft bei `push` auf `main` und lässt sich zusätzlich von Hand starten (`workflow_dispatch`).
     - Berechtigungen: `contents: read`, `pages: write`, `id-token: write`.
     - Gleichzeitig laufende Deploys werden über `concurrency: { group: pages, cancel-in-progress: false }` verhindert.
-    - Job `build`: Tests, Validierung (Fehler brechen ab), `uv run tastingsets build --out dist --base-url /TastingSets/`, dann `actions/upload-pages-artifact` mit `path: dist`.
+    - Job `ci`: ruft `./.github/workflows/ci.yml` auf (Lint, Format, Tests, Validierung, Probe-Build). Der Deploy startet nur, wenn dieser Job grün ist; so wird ein Push auf `main` genau einmal geprüft. Das gilt auch beim manuellen Start.
+    - Job `build` (`needs: ci`): `uv run tastingsets build --out dist --base-url /TastingSets/` (bricht bei Datenfehlern ab, daher keine eigene Validierung), dann `actions/upload-pages-artifact` mit `path: dist`.
     - Job `deploy`: hängt von `build` ab, Umgebung `github-pages`, ruft `actions/deploy-pages` auf.
 22. Einmalig von Hand: In den Repo-Einstellungen unter Settings → Pages die Quelle (Source) auf „GitHub Actions“ stellen. In der README dokumentieren.
 

@@ -92,8 +92,10 @@ uv run tastingsets schema
 
 ## Publishing (GitHub Pages)
 
-- `.github/workflows/ci.yml` runs on every branch except `main` and on pull requests: lint, tests, data validation (warnings appear as annotations, the job stays green) and a test build.
-- `.github/workflows/pages.yml` runs on every push to `main`: tests, validation, build and deployment to GitHub Pages.
+- `.github/workflows/ci.yml` (job `check`) does lint, format check, tests, data validation (warnings appear as annotations, the job stays green) and a test build. It runs when a pull request is opened, when commits are pushed to a branch with an open pull request, and when a pull request is reopened. It is also a reusable workflow (`workflow_call`).
+- `.github/workflows/pages.yml` runs on every push to `main` (and manually). It first calls `ci.yml`; only if the check is green, it builds the site and deploys it to GitHub Pages. A push to `main` is therefore checked exactly once, and a failing check never gets published.
+- A push to a feature branch **without** a pull request runs nothing; open a pull request to get the check.
+- Recommended: in *Settings → Branches* (or *Rulesets*), require the status check `check` for `main`, so a pull request with a failing check cannot be merged.
 - **One-time setup:** in the repository, go to *Settings → Pages* and set *Source* to **GitHub Actions**.
 
 The site is then available at `https://<user>.github.io/TastingSets/`.
