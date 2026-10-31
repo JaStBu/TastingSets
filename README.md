@@ -22,7 +22,7 @@ Commands:
 | --- | --- |
 | `tastingsets validate [--data DIR] [--strict]` | Validates all data files. Exit code 1 on errors (with `--strict` also on warnings). Inside GitHub Actions, findings are also printed as annotations. |
 | `tastingsets build [--data DIR] [--out DIR] [--base-url /TastingSets/] [--languages de en]` | Validates and generates the static site. Aborts on errors. |
-| `tastingsets schema [--out DIR]` | Writes the JSON schemas to `schemas/` (used for editor support, see `.vscode/settings.json`). Re-run after changing `models.py`. |
+| `tastingsets schema [--out DIR]` | Writes the JSON schemas to `schemas/` (optional, editor support only, see [Editor support](#editor-support-optional)). |
 
 ## Data model
 
@@ -78,7 +78,17 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
 
 - **New spirit:** add an object to a file in `data/spirits/` (or create a new file there). Use `distillery_id` if the distillery exists in `data/distilleries/`, otherwise `distillery_name`.
 - **New tasting set:** create `data/tasting_sets/<set-id>.json` with the members in the order they should be displayed. Use `groups` instead of `members` if the set consists of sub-groups.
-- Run `uv run tastingsets validate` before pushing. With the JSON schemas, VS Code also validates and completes while typing.
+- Run `uv run tastingsets validate` before pushing. This is the actual data check: it uses the Pydantic models, so it also finds problems that JSON schemas cannot express (references between files, duplicate ids, country codes, ...).
+
+### Editor support (optional)
+
+VS Code can validate and auto-complete the data files while you type. For that, generate the JSON schemas once:
+
+```sh
+uv run tastingsets schema
+```
+
+`.vscode/settings.json` maps each folder in `data/` to its schema in `schemas/`. The `schemas/` folder is generated from the Pydantic models, ignored by git and not needed for `validate`, `build`, tests or CI. Run the command again after changing `src/tastingsets/models.py`. Without the schemas, VS Code simply shows no hints.
 
 ## Publishing (GitHub Pages)
 

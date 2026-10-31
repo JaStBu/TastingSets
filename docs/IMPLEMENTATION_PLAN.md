@@ -154,7 +154,7 @@ Dasselbe Set mit optionalen Gruppen (statt `members` steht `groups`):
        static/
    tests/
      fixtures/data/     kleiner, gezielt gebauter Datensatz, auch mit absichtlich fehlerhaften Fällen
-   schemas/             generierte JSON-Schemas
+   schemas/             generierte JSON-Schemas (nicht eingecheckt, in .gitignore)
    .github/workflows/
    ```
 
@@ -199,7 +199,7 @@ A. **Modell** (`models.py`):
 B. **Laden und Prüfen:** neuer Fehlercode `DUPLICATE_GROUP_ID`; die Validierung läuft über `all_members`.
 C. **Catalog:** `ResolvedMember.group_id`, `ResolvedGroup` und `Catalog.resolve_groups(set_id)`; ein Set ohne Gruppen liefert genau eine Gruppe mit `group=None`.
 D. **Darstellung:** auf der Set-Seite ein `<tbody>` pro Gruppe mit Kopfzeile (Name, Flaschenzahl, Beschreibung), darüber ein Satz wie „2 Gruppen à 3 Flaschen“ (nur die Gruppenzahl, wenn die Größen verschieden sind); die Übersichtsseite zeigt die Anzahl der Gruppen.
-E. **Schema und Daten:** `schemas/tasting_sets.schema.json` neu generieren, `data/tasting_sets/advent-2026.json` als Beispiel mit 2 Gruppen, README und dieses Dokument anpassen.
+E. **Daten:** `data/tasting_sets/advent-2026.json` als Beispiel mit 2 Gruppen, README und dieses Dokument anpassen.
 F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite), Fixture-Daten mit doppelter `group_id`, `GROUPED_SET` und `flat_version` in `tests/conftest.py`.
 
 ### Phase 3 – Datenzugriff
@@ -285,6 +285,7 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
     - `tastingsets build [--data DIR] [--out dist] [--base-url /TastingSets/]`
     - `tastingsets schema [--out schemas]`: schreibt pro Collection `schemas/<collection>.schema.json`. Das Schema beschreibt ein Array des jeweiligen Modells oder ein einzelnes Objekt, also `oneOf`.
     - Zusätzlich ordnet `.vscode/settings.json` über `json.schemas` die Ordner in `data/` diesen Schemas zu, z.B. `data/spirits/*.json` → `schemas/spirits.schema.json`. So gibt es Autovervollständigung und Live-Validierung im Editor.
+    - Die Schemas sind nur eine Hilfe im Editor und werden bei Bedarf erzeugt: `schemas/` steht in der `.gitignore`, ist nicht eingecheckt und wird weder von `validate`, `build`, den Tests noch von der CI gebraucht. Die eigentliche Prüfung machen die Pydantic-Modelle.
 
 ### Phase 7 – Tests
 
@@ -299,8 +300,8 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
     - `test_i18n.py`: `t` mit Rückfall, `localized`, `country_name`
     - `test_builder.py`: Build in `tmp_path`, die erwarteten Dateien existieren, Namen und Nummern stehen im HTML, `base_url` wird in den Links beachtet, Abbruch bei Fehlern
     - `test_cli.py`: Exit-Codes von `validate` (normal und `--strict`), Format der GitHub-Annotationen (mit `monkeypatch` auf `GITHUB_ACTIONS`)
-    - `test_real_data.py`: das echte `data/` hat keine Fehler
-    - `test_schemas_up_to_date.py`: die eingecheckten Schemas entsprechen den aktuellen Modellen
+    - Tests verwenden ausschließlich Daten aus `tests/` (`tmp_path`, `tests/fixtures/data`), nie das echte `data/`. Dass `data/` fehlerfrei ist, prüft `tastingsets validate` in der CI (`ci.yml`, `pages.yml`); die Tests sollen nicht brechen, nur weil jemand Daten ändert.
+    - `test_schemas.py`: Schemas werden für alle Collections erzeugt und geschrieben, `tastingsets schema` funktioniert
 
 ### Phase 8 – CI/CD
 
@@ -355,20 +356,20 @@ Alle Dateien sind neu.
 - `src/tastingsets/site/builder.py` und `src/tastingsets/site/templates/*.html`
 - `src/tastingsets/cli.py` – Unterbefehle `validate`, `build`, `schema`
 - `.github/workflows/ci.yml`, `.github/workflows/pages.yml`
-- `.vscode/settings.json` – Schema-Zuordnung für den Editor
+- `.vscode/settings.json` – Schema-Zuordnung für den Editor (die Schemas selbst werden mit `tastingsets schema` erzeugt)
 
 ## Verification
 
 1. `uv run pytest` ist grün und `uv run ruff check` ohne Befunde.
 2. Validierung:
    - `uv run tastingsets validate --data tests/fixtures/data` liefert genau die erwarteten Issue-Codes.
-   - Gegen `data/` gibt es keine Fehler und genau eine Warnung `MISSING_DISTILLERY_ENTRY`.
+   - Gegen `data/` gibt es keine Fehler (die Anzahl der Warnungen hängt vom aktuellen Datenstand ab, es wird nicht per Test festgeschrieben).
 3. `uv run tastingsets build --out dist`, dann `python -m http.server -d dist` starten und von Hand ansehen: Set-Seite, Gesamtstatistik, Links mit `base_url`.
 4. Feature-Branch:
    - Einen Schnaps nur mit `distillery_name` pushen: die Warnung erscheint als Annotation, der Job ist grün.
    - Eine kaputte `spirit_id` pushen: der Job ist rot.
 5. Nach dem Merge auf `main` ist die Seite unter `https://<user>.github.io/TastingSets/` aktualisiert.
-6. Im Editor in `data/spirits/*.json` ein unbekanntes Feld eintragen: die Schema-Warnung wird angezeigt.
+6. Optional: `uv run tastingsets schema` ausführen und im Editor in `data/spirits/*.json` ein unbekanntes Feld eintragen: die Schema-Warnung wird angezeigt.
 
 ## Decisions
 
