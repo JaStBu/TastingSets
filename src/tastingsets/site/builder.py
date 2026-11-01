@@ -11,6 +11,7 @@ from typing import Any
 from babel.numbers import format_decimal
 from jinja2 import Environment, FileSystemLoader
 
+from tastingsets import __url__, __version__
 from tastingsets.catalog import Catalog
 from tastingsets.i18n import (
     DEFAULT_LOCALES_DIR,
@@ -68,6 +69,8 @@ def make_environment(base_url: str) -> Environment:
     )
     base = normalize_base_url(base_url)
     env.globals["url_for"] = lambda path="": base + path.lstrip("/")
+    env.globals["app_version"] = __version__
+    env.globals["project_url"] = __url__
     return env
 
 

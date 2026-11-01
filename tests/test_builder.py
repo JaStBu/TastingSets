@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pytest
 
+from tastingsets import __url__, __version__
 from tastingsets.cli import main
 from tastingsets.languages import DEFAULT_LANGUAGE
 from tastingsets.repository.json_repository import JsonRepository
@@ -120,6 +121,14 @@ def test_stats_page_content(data_dir, tmp_path):
     assert "Flaschen pro Brennerei" in html
     assert "advent-2025/1, advent-2026/2, advent-2026/3" in html
     assert "unbekannt" in html
+
+
+def test_footer_shows_version_and_project_link(data_dir, tmp_path):
+    out = tmp_path / "dist"
+    build(JsonRepository(data_dir), out)
+    html = (out / "de" / "index.html").read_text(encoding="utf-8")
+    assert __url__ == "https://github.com/JaStBu/TastingSets"
+    assert f'<a href="{__url__}">TastingSets v{__version__}</a>' in html
 
 
 def test_base_url_is_used_in_links(data_dir, tmp_path):
