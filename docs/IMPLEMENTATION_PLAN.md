@@ -192,7 +192,7 @@ Dasselbe Set mit optionalen Gruppen (statt `members` steht `groups`):
 *Hängt an Phase 2 bis 6; umgesetzt in den Phasen A–F unten.*
 
 A. **Modell** (`models.py`):
-   - Typ `LocalizedText` (Sprache → Text, `de` Pflicht); `Category.names` nutzt ihn ebenfalls.
+   - Typ `LocalizedText` (Sprache → Text, Standardsprache Pflicht); `Category.names` nutzt ihn ebenfalls.
    - `SetGroup`: `group_id` (Slug), `names: LocalizedText`, optional `description: LocalizedText`, `members` (mindestens 1).
    - `TastingSet`: `members` und `groups` sind beide optional, genau eines muss gesetzt sein. `group_id` ist im Set eindeutig (`DuplicateGroupIdError`), `member_id` im ganzen Set, auch über Gruppen hinweg.
    - Hilfsfunktionen: `all_members` (flach, Gruppen in definierter Reihenfolge), `group_of(member_id)`, `is_grouped`.
@@ -377,7 +377,8 @@ Alle Dateien sind neu.
 - Ein Ordner pro Collection. Die Dateinamen darin sind frei wählbar, es werden alle `*.json` geladen.
 - Lesbare Slugs als `_id`, keine UUIDs.
 - Set Member stecken im Tasting Set. Innerhalb eines Sets sind sie durch das Modell eindeutig, über alle Sets hinweg durch den FQN `<set_id>/<member_id>`.
-- Optionale Gruppen: verschachtelt, ein Set hat entweder `members` oder `groups[].members`. Dadurch gilt „alle Flaschen in Gruppen oder keine“ durch die Struktur. Gruppenname und Beschreibung sind pro Sprache angegeben (`de` Pflicht). Gruppen sind nur für die Anzeige und fließen nicht in die Statistik ein; die Gruppe ist nicht Teil des FQN. Reihenfolge: Gruppen wie definiert, Members wie in der Datei.
+- Optionale Gruppen: verschachtelt, ein Set hat entweder `members` oder `groups[].members`. Dadurch gilt „alle Flaschen in Gruppen oder keine“ durch die Struktur. Gruppenname und Beschreibung sind pro Sprache angegeben (Standardsprache Pflicht). Gruppen sind nur für die Anzeige und fließen nicht in die Statistik ein; die Gruppe ist nicht Teil des FQN. Reihenfolge: Gruppen wie definiert, Members wie in der Datei.
+- Standardsprache: genau einmal definiert in `src/tastingsets/languages.py` (`DEFAULT_LANGUAGE`). Sie ist Pflicht in mehrsprachigen Datenfeldern, Rückfall für Inhalte und Oberflächentexte, muss immer gebaut werden und ist Ziel der Weiterleitung von `/index.html`. Ein Test verhindert feste Sprach-Strings in `src/`.
 - Brennerei-Referenz über zwei Felder: `distillery_id` und `distillery_name` als Rückfall.
   - Eine `distillery_id` ohne passenden Eintrag ist ein Fehler.
   - Nur `distillery_name` ohne `distillery_id` ist eine Warnung.
@@ -396,4 +397,5 @@ Alle Dateien sind neu.
    - Da MongoDB keine Referenzen prüft, läuft `validate` dann als Admin- oder CI-Befehl gegen die Datenbank.
 2. **Weitere Felder für später**, z.B. `volume_ml` und `cask` am Spirit oder `opened_on` am Member: `extra="forbid"` sorgt dafür, dass so etwas bewusst im Modell ergänzt wird. Vorschlag: zunächst weglassen.
 3. **Gruppen und MongoDB:** Ein Set-Dokument enthält entweder `members` oder `groups[].members`. Abfragen über alle Flaschen dürfen daher nicht direkt auf `members` lesen, sondern gehen über `Catalog` bzw. `TastingSet.all_members`. Alternativ schreibt das `MongoRepository` beim Speichern zusätzlich eine flache Member-Liste; das wird erst bei dessen Umsetzung entschieden. Die Gruppe steht bewusst nicht im FQN (`advent-2026/wine-finish/3` wurde verworfen): die Nummer ist im Set bereits eindeutig und Links bleiben stabil, wenn Gruppen umgebaut werden.
-4. **Sortierung der Member:** Reihenfolge wie in der Datei (empfohlen, Standard) oder natürliche Sortierung nach `member_id` (1, 2, … 10 statt 1, 10, 2). Kann man im Template umschaltbar machen.
+4. **Einstellbare Standardsprache (Stufe 2):** siehe README, Abschnitt „Architecture and outlook“. Umsetzung erst bei konkretem Bedarf.
+5. **Sortierung der Member:** Reihenfolge wie in der Datei (empfohlen, Standard) oder natürliche Sortierung nach `member_id` (1, 2, … 10 statt 1, 10, 2). Kann man im Template umschaltbar machen.
