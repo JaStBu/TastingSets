@@ -30,6 +30,26 @@ def test_distillery_country_validation():
             Distillery.model_validate({"_id": "ardbeg", "name": "Ardbeg", "country": bad})
 
 
+@pytest.mark.parametrize("code", ["DE", "GB", "GB-SCT", "DE-BY", "US-CA"])
+def test_distillery_accepts_country_and_region_codes(code):
+    d = Distillery.model_validate({"_id": "x", "name": "X", "country": code})
+    assert d.country == code
+
+
+@pytest.mark.parametrize("code", ["gb-sct", "GB-", "GB-SCTX", "GB-XXX", "XX-SCT", "-SCT", "GB_SCT"])
+def test_distillery_rejects_invalid_region_codes(code):
+    with pytest.raises(ValidationError):
+        Distillery.model_validate({"_id": "x", "name": "X", "country": code})
+
+
+def test_distillery_region_is_optional_free_text():
+    base = {"_id": "bowmore", "name": "Bowmore", "country": "GB-SCT"}
+    assert Distillery.model_validate(base).region is None
+    assert Distillery.model_validate({**base, "region": "Islay"}).region == "Islay"
+    with pytest.raises(ValidationError):
+        Distillery.model_validate({**base, "region": ""})
+
+
 @pytest.mark.parametrize("bad_id", ["Ardbeg", "ardbeg_10", "-a", "a--b", "", "a b"])
 def test_slug_validation(bad_id):
     with pytest.raises(ValidationError):

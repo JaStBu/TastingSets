@@ -23,6 +23,7 @@
       <th>{{ t('table.category') }}</th>
       <th>{{ t('table.distillery') }}</th>
       <th>{{ t('table.country') }}</th>
+      <th>{{ t('table.region') }}</th>
       <th class="num">{{ t('table.abv') }}</th>
       <th>{{ t('table.notes') }}</th>
       <th>{{ t('table.link') }}</th>
@@ -32,7 +33,7 @@
   <tbody{% if g.group %} id="group-{{ g.group.group_id }}" class="group"{% endif %}>
     {% if g.group %}
     <tr class="group-header">
-      <th colspan="8" scope="colgroup">
+      <th colspan="9" scope="colgroup">
         <span class="group-name">{{ localized_text(g.group.names) }}</span>
         <span class="group-size">{{ t('index.bottles', count=g.members|length) }}</span>
         {% if g.group.description %}
@@ -50,6 +51,7 @@
         {% if m.distillery %}{{ m.distillery_label }}{% else %}<em title="{{ t('table.distillery_without_entry') }}">{{ m.distillery_label }}</em>{% endif %}
       </td>
       <td>{% if m.country %}{{ country_name(m.country) }}{% else %}–{% endif %}</td>
+      <td>{% if m.region %}{{ m.region }}{% else %}–{% endif %}</td>
       <td class="num">{{ format_abv(m.spirit.abv) }}</td>
       <td>{{ localized_text(m.notes) if m.notes else '' }}</td>
       <td>{% if m.spirit.url %}<a href="{{ m.spirit.url }}" rel="noopener">↗</a>{% endif %}</td>

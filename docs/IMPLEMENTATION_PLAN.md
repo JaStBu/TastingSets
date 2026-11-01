@@ -119,7 +119,7 @@ Dasselbe Set mit optionalen Gruppen (statt `members` steht `groups`):
 
 1. `pyproject.toml` anlegen:
    - uv, Python 3.12 oder neuer, src-Layout.
-   - Abhängigkeiten: `pydantic>=2`, `jinja2`, `babel`.
+   - Abhängigkeiten: `pydantic>=2`, `jinja2`, `babel`, `pycountry` (ISO-3166-2-Regionen).
    - Entwicklungs-Abhängigkeiten: `pytest`, `ruff`.
    - Einstiegspunkt: `tastingsets = tastingsets.cli:main`.
    - Konfiguration für ruff und pytest (`testpaths = ["tests"]`).
@@ -171,7 +171,8 @@ Dasselbe Set mit optionalen Gruppen (statt `members` steht `groups`):
    - Ein Validator verlangt, dass mindestens `de` vorhanden ist.
 5. `Distillery(Document)`:
    - `name: str`, optional `display_name: str | None`.
-   - `country: str` als ISO-3166-Alpha-2-Code in Großbuchstaben, gegen die Babel-Länderliste geprüft.
+   - `country`: ISO-3166-1-Alpha-2-Code (`DE`) oder ISO-3166-2-Regionscode (`GB-SCT`) in Großbuchstaben. Der Länderteil wird gegen die Babel-Länderliste, der Regionscode gegen `pycountry.subdivisions` geprüft. Die Statistik zählt nach dem exakten Code (`GB` und `GB-SCT` sind getrennt).
+   - `region: str | None`: optionaler Freitext für Nicht-ISO-Regionen (z.B. `Islay`, `Speyside`). Wie `name` ein Eigenname und nicht übersetzt; keine Auswirkung auf die Statistik.
 6. `Spirit(Document)`:
    - Pflicht: `name: str`, `category_id: str`, `abv: float` (größer 0, höchstens 100).
    - Optional: `display_name`, `distillery_id`, `distillery_name`, `url: HttpUrl`.
@@ -267,7 +268,7 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
 15. `i18n.py`:
     - Lädt `locales/<lang>.json` (flache Key-Value-Paare) und stellt `t(key)` bereit. Fehlt ein Key, wird auf `de` zurückgefallen, danach auf den Key selbst.
     - `localized(names, lang)` für Kategorienamen.
-    - `country_name(code, lang)` über `babel.Locale(lang).territories`.
+    - `country_name(code, lang)`: Ländercodes über `babel.Locale(lang).territories`, Regionscodes (mit `-`) über den übersetzten Namen aus `pycountry.subdivisions`.
     - Die Sprachen werden standardmäßig aus den JSON-Dateien in `locales/` ermittelt; die CLI-Option `--languages` kann eine Teilmenge auswählen. Deutsch steht, sofern vorhanden, an erster Stelle.
 16. `site/builder.py`:
     - `build(repo, out_dir, base_url="/", languages=None)`. Ohne explizite Sprachen werden alle Locale-Dateien gebaut. Zuerst läuft die Validierung; bei Fehlern wird mit einer Exception abgebrochen.

@@ -50,6 +50,22 @@ def test_count_by_country_groups_unknown(catalog):
     ]
 
 
+def test_count_by_country_uses_exact_region_code(tmp_path):
+    from conftest import DISTILLERIES, make_data_dir
+
+    distilleries = [
+        {**DISTILLERIES[0], "country": "GB-SCT", "region": "Islay"},
+        {"_id": "nonino", "name": "Nonino", "country": "GB"},
+    ]
+    root = make_data_dir(tmp_path / "data", distilleries=distilleries)
+    catalog = Catalog.from_repository(JsonRepository(root))
+    assert as_tuples(stats.count_by_country(catalog, lang="de")) == [
+        ("GB-SCT", "Schottland", 3),
+        ("unknown", "unknown", 1),  # ties are sorted by label
+        ("GB", "Vereinigtes Königreich", 1),
+    ]
+
+
 def test_repeated_spirits_across_and_within_sets(catalog):
     (repeated,) = stats.repeated_spirits(catalog)
     assert repeated.spirit.id == "ardbeg-10"

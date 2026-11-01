@@ -31,7 +31,7 @@ Each folder under `data/` is one collection (= later one MongoDB collection). In
 | Folder | Document | Fields |
 | --- | --- | --- |
 | `data/categories/` | kind of spirit | `_id`, `names` (language → name, default language required) |
-| `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2, e.g. `GB`) |
+| `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2 such as `DE`, or ISO 3166-2 such as `GB-SCT`), `region`? (free text for non-ISO regions such as `Islay` or `Speyside`, not translated) |
 | `data/spirits/` | spirit | `_id`, `name`, `display_name`?, `category_id`, `abv` (0–100), `distillery_id`?, `distillery_name`?, `url`? |
 | `data/tasting_sets/` | tasting set | `_id`, `names` (language → name, default language required), `year`?, and **either** `members` **or** `groups` |
 
@@ -114,6 +114,13 @@ models → repository (JSON files) → catalog → validation / stats / site bui
 The JSON files have the same structure as the MongoDB documents (`model_dump()` produces `_id`). For the dynamic app only a `MongoRepository` implementing the `Repository` protocol (`src/tastingsets/repository/base.py`) and a web layer (e.g. FastAPI) that reuses `Catalog`, `stats` and the templates are needed. A `seed-mongo` command could import the JSON files into the database. Since MongoDB does not check references, `validate` should then also be run against the database.
 
 A tasting set document contains either `members` or `groups[].members`. Queries over all bottles (statistics) must therefore not read `members` directly, but go through `Catalog` / `TastingSet.all_members`, or the `MongoRepository` stores a flat member list in addition when writing; decide this when the `MongoRepository` is implemented. The group is deliberately not part of the fully qualified member name (`<set_id>/<member_id>`): the number is already unique in the set, and links stay stable if groups are rearranged.
+
+**Region statistics (planned, not implemented yet).** Besides the existing statistics per country (`count_by_country`, counted by the exact `country` code, so `GB` and `GB-SCT` are separate entries), there should be a second evaluation per region, i.e. bottles per `region` of the distillery (e.g. `Islay`, `Speyside`):
+
+- *Data:* uses the optional free-text `region` field of `data/distilleries/`. Bottles whose distillery has no entry or no `region` are grouped under `unknown`, like in the country statistics.
+- *Code:* a new function `count_by_region(catalog, set_ids)` in `src/tastingsets/stats.py` with the same signature and `CountEntry` result as `count_by_country`, and a new field `by_region` in `StatsReport`.
+- *Site:* an additional table "Bottles per region" (`stats.by_region` in `locales/*.json`) next to "Bottles per country" in the statistics macros, for each set and for all sets.
+- *Open point:* `region` is free text, so spelling variants (`Islay` vs. `islay`) count as separate entries unless they are compared case-insensitively, as `count_by_distillery` does for `distillery_name`.
 
 **Configurable default language (not implemented yet).** Today the default language is a constant in `src/tastingsets/languages.py`; changing it means changing code. If the project is used as a package by others, it could become a setting instead:
 

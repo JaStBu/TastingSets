@@ -68,3 +68,10 @@ def test_country_name():
     assert country_name("GB", "de") == "Vereinigtes Königreich"
     assert country_name("GB", "en") == "United Kingdom"
     assert country_name("QQ", "en") == "QQ"
+
+
+def test_country_name_for_region_codes():
+    assert country_name("GB-SCT", "de") == "Schottland"
+    assert country_name("GB-SCT", "en") == "Scotland"
+    assert country_name("GB-SCT", "xx") == "Scotland"  # no translation -> English name
+    assert country_name("GB-QQQ", "en") == "GB-QQQ"
