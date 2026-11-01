@@ -1,24 +1,42 @@
 {
   "_id": "advent-2026",
-  "name": "Adventskalender 2026",
+  "name": "Whisky-Adventskalender 2026",
   "year": 2026,
   "groups": [
     {
-      "group_id": "ardbeg",
-      "names": { "de": "Ardbeg", "en": "Ardbeg" },
-      "description": { "de": "Drei Abfüllungen von der Insel Islay", "en": "Three bottlings from the island of Islay" },
+      "group_id": "vineyard-meets-distillery",
+      "names": { "de": "Weinberg trifft Brennerei", "en": "Vineyard Meets Distillery" },
       "members": [
-        { "member_id": "1", "spirit_id": "ardbeg-10" },
-        { "member_id": "2", "spirit_id": "ardbeg-uigeadail", "notes": "Fassstärke" },
-        { "member_id": "3", "spirit_id": "ardbeg-10" }
+        { "member_id": "1", "spirit_id": "lochlea-grenache" },
+        { "member_id": "2", "spirit_id": "balvenie-montilla-wine-12" },
+        { "member_id": "3", "spirit_id": "bowmore-bordeaux-cask-14" }
       ]
     },
     {
-      "group_id": "something-different",
-      "names": { "de": "Mal etwas anderes", "en": "Something different" },
+      "group_id": "sherry-port-feast",
+      "names": {"de": "Das ultimative Sherry- & Portweinfest", "en": "The Ultimate Sherry & Port Feast"},
       "members": [
-        { "member_id": "4", "spirit_id": "johnnie-walker-black-label" },
-        { "member_id": "5", "spirit_id": "nonino-grappa-riserva" }
+        { "member_id": "4", "spirit_id": "lochlea-dark-briar" },
+        { "member_id": "5", "spirit_id": "glendronach-15" },
+        { "member_id": "6", "spirit_id": "glenfarclas-15" }
+      ]
+    },
+    {
+      "group_id": "smoky-spectrum",
+      "names": { "de": "Das rauchige Spektrum", "en": "The Smoky Spectrum" },
+      "members": [
+        { "member_id": "7", "spirit_id": "benriach-smoke-season" },
+        { "member_id": "8", "spirit_id": "port-charlotte-10" },
+        { "member_id": "9", "spirit_id": "bunnahabhain-staoisha-2014-signatory-61" }
+      ]
+    },
+    {
+      "group_id": "beyond-mainstream",
+      "names": { "de": "Abseits der Masse", "en": "Beyond Mainstream" },
+      "members": [
+        { "member_id": "10", "spirit_id": "ncnean-madeira-rum-cask-whisky-de" },
+        { "member_id": "11", "spirit_id": "blair-athol-12" },
+        { "member_id": "12", "spirit_id": "kilkerran-12" }
       ]
     }
   ]

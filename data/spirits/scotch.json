@@ -1,0 +1,98 @@
+[
+  {
+    "_id": "balvenie-montilla-wine-12",
+    "name": "The Balvenie 12 Years Montilla Wine Cask Finish",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "balvenie",
+    "abv": 47.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/287745/balvenie-2012"
+  },
+  {
+    "_id": "benriach-smoke-season",
+    "name": "BenRiach Smoke Season",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "benriach",
+    "abv": 52.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/177838/benriach-smoke-season"
+  },
+  {
+    "_id": "blair-athol-12",
+    "name": "Blair Athol 12 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "blair-athol",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/28005/blair-athol-12-year-old"
+  },
+  {
+    "_id": "bowmore-bordeaux-cask-14",
+    "name": "Bowmore 14 Years Bordeaux Cask Finish",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "bowmore",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/266298/bowmore-14-year-old"
+  },
+  {
+    "_id": "bunnahabhain-staoisha-2014-signatory-61",
+    "name": "Bunnahabhain Staoisha 2014 - 10 Years Old 1st Fill & 2nd Fill Oloroso Sherry Butts 100 Proof Edition #61 (Signatory)",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "bunnahabhain",
+    "abv": 57.1,
+    "url": "https://www.whiskybase.com/whiskies/whisky/289959/staoisha-2014-sv"
+  },
+  {
+    "_id": "glendronach-15",
+    "name": "The GlenDronach 15 Years Revival",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "glendronach",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/290054/glendronach-15-year-old"
+  },
+  {
+    "_id": "glenfarclas-15",
+    "name": "Glenfarclas 15 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "glenfarclas",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/137/glenfarclas-15-year-old"
+  },
+  {
+    "_id": "kilkerran-12",
+    "name": "Kilkerran 12 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "glengyle",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/192360/kilkerran-12-year-old"
+  },
+  {
+    "_id": "lochlea-dark-briar",
+    "name": "Lochlea Dark Briar",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "lochlea",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/281562/lochlea-dark-briar"
+  },
+  {
+    "_id": "lochlea-grenache",
+    "name": "Lochlea Grenache",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "lochlea",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/286555/lochlea-red-wine-cask"
+  },
+  {
+    "_id": "ncnean-madeira-rum-cask-whisky-de",
+    "name": "Nc'nean Madeira Rum Cask Whisky.de exklusiv",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "ncnean",
+    "abv": 60.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/295276/ncnean-2018"
+  },
+  {
+    "_id": "port-charlotte-10",
+    "name": "Port Charlotte 10 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "bruichladdich",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/112320/port-charlotte-10-year-old"
+  }
+]
