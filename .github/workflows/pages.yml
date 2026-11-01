@@ -36,6 +36,13 @@ jobs:
       - name: Install dependencies
         run: uv sync --locked
 
+      - name: Diagnose version
+        run: |
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          git tag --points-at HEAD
+          uv run python -c "from tastingsets import __version__; print(__version__)"
+
       # Aborts on data errors, so no separate validation step is needed here.
       - name: Build site
         run: uv run tastingsets build --out dist --base-url "/${{ github.event.repository.name }}/"
