@@ -133,7 +133,9 @@ def build(
 
         lang_dir = out / lang
         entries = [
-            SetListEntry(ts.id, ts.label, ts.year, len(ts.all_members), len(ts.groups or []))
+            SetListEntry(
+                ts.id, localized(ts.names, lang), ts.year, len(ts.all_members), len(ts.groups or [])
+            )
             for ts in catalog.tasting_sets.values()
         ]
         overall = build_report(catalog, None, lang)

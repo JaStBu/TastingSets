@@ -19,7 +19,7 @@ class ResolvedMember:
     set_id: str
     fqn: str
     member_id: str
-    notes: str | None
+    notes: dict[str, str] | None
     spirit: Spirit
     category: Category
     distillery: Distillery | None

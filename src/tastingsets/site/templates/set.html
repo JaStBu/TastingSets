@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% from "_stats_macros.html" import report_grid with context %}
-{% block title %}{{ tasting_set.label }} – {{ t('site.title') }}{% endblock %}
+{% block title %}{{ localized_text(tasting_set.names) }} – {{ t('site.title') }}{% endblock %}
 {% block content %}
 <p><a href="{{ url_for(lang ~ '/') }}">← {{ t('set.back') }}</a></p>
-<h1>{{ tasting_set.label }}</h1>
+<h1>{{ localized_text(tasting_set.names) }}</h1>
 {% if tasting_set.is_grouped %}
 {% set group_count = groups|length %}
 {% set suffix = '_one' if group_count == 1 else '' %}
@@ -51,7 +51,7 @@
       </td>
       <td>{% if m.country %}{{ country_name(m.country) }}{% else %}–{% endif %}</td>
       <td class="num">{{ format_abv(m.spirit.abv) }}</td>
-      <td>{{ m.notes or '' }}</td>
+      <td>{{ localized_text(m.notes) if m.notes else '' }}</td>
       <td>{% if m.spirit.url %}<a href="{{ m.spirit.url }}" rel="noopener">↗</a>{% endif %}</td>
     </tr>
     {% endfor %}

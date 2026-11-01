@@ -120,7 +120,7 @@ class SetMember(_Strict):
 
     member_id: Annotated[str, Field(pattern=MEMBER_ID_PATTERN)]
     spirit_id: Slug
-    notes: NonEmptyStr | None = None
+    notes: LocalizedText | None = None
 
 
 class SetGroup(_Strict):
@@ -135,9 +135,10 @@ class SetGroup(_Strict):
     members: Annotated[list[SetMember], Field(min_length=1)]
 
 
-class TastingSet(NamedDocument):
+class TastingSet(Document):
     """A tasting set (e.g. an advent calendar).
 
+    The name is localized (unlike distillery and spirit names, which are proper nouns).
     Either ``members`` (flat) or ``groups`` (each with its own ``members``) is given, never both.
     Order is preserved: groups in their defined order, members in file order.
     ``member_id`` is unique within the whole set, regardless of groups.
@@ -145,6 +146,7 @@ class TastingSet(NamedDocument):
 
     SEPARATOR: ClassVar[str] = "/"
 
+    names: LocalizedText
     year: int | None = None
     members: list[SetMember] | None = None
     groups: Annotated[list[SetGroup], Field(min_length=1)] | None = None

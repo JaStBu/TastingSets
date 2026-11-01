@@ -33,17 +33,18 @@ Each folder under `data/` is one collection (= later one MongoDB collection). In
 | `data/categories/` | kind of spirit | `_id`, `names` (language → name, default language required) |
 | `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2, e.g. `GB`) |
 | `data/spirits/` | spirit | `_id`, `name`, `display_name`?, `category_id`, `abv` (0–100), `distillery_id`?, `distillery_name`?, `url`? |
-| `data/tasting_sets/` | tasting set | `_id`, `name`, `display_name`?, `year`?, and **either** `members` **or** `groups` |
+| `data/tasting_sets/` | tasting set | `_id`, `names` (language → name, default language required), `year`?, and **either** `members` **or** `groups` |
 
-A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`, `notes`?.
+A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`, `notes`? (language → text, same format as `names`).
 
 - `member_id` is unique inside a set (also across groups). Across sets, a member is identified by its fully qualified name `<set_id>/<member_id>`, e.g. `advent-2026/24`.
+- **Names:** distillery and spirit names are proper nouns and are not translated (`name`, optional `display_name`). Tasting set names, group names and member notes are localized (`names`, `description`, `notes`), because they are descriptive text.
 - **Groups (optional):** a set can be divided into display-only sub-groups, e.g. 4 groups of 3 bottles. Instead of `members`, the set then has `groups`, each with `group_id`, `names` (language → name, default language required), `description`? (same format) and its own `members`. So either all bottles of a set are in a group or none. Groups are shown on the set page (header row per group plus a sentence like "2 groups of 3 bottles each") and as a count on the overview page. They have no influence on statistics. Order is preserved: groups as defined, members as in the file.
 
 ```json
 {
   "_id": "advent-2026",
-  "name": "Adventskalender 2026",
+  "names": { "de": "Adventskalender 2026", "en": "Advent Calendar 2026" },
   "groups": [
     {
       "group_id": "wine-finish",
@@ -51,7 +52,7 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
       "description": { "de": "Gereift in Weinfässern" },
       "members": [
         { "member_id": "1", "spirit_id": "ardbeg-10" },
-        { "member_id": "2", "spirit_id": "ardbeg-uigeadail" }
+        { "member_id": "2", "spirit_id": "ardbeg-uigeadail", "notes": { "de": "Fassstärke" } }
       ]
     }
   ]
@@ -62,7 +63,7 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
 
 ### Languages
 
-The default language is defined once in `src/tastingsets/languages.py` (currently `de`). It is required in every localized field (`names`, `description`), it is the fallback for localized content and UI strings, it must always be built, and `/index.html` redirects to it. To use another default language (e.g. Spanish), change `DEFAULT_LANGUAGE`, add `locales/es.json` with the same keys as the other locale files, and add the language to all localized fields in `data/` (`uv run tastingsets validate` lists every affected document).
+The default language is defined once in `src/tastingsets/languages.py` (currently `de`). It is required in every localized field (`names`, `description`, `notes`), it is the fallback for localized content and UI strings, it must always be built, and `/index.html` redirects to it. To use another default language (e.g. Spanish), change `DEFAULT_LANGUAGE`, add `locales/es.json` with the same keys as the other locale files, and add the language to all localized fields in `data/` (`uv run tastingsets validate` lists every affected document).
 
 ### Validation
 
@@ -81,7 +82,7 @@ The default language is defined once in `src/tastingsets/languages.py` (currentl
 ## Adding data
 
 - **New spirit:** add an object to a file in `data/spirits/` (or create a new file there). Use `distillery_id` if the distillery exists in `data/distilleries/`, otherwise `distillery_name`.
-- **New tasting set:** create `data/tasting_sets/<set-id>.json` with the members in the order they should be displayed. Use `groups` instead of `members` if the set consists of sub-groups.
+- **New tasting set:** create `data/tasting_sets/<set-id>.json` with `names` and the members in the order they should be displayed. Use `groups` instead of `members` if the set consists of sub-groups.
 - Run `uv run tastingsets validate` before pushing. This is the actual data check: it uses the Pydantic models, so it also finds problems that JSON schemas cannot express (references between files, duplicate ids, country codes, ...).
 
 ### Editor support (optional)

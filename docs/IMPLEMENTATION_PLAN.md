@@ -89,7 +89,7 @@ cli: validate | build | schema
   "year": 2026,
   "members": [
     { "member_id": "1", "spirit_id": "ardbeg-10" },
-    { "member_id": "2", "spirit_id": "secret-speyside-12", "notes": "Fassstärke" }
+    { "member_id": "2", "spirit_id": "secret-speyside-12", "notes": { "de": "Fassstärke" } }
   ]
 }
 ```
@@ -179,13 +179,13 @@ Dasselbe Set mit optionalen Gruppen (statt `members` steht `groups`):
 7. `SetMember(BaseModel)`:
    - Kein eigenes Dokument, sondern Teil des Tasting Sets. Gleiche Konfiguration wie oben, aber ohne `_id`.
    - `member_id: str` mit Regex `^[A-Za-z0-9_-]+$`.
-   - `spirit_id: str`, optional `notes: str | None`.
+   - `spirit_id: str`, optional `notes: LocalizedText | None` (Nachtrag: Notizen sind beschreibender Text und werden übersetzt).
 8. `TastingSet(Document)`:
-   - `name: str`, optional `display_name` und `year: int | None`, `members: list[SetMember]`.
+   - `names: LocalizedText` (Nachtrag: der Set-Name ist beschreibend und wird übersetzt, anders als die Eigennamen von Brennerei und Schnaps), optional `year: int | None`, `members: list[SetMember]`.
    - Ein Validator stellt sicher, dass `member_id` innerhalb des Sets eindeutig ist.
    - Die Methode `fqn(member) -> str` liefert den vollständigen Namen `"<set_id>/<member_id>"`, z.B. `advent-2026/24`. Damit ist jeder Set Member über alle Sets hinweg eindeutig.
    - Die Reihenfolge der Members entspricht der Reihenfolge in der Datei.
-   - Hilfseigenschaft `label`: `display_name`, falls gesetzt, sonst `name`. Dasselbe für `Distillery` und `Spirit`.
+   - Hilfseigenschaft `label`: `display_name`, falls gesetzt, sonst `name`. Nur für `Distillery` und `Spirit` (Eigennamen); `TastingSet` nutzt stattdessen `localized(names, lang)`.
 
 ### Phase 2a – Optionale Gruppen in Tasting Sets (nachträglich ergänzt)
 
