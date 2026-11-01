@@ -19,21 +19,22 @@ from pydantic import (
     model_validator,
 )
 
+from tastingsets.languages import DEFAULT_LANGUAGE
+
 SLUG_PATTERN = r"^[a-z0-9]+(-[a-z0-9]+)*$"
 MEMBER_ID_PATTERN = r"^[A-Za-z0-9_-]+$"
-REQUIRED_LANGUAGE = "de"
 
 Slug = Annotated[str, Field(pattern=SLUG_PATTERN)]
 NonEmptyStr = Annotated[str, Field(min_length=1)]
 
 
 def _require_default_language(value: dict[str, str]) -> dict[str, str]:
-    if REQUIRED_LANGUAGE not in value:
-        raise ValueError(f"must contain the language '{REQUIRED_LANGUAGE}'")
+    if DEFAULT_LANGUAGE not in value:
+        raise ValueError(f"must contain the language '{DEFAULT_LANGUAGE}'")
     return value
 
 
-#: Text per language (``{"de": "...", "en": "..."}``); ``de`` is required.
+#: Text per language (``{"de": "...", "en": "..."}``); the default language is required.
 LocalizedText = Annotated[dict[str, NonEmptyStr], AfterValidator(_require_default_language)]
 
 

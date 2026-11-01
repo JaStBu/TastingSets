@@ -11,6 +11,12 @@ def test_main_without_command_prints_help(capsys):
     assert "usage" in capsys.readouterr().out.lower()
 
 
+def test_build_without_default_language_exits_two(data_dir, tmp_path, capsys):
+    args = ["build", "--data", str(data_dir), "--out", str(tmp_path / "dist")]
+    assert main([*args, "--languages", "en"]) == 2
+    assert "default language" in capsys.readouterr().err
+
+
 def test_validate_warnings_only_exits_zero(data_dir, capsys):
     assert main(["validate", "--data", str(data_dir)]) == 0
     out = capsys.readouterr().out

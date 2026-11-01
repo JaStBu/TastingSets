@@ -30,7 +30,7 @@ Each folder under `data/` is one collection (= later one MongoDB collection). In
 
 | Folder | Document | Fields |
 | --- | --- | --- |
-| `data/categories/` | kind of spirit | `_id`, `names` (language → name, `de` required) |
+| `data/categories/` | kind of spirit | `_id`, `names` (language → name, default language required) |
 | `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2, e.g. `GB`) |
 | `data/spirits/` | spirit | `_id`, `name`, `display_name`?, `category_id`, `abv` (0–100), `distillery_id`?, `distillery_name`?, `url`? |
 | `data/tasting_sets/` | tasting set | `_id`, `name`, `display_name`?, `year`?, and **either** `members` **or** `groups` |
@@ -38,7 +38,7 @@ Each folder under `data/` is one collection (= later one MongoDB collection). In
 A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`, `notes`?.
 
 - `member_id` is unique inside a set (also across groups). Across sets, a member is identified by its fully qualified name `<set_id>/<member_id>`, e.g. `advent-2026/24`.
-- **Groups (optional):** a set can be divided into display-only sub-groups, e.g. 4 groups of 3 bottles. Instead of `members`, the set then has `groups`, each with `group_id`, `names` (language → name, `de` required), `description`? (same format) and its own `members`. So either all bottles of a set are in a group or none. Groups are shown on the set page (header row per group plus a sentence like "2 groups of 3 bottles each") and as a count on the overview page. They have no influence on statistics. Order is preserved: groups as defined, members as in the file.
+- **Groups (optional):** a set can be divided into display-only sub-groups, e.g. 4 groups of 3 bottles. Instead of `members`, the set then has `groups`, each with `group_id`, `names` (language → name, default language required), `description`? (same format) and its own `members`. So either all bottles of a set are in a group or none. Groups are shown on the set page (header row per group plus a sentence like "2 groups of 3 bottles each") and as a count on the overview page. They have no influence on statistics. Order is preserved: groups as defined, members as in the file.
 
 ```json
 {
@@ -59,6 +59,10 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
 ```
 - A spirit needs `distillery_id` **or** `distillery_name`. If the distillery has no entry in `data/distilleries/`, only give `distillery_name`; this is allowed but produces the warning `MISSING_DISTILLERY_ENTRY`. A `distillery_id` that does not exist is an error (probably a typo).
 - Unknown fields are rejected, so typos in field names are found.
+
+### Languages
+
+The default language is defined once in `src/tastingsets/languages.py` (currently `de`). It is required in every localized field (`names`, `description`), it is the fallback for localized content and UI strings, it must always be built, and `/index.html` redirects to it. To use another default language (e.g. Spanish), change `DEFAULT_LANGUAGE`, add `locales/es.json` with the same keys as the other locale files, and add the language to all localized fields in `data/` (`uv run tastingsets validate` lists every affected document).
 
 ### Validation
 
@@ -109,3 +113,12 @@ models → repository (JSON files) → catalog → validation / stats / site bui
 The JSON files have the same structure as the MongoDB documents (`model_dump()` produces `_id`). For the dynamic app only a `MongoRepository` implementing the `Repository` protocol (`src/tastingsets/repository/base.py`) and a web layer (e.g. FastAPI) that reuses `Catalog`, `stats` and the templates are needed. A `seed-mongo` command could import the JSON files into the database. Since MongoDB does not check references, `validate` should then also be run against the database.
 
 A tasting set document contains either `members` or `groups[].members`. Queries over all bottles (statistics) must therefore not read `members` directly, but go through `Catalog` / `TastingSet.all_members`, or the `MongoRepository` stores a flat member list in addition when writing; decide this when the `MongoRepository` is implemented. The group is deliberately not part of the fully qualified member name (`<set_id>/<member_id>`): the number is already unique in the set, and links stay stable if groups are rearranged.
+
+**Configurable default language (not implemented yet).** Today the default language is a constant in `src/tastingsets/languages.py`; changing it means changing code. If the project is used as a package by others, it could become a setting instead:
+
+- *Where:* the setting belongs to the data contract, not to the build, because changing it invalidates existing data. Candidates are a file next to the collections, e.g. `data/settings.json` (not loaded as a collection), or `[tool.tastingsets] default_language` in `pyproject.toml`. With MongoDB, it would be a settings document.
+- *Validation:* Pydantic receives the language via the validation context (`model_validate(..., context={"default_language": ...})`, read in the validator via `ValidationInfo.context`) instead of the module constant. `JsonRepository` and later `MongoRepository` pass it through.
+- *Other layers:* `i18n`, `stats` and the site builder receive the language as a parameter instead of importing the constant. Because the constant is used in one place only, this is a contained change.
+- *Switching:* existing data must be migrated; `validate` shows every document that lacks the new default language.
+
+Implement this only when there is a concrete need.

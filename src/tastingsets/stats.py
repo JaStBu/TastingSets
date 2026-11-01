@@ -10,6 +10,7 @@ from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 
 from tastingsets.catalog import Catalog, ResolvedMember
+from tastingsets.languages import DEFAULT_LANGUAGE
 from tastingsets.models import Spirit
 
 #: Key used for members whose country is not known (no distillery entry).
@@ -84,7 +85,7 @@ def count_by_distillery(catalog: Catalog, set_ids: Iterable[str] | None = None) 
 
 
 def count_by_category(
-    catalog: Catalog, set_ids: Iterable[str] | None = None, lang: str = "de"
+    catalog: Catalog, set_ids: Iterable[str] | None = None, lang: str = DEFAULT_LANGUAGE
 ) -> list[CountEntry]:
     """Bottles per kind of spirit; labels are localized with ``lang``."""
     from tastingsets.i18n import localized
@@ -96,7 +97,7 @@ def count_by_category(
 
 
 def count_by_country(
-    catalog: Catalog, set_ids: Iterable[str] | None = None, lang: str = "de"
+    catalog: Catalog, set_ids: Iterable[str] | None = None, lang: str = DEFAULT_LANGUAGE
 ) -> list[CountEntry]:
     """Bottles per country. Members without distillery entry are grouped under ``unknown``."""
     from tastingsets.i18n import country_name
@@ -157,7 +158,7 @@ class StatsReport:
 
 
 def build_report(
-    catalog: Catalog, set_ids: Iterable[str] | None = None, lang: str = "de"
+    catalog: Catalog, set_ids: Iterable[str] | None = None, lang: str = DEFAULT_LANGUAGE
 ) -> StatsReport:
     """Compute every statistic for the selected sets (all sets if ``set_ids`` is ``None``)."""
     ids = list(catalog.tasting_sets) if set_ids is None else list(set_ids)
