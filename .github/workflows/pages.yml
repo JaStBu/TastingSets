@@ -3,6 +3,9 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+    # A release tag rebuilds the site so that the footer shows the clean version (e.g. 0.2.0)
+    # instead of a dev version. Needs a tag rule `v*` in the `github-pages` environment.
+    tags: ["v*"]
   workflow_dispatch:
 
 permissions:
