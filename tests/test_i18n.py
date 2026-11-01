@@ -2,7 +2,14 @@ import json
 
 import pytest
 
-from tastingsets.i18n import Translator, country_name, localized
+from tastingsets.i18n import (
+    DEFAULT_LOCALES_DIR,
+    Translator,
+    available_languages,
+    country_name,
+    localized,
+)
+from tastingsets.languages import DEFAULT_LANGUAGE
 
 
 @pytest.fixture
@@ -24,10 +31,30 @@ def test_translator_missing_language_file(locales):
         Translator("fr", locales)
 
 
-def test_real_locales_have_same_keys():
-    de = Translator("de")._strings
-    en = Translator("en")._strings
-    assert set(de) == set(en)
+def test_all_locales_have_same_keys_as_default():
+    default_keys = set(Translator(DEFAULT_LANGUAGE)._strings)
+    for path in sorted(DEFAULT_LOCALES_DIR.glob("*.json")):
+        keys = set(Translator(path.stem)._strings)
+        assert keys == default_keys, (
+            f"{path.name}: missing {sorted(default_keys - keys)}, "
+            f"unexpected {sorted(keys - default_keys)}"
+        )
+
+
+def test_default_language_has_no_fallback(tmp_path):
+    (tmp_path / f"{DEFAULT_LANGUAGE}.json").write_text(json.dumps({"a": "A"}), encoding="utf-8")
+    translator = Translator(DEFAULT_LANGUAGE, tmp_path)
+    assert translator.t("a") == "A"
+    assert translator.t("missing") == "missing"
+
+
+def test_available_languages_puts_default_first(tmp_path):
+    for name in ("fr", "en", DEFAULT_LANGUAGE):
+        (tmp_path / f"{name}.json").write_text("{}", encoding="utf-8")
+    assert available_languages(tmp_path) == [
+        DEFAULT_LANGUAGE,
+        *sorted({"en", "fr"} - {DEFAULT_LANGUAGE}),
+    ]
 
 
 def test_localized():

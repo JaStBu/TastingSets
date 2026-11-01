@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from tastingsets.cli import main
+from tastingsets.languages import DEFAULT_LANGUAGE
 from tastingsets.repository.json_repository import JsonRepository
 from tastingsets.site.builder import BuildError, build, normalize_base_url
 
@@ -44,6 +45,34 @@ def test_default_build_includes_all_locale_files(data_dir, tmp_path):
     assert (out / "fr" / "index.html").is_file()
     assert not (out / "en" / "index.html").exists()
     assert "url=/de/" in (out / "index.html").read_text(encoding="utf-8")
+
+
+def test_build_requires_default_language(data_dir, tmp_path):
+    out = tmp_path / "dist"
+    with pytest.raises(ValueError, match="default language"):
+        build(JsonRepository(data_dir), out, languages=["en"])
+    assert not out.exists()
+
+
+def test_build_requires_default_locale_file(data_dir, tmp_path):
+    locales_dir = tmp_path / "locales"
+    locales_dir.mkdir()
+    (locales_dir / "en.json").write_text("{}", encoding="utf-8")
+    out = tmp_path / "dist"
+    with pytest.raises(FileNotFoundError, match="default language"):
+        build(
+            JsonRepository(data_dir),
+            out,
+            languages=[DEFAULT_LANGUAGE, "en"],
+            locales_dir=locales_dir,
+        )
+    assert not out.exists()
+
+
+def test_redirect_points_to_default_language(data_dir, tmp_path):
+    out = tmp_path / "dist"
+    build(JsonRepository(data_dir), out, languages=["en", DEFAULT_LANGUAGE])
+    assert f"url=/{DEFAULT_LANGUAGE}/" in (out / "index.html").read_text(encoding="utf-8")
 
 
 def test_set_page_lists_members_with_details(data_dir, tmp_path):
