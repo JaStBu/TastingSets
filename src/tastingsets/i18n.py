@@ -8,7 +8,8 @@ from pathlib import Path
 
 from babel import Locale
 
-DEFAULT_LANGUAGE = "de"
+from tastingsets.languages import DEFAULT_LANGUAGE
+
 DEFAULT_LOCALES_DIR = Path(__file__).resolve().parents[2] / "locales"
 
 
@@ -21,13 +22,15 @@ def available_languages(locales_dir: Path | str = DEFAULT_LOCALES_DIR) -> list[s
 
 
 class Translator:
-    """Looks up UI strings: requested language, then ``de``, then the key itself."""
+    """Looks up UI strings: requested language, then the default language, then the key itself."""
 
     def __init__(self, lang: str, locales_dir: Path | str = DEFAULT_LOCALES_DIR) -> None:
         self.lang = lang
         locales_dir = Path(locales_dir)
         self._strings = self._load(locales_dir, lang)
-        self._fallback = self._load(locales_dir, DEFAULT_LANGUAGE) if lang != "de" else {}
+        self._fallback = (
+            self._load(locales_dir, DEFAULT_LANGUAGE) if lang != DEFAULT_LANGUAGE else {}
+        )
 
     @staticmethod
     def _load(locales_dir: Path, lang: str) -> dict[str, str]:
@@ -46,7 +49,7 @@ class Translator:
 
 
 def localized(names: Mapping[str, str], lang: str) -> str:
-    """Pick the name for ``lang``; fall back to ``de``, then to any available name."""
+    """Pick the name for ``lang``; fall back to the default language, then to any name."""
     if lang in names:
         return names[lang]
     if DEFAULT_LANGUAGE in names:

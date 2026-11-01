@@ -19,6 +19,7 @@ from tastingsets.i18n import (
     country_name,
     localized,
 )
+from tastingsets.languages import DEFAULT_LANGUAGE
 from tastingsets.models import TastingSet
 from tastingsets.repository.base import Repository
 from tastingsets.stats import build_report
@@ -88,6 +89,16 @@ def build(
         languages = available_languages(locales_dir)
     if not languages:
         raise ValueError("at least one language is required")
+    default_locale = Path(locales_dir) / f"{DEFAULT_LANGUAGE}.json"
+    if not default_locale.is_file():
+        raise FileNotFoundError(
+            f"locale file for default language '{DEFAULT_LANGUAGE}' not found: {default_locale}"
+        )
+    if DEFAULT_LANGUAGE not in languages:
+        raise ValueError(
+            f"default language '{DEFAULT_LANGUAGE}' must be built "
+            f"(languages: {', '.join(languages)})"
+        )
 
     catalog = Catalog.from_repository(repo)
     env = make_environment(base_url)
@@ -99,7 +110,7 @@ def build(
         target.write_text(env.get_template(template).render(**context), encoding="utf-8")
         written.append(target)
 
-    render("redirect.html", out / "index.html", {"target": f"{languages[0]}/"})
+    render("redirect.html", out / "index.html", {"target": f"{DEFAULT_LANGUAGE}/"})
 
     for lang in languages:
         translator = Translator(lang, locales_dir)

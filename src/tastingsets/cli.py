@@ -63,7 +63,7 @@ def cmd_build(args: argparse.Namespace) -> int:
     try:
         repo = JsonRepository(args.data)
         written = build(repo, args.out, base_url=args.base_url, languages=args.languages)
-    except FileNotFoundError as exc:
+    except (FileNotFoundError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     except BuildError as exc:
