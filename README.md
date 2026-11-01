@@ -108,15 +108,17 @@ The package version is not stored in `pyproject.toml`. It is derived from Git ta
 - **Release:** create a tag and push it (`git tag v0.2.0 && git push origin v0.2.0`), or create a release with the tag `v0.2.0` in the GitHub UI. No file has to be changed, and `uv.lock` stays valid: for a dynamic version, uv does not store the project's own version in the lock file.
 - **CI:** `actions/checkout` uses `fetch-depth: 0`, otherwise the tags are missing and the version is wrong.
 - **Local:** the `cache-keys` in `[tool.uv]` make `uv sync` rebuild the editable install after a new commit or tag. Otherwise run `uv sync --reinstall-package tastingsets`.
-- **Site:** the footer shows `TastingSets vX.Y.Z` with a link to the repository (`[project.urls]` in `pyproject.toml`). Without an installed package the version is `unknown` and is omitted.
+- **Site:** the footer shows `TastingSets vX.Y.Z` with a link to the repository (`[project.urls]` in `pyproject.toml`). Without an installed package the version is `unknown` and is omitted. The site is static and only knows the version from its build, so a new tag has no effect until the site is rebuilt: pushing a tag (also via a GitHub release) starts `pages.yml`, see [Publishing](#publishing-github-pages). Between two releases the footer shows a dev version.
 
 ## Publishing (GitHub Pages)
 
 - `.github/workflows/ci.yml` (job `check`) does lint, format check, tests, data validation (warnings appear as annotations, the job stays green) and a test build. It runs when a pull request is opened, when commits are pushed to a branch with an open pull request, and when a pull request is reopened. It is also a reusable workflow (`workflow_call`).
-- `.github/workflows/pages.yml` runs on every push to `main` (and manually). It first calls `ci.yml`; only if the check is green, it builds the site and deploys it to GitHub Pages. A push to `main` is therefore checked exactly once, and a failing check never gets published.
+- `.github/workflows/pages.yml` runs on every push to `main`, on every pushed tag `v*` (a release) and manually. It first calls `ci.yml`; only if the check is green, it builds the site and deploys it to GitHub Pages. A push to `main` or a tag is therefore checked exactly once, and a failing check never gets published.
+- Footer version: a run for `main` shows a dev version (`0.1.dev6+g86d1970`), a run for a release tag shows the clean version (`0.1.0`). A later push to `main` replaces the release build with a dev version again.
 - A push to a feature branch **without** a pull request runs nothing; open a pull request to get the check.
 - Recommended: in *Settings → Branches* (or *Rulesets*), require the status check `check` for `main`, so a pull request with a failing check cannot be merged.
 - **One-time setup:** in the repository, go to *Settings → Pages* and set *Source* to **GitHub Actions**.
+- **One-time setup for tags:** the `github-pages` environment only allows deployments from `main` by default. Under *Settings → Environments → github-pages → Deployment branches and tags*, add a tag rule `v*`. Without it, the `deploy` job of a tag run is rejected.
 
 The site is then available at `https://<user>.github.io/TastingSets/`.
 
@@ -132,6 +134,7 @@ The JSON files have the same structure as the MongoDB documents (`model_dump()` 
 
 - *Release workflow (planned, not implemented yet):* a workflow `.github/workflows/release.yml` triggered by `push` of tags `v*`. It checks out with `fetch-depth: 0`, runs `uv build` and creates a GitHub release with wheel and sdist attached. Publishing to PyPI via trusted publishing can be added to the same workflow if the package is meant to be used by others.
 - *Deployment:* installs the released version (a fixed tag) rather than building from `main`, so code and database schema stay in step.
+- *`pages.yml` becomes obsolete:* it builds a static site from the data in the repository. With the data in a database there is nothing to build from, and the app serves the pages dynamically. Its tag trigger is taken over by `release.yml`; `ci.yml` stays as the check for pull requests. Remove `pages.yml`, the Pages setting and the tag rule in the `github-pages` environment together with the switch to the database.
 - *Versioning:* the tag defines the version, see [Versioning and releases](#versioning-and-releases). A change to the data contract (models) should result in a new release.
 
 A tasting set document contains either `members` or `groups[].members`. Queries over all bottles (statistics) must therefore not read `members` directly, but go through `Catalog` / `TastingSet.all_members`, or the `MongoRepository` stores a flat member list in addition when writing; decide this when the `MongoRepository` is implemented. The group is deliberately not part of the fully qualified member name (`<set_id>/<member_id>`): the number is already unique in the set, and links stay stable if groups are rearranged.
