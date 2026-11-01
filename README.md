@@ -31,19 +31,20 @@ Each folder under `data/` is one collection (= later one MongoDB collection). In
 | Folder | Document | Fields |
 | --- | --- | --- |
 | `data/categories/` | kind of spirit | `_id`, `names` (language → name, default language required) |
-| `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2, e.g. `GB`) |
+| `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2 such as `DE`, or ISO 3166-2 such as `GB-SCT`), `region`? (free text for non-ISO regions such as `Islay` or `Speyside`, not translated) |
 | `data/spirits/` | spirit | `_id`, `name`, `display_name`?, `category_id`, `abv` (0–100), `distillery_id`?, `distillery_name`?, `url`? |
-| `data/tasting_sets/` | tasting set | `_id`, `name`, `display_name`?, `year`?, and **either** `members` **or** `groups` |
+| `data/tasting_sets/` | tasting set | `_id`, `names` (language → name, default language required), `year`?, and **either** `members` **or** `groups` |
 
-A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`, `notes`?.
+A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`, `notes`? (language → text, same format as `names`).
 
 - `member_id` is unique inside a set (also across groups). Across sets, a member is identified by its fully qualified name `<set_id>/<member_id>`, e.g. `advent-2026/24`.
+- **Names:** distillery and spirit names are proper nouns and are not translated (`name`, optional `display_name`). Tasting set names, group names and member notes are localized (`names`, `description`, `notes`), because they are descriptive text.
 - **Groups (optional):** a set can be divided into display-only sub-groups, e.g. 4 groups of 3 bottles. Instead of `members`, the set then has `groups`, each with `group_id`, `names` (language → name, default language required), `description`? (same format) and its own `members`. So either all bottles of a set are in a group or none. Groups are shown on the set page (header row per group plus a sentence like "2 groups of 3 bottles each") and as a count on the overview page. They have no influence on statistics. Order is preserved: groups as defined, members as in the file.
 
 ```json
 {
   "_id": "advent-2026",
-  "name": "Adventskalender 2026",
+  "names": { "de": "Adventskalender 2026", "en": "Advent Calendar 2026" },
   "groups": [
     {
       "group_id": "wine-finish",
@@ -51,7 +52,7 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
       "description": { "de": "Gereift in Weinfässern" },
       "members": [
         { "member_id": "1", "spirit_id": "ardbeg-10" },
-        { "member_id": "2", "spirit_id": "ardbeg-uigeadail" }
+        { "member_id": "2", "spirit_id": "ardbeg-uigeadail", "notes": { "de": "Fassstärke" } }
       ]
     }
   ]
@@ -62,7 +63,7 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
 
 ### Languages
 
-The default language is defined once in `src/tastingsets/languages.py` (currently `de`). It is required in every localized field (`names`, `description`), it is the fallback for localized content and UI strings, it must always be built, and `/index.html` redirects to it. To use another default language (e.g. Spanish), change `DEFAULT_LANGUAGE`, add `locales/es.json` with the same keys as the other locale files, and add the language to all localized fields in `data/` (`uv run tastingsets validate` lists every affected document).
+The default language is defined once in `src/tastingsets/languages.py` (currently `de`). It is required in every localized field (`names`, `description`, `notes`), it is the fallback for localized content and UI strings, it must always be built, and `/index.html` redirects to it. To use another default language (e.g. Spanish), change `DEFAULT_LANGUAGE`, add `locales/es.json` with the same keys as the other locale files, and add the language to all localized fields in `data/` (`uv run tastingsets validate` lists every affected document).
 
 ### Validation
 
@@ -81,7 +82,7 @@ The default language is defined once in `src/tastingsets/languages.py` (currentl
 ## Adding data
 
 - **New spirit:** add an object to a file in `data/spirits/` (or create a new file there). Use `distillery_id` if the distillery exists in `data/distilleries/`, otherwise `distillery_name`.
-- **New tasting set:** create `data/tasting_sets/<set-id>.json` with the members in the order they should be displayed. Use `groups` instead of `members` if the set consists of sub-groups.
+- **New tasting set:** create `data/tasting_sets/<set-id>.json` with `names` and the members in the order they should be displayed. Use `groups` instead of `members` if the set consists of sub-groups.
 - Run `uv run tastingsets validate` before pushing. This is the actual data check: it uses the Pydantic models, so it also finds problems that JSON schemas cannot express (references between files, duplicate ids, country codes, ...).
 
 ### Editor support (optional)
@@ -113,6 +114,13 @@ models → repository (JSON files) → catalog → validation / stats / site bui
 The JSON files have the same structure as the MongoDB documents (`model_dump()` produces `_id`). For the dynamic app only a `MongoRepository` implementing the `Repository` protocol (`src/tastingsets/repository/base.py`) and a web layer (e.g. FastAPI) that reuses `Catalog`, `stats` and the templates are needed. A `seed-mongo` command could import the JSON files into the database. Since MongoDB does not check references, `validate` should then also be run against the database.
 
 A tasting set document contains either `members` or `groups[].members`. Queries over all bottles (statistics) must therefore not read `members` directly, but go through `Catalog` / `TastingSet.all_members`, or the `MongoRepository` stores a flat member list in addition when writing; decide this when the `MongoRepository` is implemented. The group is deliberately not part of the fully qualified member name (`<set_id>/<member_id>`): the number is already unique in the set, and links stay stable if groups are rearranged.
+
+**Region statistics (planned, not implemented yet).** Besides the existing statistics per country (`count_by_country`, counted by the exact `country` code, so `GB` and `GB-SCT` are separate entries), there should be a second evaluation per region, i.e. bottles per `region` of the distillery (e.g. `Islay`, `Speyside`):
+
+- *Data:* uses the optional free-text `region` field of `data/distilleries/`. Bottles whose distillery has no entry or no `region` are grouped under `unknown`, like in the country statistics.
+- *Code:* a new function `count_by_region(catalog, set_ids)` in `src/tastingsets/stats.py` with the same signature and `CountEntry` result as `count_by_country`, and a new field `by_region` in `StatsReport`.
+- *Site:* an additional table "Bottles per region" (`stats.by_region` in `locales/*.json`) next to "Bottles per country" in the statistics macros, for each set and for all sets.
+- *Open point:* `region` is free text, so spelling variants (`Islay` vs. `islay`) count as separate entries unless they are compared case-insensitively, as `count_by_distillery` does for `distillery_name`.
 
 **Configurable default language (not implemented yet).** Today the default language is a constant in `src/tastingsets/languages.py`; changing it means changing code. If the project is used as a package by others, it could become a setting instead:
 

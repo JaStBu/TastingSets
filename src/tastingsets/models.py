@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from typing import Annotated, ClassVar
 
+import pycountry
 from babel import Locale
 from pydantic import (
     AfterValidator,
@@ -23,8 +24,11 @@ from tastingsets.languages import DEFAULT_LANGUAGE
 
 SLUG_PATTERN = r"^[a-z0-9]+(-[a-z0-9]+)*$"
 MEMBER_ID_PATTERN = r"^[A-Za-z0-9_-]+$"
+#: ISO 3166-1 alpha-2 (``DE``) or ISO 3166-2 (``GB-SCT``).
+COUNTRY_PATTERN = r"^[A-Z]{2}(-[A-Z0-9]{1,3})?$"
 
 Slug = Annotated[str, Field(pattern=SLUG_PATTERN)]
+CountryCode = Annotated[str, Field(pattern=COUNTRY_PATTERN)]
 NonEmptyStr = Annotated[str, Field(min_length=1)]
 
 
@@ -83,15 +87,24 @@ class Category(Document):
 
 
 class Distillery(NamedDocument):
-    """A distillery; ``country`` is an ISO 3166-1 alpha-2 code."""
+    """A distillery.
 
-    country: str
+    ``country`` is an ISO 3166-1 alpha-2 country code (``DE``) or an ISO 3166-2 region code
+    (``GB-SCT``). ``region`` is an optional free-text proper noun for finer, non-ISO regions
+    (e.g. ``Islay``, ``Speyside``); like ``name`` it is not translated.
+    """
+
+    country: CountryCode
+    region: NonEmptyStr | None = None
 
     @field_validator("country")
     @classmethod
     def _check_country(cls, value: str) -> str:
-        if len(value) != 2 or not value.isupper() or value not in Locale("en").territories:
-            raise ValueError(f"'{value}' is not a valid upper-case ISO 3166-1 alpha-2 country code")
+        country, _, subdivision = value.partition("-")
+        if country not in Locale("en").territories:
+            raise ValueError(f"'{country}' is not a valid ISO 3166-1 alpha-2 country code")
+        if subdivision and pycountry.subdivisions.get(code=value) is None:
+            raise ValueError(f"'{value}' is not a valid ISO 3166-2 region code")
         return value
 
 
@@ -120,7 +133,7 @@ class SetMember(_Strict):
 
     member_id: Annotated[str, Field(pattern=MEMBER_ID_PATTERN)]
     spirit_id: Slug
-    notes: NonEmptyStr | None = None
+    notes: LocalizedText | None = None
 
 
 class SetGroup(_Strict):
@@ -135,9 +148,10 @@ class SetGroup(_Strict):
     members: Annotated[list[SetMember], Field(min_length=1)]
 
 
-class TastingSet(NamedDocument):
+class TastingSet(Document):
     """A tasting set (e.g. an advent calendar).
 
+    The name is localized (unlike distillery and spirit names, which are proper nouns).
     Either ``members`` (flat) or ``groups`` (each with its own ``members``) is given, never both.
     Order is preserved: groups in their defined order, members in file order.
     ``member_id`` is unique within the whole set, regardless of groups.
@@ -145,6 +159,7 @@ class TastingSet(NamedDocument):
 
     SEPARATOR: ClassVar[str] = "/"
 
+    names: LocalizedText
     year: int | None = None
     members: list[SetMember] | None = None
     groups: Annotated[list[SetGroup], Field(min_length=1)] | None = None

@@ -27,7 +27,7 @@ def test_resolve_member_without_distillery_entry(catalog):
     assert member.distillery is None
     assert member.distillery_label == "Secret Distillery"
     assert member.country is None
-    assert member.notes == "cask strength"
+    assert member.notes == {"de": "cask strength"}
 
 
 def test_same_member_id_in_different_sets_is_distinguished(catalog):

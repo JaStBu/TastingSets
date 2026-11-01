@@ -67,7 +67,7 @@ def test_invalid_json_is_reported(tmp_path):
 def test_duplicate_member_id_has_own_code(tmp_path):
     ts = {
         "_id": "dup",
-        "name": "Dup",
+        "names": {"de": "Dup"},
         "members": [{"member_id": "1", "spirit_id": "a"}, {"member_id": "1", "spirit_id": "b"}],
     }
     repo = JsonRepository(make_data_dir(tmp_path / "data", tasting_sets=[ts]))

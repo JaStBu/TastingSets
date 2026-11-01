@@ -1,7 +1,7 @@
 [
   {
     "_id": "set-a",
-    "name": "Set A",
+    "names": { "de": "Set A" },
     "members": [
       { "member_id": "1", "spirit_id": "ardbeg-10" },
       { "member_id": "2", "spirit_id": "no-entry" },
@@ -13,7 +13,7 @@
   },
   {
     "_id": "set-b",
-    "name": "Set B",
+    "names": { "de": "Set B" },
     "members": [
       { "member_id": "1", "spirit_id": "ardbeg-10" },
       { "member_id": "1", "spirit_id": "ardbeg-10" }
@@ -21,7 +21,7 @@
   },
   {
     "_id": "set-c",
-    "name": "Set C (duplicate group_id)",
+    "names": { "de": "Set C (duplicate group_id)" },
     "groups": [
       { "group_id": "g", "names": { "de": "G1" }, "members": [{ "member_id": "1", "spirit_id": "ardbeg-10" }] },
       { "group_id": "g", "names": { "de": "G2" }, "members": [{ "member_id": "2", "spirit_id": "ardbeg-10" }] }
@@ -29,7 +29,7 @@
   },
   {
     "_id": "set-d",
-    "name": "Set D (valid, grouped)",
+    "names": { "de": "Set D (valid, grouped)" },
     "groups": [
       { "group_id": "g", "names": { "de": "G" }, "members": [{ "member_id": "1", "spirit_id": "ardbeg-10" }] }
     ]

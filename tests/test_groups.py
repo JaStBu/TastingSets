@@ -21,7 +21,7 @@ def group(group_id: str, members: list[dict], **extra) -> dict:
 
 
 def tasting_set(**fields) -> dict:
-    return {"_id": "ts", "name": "TS", **fields}
+    return {"_id": "ts", "names": {"de": "TS"}, **fields}
 
 
 @pytest.fixture

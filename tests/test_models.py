@@ -30,6 +30,26 @@ def test_distillery_country_validation():
             Distillery.model_validate({"_id": "ardbeg", "name": "Ardbeg", "country": bad})
 
 
+@pytest.mark.parametrize("code", ["DE", "GB", "GB-SCT", "DE-BY", "US-CA"])
+def test_distillery_accepts_country_and_region_codes(code):
+    d = Distillery.model_validate({"_id": "x", "name": "X", "country": code})
+    assert d.country == code
+
+
+@pytest.mark.parametrize("code", ["gb-sct", "GB-", "GB-SCTX", "GB-XXX", "XX-SCT", "-SCT", "GB_SCT"])
+def test_distillery_rejects_invalid_region_codes(code):
+    with pytest.raises(ValidationError):
+        Distillery.model_validate({"_id": "x", "name": "X", "country": code})
+
+
+def test_distillery_region_is_optional_free_text():
+    base = {"_id": "bowmore", "name": "Bowmore", "country": "GB-SCT"}
+    assert Distillery.model_validate(base).region is None
+    assert Distillery.model_validate({**base, "region": "Islay"}).region == "Islay"
+    with pytest.raises(ValidationError):
+        Distillery.model_validate({**base, "region": ""})
+
+
 @pytest.mark.parametrize("bad_id", ["Ardbeg", "ardbeg_10", "-a", "a--b", "", "a b"])
 def test_slug_validation(bad_id):
     with pytest.raises(ValidationError):
@@ -81,7 +101,7 @@ def test_set_member_id_is_string_and_validated():
 
 
 def test_tasting_set_rejects_duplicate_member_ids():
-    base = {"_id": "advent", "name": "Advent"}
+    base = {"_id": "advent", "names": {"de": "Advent"}}
     members = [{"member_id": "1", "spirit_id": "a"}, {"member_id": "1", "spirit_id": "b"}]
     with pytest.raises(ValidationError):
         TastingSet.model_validate({**base, "members": members})
@@ -91,8 +111,34 @@ def test_tasting_set_fqn_and_order():
     ts = TastingSet.model_validate(
         {
             "_id": "advent-2026",
-            "name": "Advent",
+            "names": {"de": "Advent"},
             "members": [{"member_id": "2", "spirit_id": "a"}, {"member_id": "1", "spirit_id": "b"}],
         }
     )
     assert [ts.fqn(m) for m in ts.members] == ["advent-2026/2", "advent-2026/1"]
+
+
+def test_tasting_set_name_is_localized():
+    ts = TastingSet.model_validate(
+        {
+            "_id": "advent",
+            "names": {"de": "Adventskalender", "en": "Advent calendar"},
+            "members": [],
+        }
+    )
+    assert ts.names["en"] == "Advent calendar"
+    with pytest.raises(ValidationError):
+        TastingSet.model_validate(
+            {"_id": "advent", "names": {"en": "Advent calendar"}, "members": []}
+        )
+
+
+def test_set_member_notes_are_localized():
+    member = SetMember.model_validate(
+        {"member_id": "1", "spirit_id": "a", "notes": {"de": "Fassstärke", "en": "Cask strength"}}
+    )
+    assert member.notes == {"de": "Fassstärke", "en": "Cask strength"}
+    with pytest.raises(ValidationError):
+        SetMember.model_validate(
+            {"member_id": "1", "spirit_id": "a", "notes": {"en": "only english"}}
+        )

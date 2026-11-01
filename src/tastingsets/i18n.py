@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import gettext
 import json
 from collections.abc import Mapping
+from functools import cache
 from pathlib import Path
 
+import pycountry
 from babel import Locale
 
 from tastingsets.languages import DEFAULT_LANGUAGE
@@ -57,6 +60,16 @@ def localized(names: Mapping[str, str], lang: str) -> str:
     return next(iter(names.values()))
 
 
+@cache
+def _subdivision_translations(lang: str) -> gettext.NullTranslations:
+    return gettext.translation("iso3166-2", pycountry.LOCALES_DIR, languages=[lang], fallback=True)
+
+
 def country_name(code: str, lang: str) -> str:
-    """Localized country name for an ISO 3166-1 alpha-2 code (the code itself if unknown)."""
+    """Localized name for an ISO 3166-1 alpha-2 or ISO 3166-2 code (the code if unknown)."""
+    if "-" in code:
+        subdivision = pycountry.subdivisions.get(code=code)
+        if subdivision is None:
+            return code
+        return _subdivision_translations(lang).gettext(subdivision.name)
     return Locale.parse(lang).territories.get(code, code)

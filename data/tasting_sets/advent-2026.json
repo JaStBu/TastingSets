@@ -1,6 +1,6 @@
 {
   "_id": "advent-2026",
-  "name": "Whisky-Adventskalender 2026",
+  "names": { "de": "Whisky-Adventskalender 2026", "en": "Whisky Advent Calendar 2026" },
   "year": 2026,
   "groups": [
     {

@@ -89,6 +89,30 @@ def test_set_page_lists_members_with_details(data_dir, tmp_path):
     assert 'href="https://example.org/secret"' in html
 
 
+def test_set_page_shows_region_name_and_free_text_region(tmp_path):
+    from conftest import DISTILLERIES, make_data_dir
+
+    distilleries = [{**DISTILLERIES[0], "country": "GB-SCT", "region": "Islay"}, DISTILLERIES[1]]
+    root = make_data_dir(tmp_path / "data", distilleries=distilleries)
+    out = tmp_path / "dist"
+    build(JsonRepository(root), out, languages=["de", "en"])
+    de = (out / "de" / "sets" / "advent-2025" / "index.html").read_text(encoding="utf-8")
+    en = (out / "en" / "sets" / "advent-2025" / "index.html").read_text(encoding="utf-8")
+    assert "Schottland" in de and "Scotland" in en
+    assert "Islay" in de and "Islay" in en
+
+
+def test_set_name_and_notes_are_localized(data_dir, tmp_path):
+    out = tmp_path / "dist"
+    build(JsonRepository(data_dir), out, languages=["de", "en"])
+    de = (out / "de" / "sets" / "advent-2025" / "index.html").read_text(encoding="utf-8")
+    en = (out / "en" / "sets" / "advent-2025" / "index.html").read_text(encoding="utf-8")
+    assert "Advent 2025" in de and "Advent 2025" in en  # no English name -> fallback
+    assert "cask strength" in de and "cask strength" in en  # notes fall back too
+    index_en = (out / "en" / "index.html").read_text(encoding="utf-8")
+    assert "Advent 2026" in index_en
+
+
 def test_stats_page_content(data_dir, tmp_path):
     out = tmp_path / "dist"
     build(JsonRepository(data_dir), out)

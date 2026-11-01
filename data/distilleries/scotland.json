@@ -1,13 +1,13 @@
 [
-  { "_id": "balvenie", "name": "Balvenie", "country": "GB" },
-  { "_id": "benriach", "name": "BenRiach", "country": "GB" },
-  { "_id": "blair-athol", "name": "Blair Athol", "country": "GB" },
-  { "_id": "bowmore", "name": "Bowmore", "country": "GB" },
-  { "_id": "bruichladdich", "name": "Bruichladdich", "country": "GB" },
-  { "_id": "bunnahabhain", "name": "Bunnahabhain", "country": "GB" },
-  { "_id": "glendronach", "name": "GlenDronach", "country": "GB" },
-  { "_id": "glenfarclas", "name": "Glenfarclas", "country": "GB" },
-  { "_id": "glengyle", "name": "Glengyle", "country": "GB" },
-  { "_id": "lochlea", "name": "Lochlea", "country": "GB" },
-  { "_id": "ncnean", "name": "Nc'nean", "country": "GB" }
+  { "_id": "balvenie", "name": "Balvenie", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "benriach", "name": "BenRiach", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "blair-athol", "name": "Blair Athol", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "bowmore", "name": "Bowmore", "country": "GB-SCT", "region": "Islay" },
+  { "_id": "bruichladdich", "name": "Bruichladdich", "country": "GB-SCT", "region": "Islay" },
+  { "_id": "bunnahabhain", "name": "Bunnahabhain", "country": "GB-SCT", "region": "Islay" },
+  { "_id": "glendronach", "name": "GlenDronach", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "glenfarclas", "name": "Glenfarclas", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "glengyle", "name": "Glengyle", "country": "GB-SCT", "region": "Campbeltown" },
+  { "_id": "lochlea", "name": "Lochlea", "country": "GB-SCT", "region": "Lowland" },
+  { "_id": "ncnean", "name": "Nc'nean", "country": "GB-SCT", "region": "Highland" }
 ]

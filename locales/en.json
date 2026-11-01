@@ -20,6 +20,7 @@
   "table.category": "Type",
   "table.distillery": "Distillery",
   "table.country": "Country",
+  "table.region": "Region",
   "table.abv": "ABV",
   "table.link": "Link",
   "table.notes": "Notes",

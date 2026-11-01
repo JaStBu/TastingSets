@@ -99,7 +99,10 @@ def count_by_category(
 def count_by_country(
     catalog: Catalog, set_ids: Iterable[str] | None = None, lang: str = DEFAULT_LANGUAGE
 ) -> list[CountEntry]:
-    """Bottles per country. Members without distillery entry are grouped under ``unknown``."""
+    """Bottles per exact country code (``GB`` and ``GB-SCT`` are separate entries).
+
+    Members without distillery entry are grouped under ``unknown``.
+    """
     from tastingsets.i18n import country_name
 
     def group(member: ResolvedMember) -> tuple[str, str]:

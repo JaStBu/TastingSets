@@ -42,16 +42,16 @@ SPIRITS = [
 TASTING_SETS = [
     {
         "_id": "advent-2025",
-        "name": "Advent 2025",
+        "names": {"de": "Advent 2025"},
         "year": 2025,
         "members": [
             {"member_id": "1", "spirit_id": "ardbeg-10"},
-            {"member_id": "2", "spirit_id": "secret-12", "notes": "cask strength"},
+            {"member_id": "2", "spirit_id": "secret-12", "notes": {"de": "cask strength"}},
         ],
     },
     {
         "_id": "advent-2026",
-        "name": "Advent 2026",
+        "names": {"de": "Advent 2026"},
         "year": 2026,
         "members": [
             {"member_id": "1", "spirit_id": "nonino-grappa"},
@@ -65,7 +65,7 @@ TASTING_SETS = [
 # Same bottles as a flat set would have; groups are display-only.
 GROUPED_SET = {
     "_id": "grouped-2026",
-    "name": "Grouped 2026",
+    "names": {"de": "Grouped 2026", "en": "Grouped 2026"},
     "year": 2026,
     "groups": [
         {

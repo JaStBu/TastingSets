@@ -19,7 +19,7 @@ class ResolvedMember:
     set_id: str
     fqn: str
     member_id: str
-    notes: str | None
+    notes: dict[str, str] | None
     spirit: Spirit
     category: Category
     distillery: Distillery | None
@@ -34,8 +34,13 @@ class ResolvedMember:
 
     @property
     def country(self) -> str | None:
-        """ISO country code, known only if a distillery entry exists."""
+        """ISO 3166-1 or 3166-2 code, known only if a distillery entry exists."""
         return self.distillery.country if self.distillery is not None else None
+
+    @property
+    def region(self) -> str | None:
+        """Free-text region (e.g. Islay), known only if the distillery entry defines one."""
+        return self.distillery.region if self.distillery is not None else None
 
 
 @dataclass(frozen=True)
