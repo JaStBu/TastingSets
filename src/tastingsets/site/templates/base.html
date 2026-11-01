@@ -24,6 +24,12 @@
   <main>
     {% block content %}{% endblock %}
   </main>
-  <footer>{{ t('footer.generated') }}</footer>
+  <footer>
+    <p>{{ t('footer.generated') }}</p>
+    <p class="app-info">
+      {% set app_label = 'TastingSets' ~ (' v' ~ app_version if app_version != 'unknown' else '') %}
+      {% if project_url %}<a href="{{ project_url }}">{{ app_label }}</a>{% else %}{{ app_label }}{% endif %}
+    </p>
+  </footer>
 </body>
 </html>

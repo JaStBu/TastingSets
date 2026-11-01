@@ -95,6 +95,21 @@ uv run tastingsets schema
 
 `.vscode/settings.json` maps each folder in `data/` to its schema in `schemas/`. The `schemas/` folder is generated from the Pydantic models, ignored by git and not needed for `validate`, `build`, tests or CI. Run the command again after changing `src/tastingsets/models.py`. Without the schemas, VS Code simply shows no hints.
 
+## Versioning and releases
+
+The package version is not stored in `pyproject.toml`. It is derived from Git tags of the form `vX.Y.Z` by [hatch-vcs](https://github.com/ofek/hatch-vcs) (`[tool.hatch.version] source = "vcs"`):
+
+| Git state | `__version__` |
+| --- | --- |
+| commit is tagged `v0.2.0` | `0.2.0` |
+| 3 commits after `v0.2.0` | `0.2.1.dev3+g1a2b3c4` |
+| uncommitted changes | additionally `+d<date>` |
+
+- **Release:** create a tag and push it (`git tag v0.2.0 && git push origin v0.2.0`), or create a release with the tag `v0.2.0` in the GitHub UI. No file has to be changed, and `uv.lock` stays valid: for a dynamic version, uv does not store the project's own version in the lock file.
+- **CI:** `actions/checkout` uses `fetch-depth: 0`, otherwise the tags are missing and the version is wrong.
+- **Local:** the `cache-keys` in `[tool.uv]` make `uv sync` rebuild the editable install after a new commit or tag. Otherwise run `uv sync --reinstall-package tastingsets`.
+- **Site:** the footer shows `TastingSets vX.Y.Z` with a link to the repository (`[project.urls]` in `pyproject.toml`). Without an installed package the version is `unknown` and is omitted.
+
 ## Publishing (GitHub Pages)
 
 - `.github/workflows/ci.yml` (job `check`) does lint, format check, tests, data validation (warnings appear as annotations, the job stays green) and a test build. It runs when a pull request is opened, when commits are pushed to a branch with an open pull request, and when a pull request is reopened. It is also a reusable workflow (`workflow_call`).
@@ -112,6 +127,12 @@ models → repository (JSON files) → catalog → validation / stats / site bui
 ```
 
 The JSON files have the same structure as the MongoDB documents (`model_dump()` produces `_id`). For the dynamic app only a `MongoRepository` implementing the `Repository` protocol (`src/tastingsets/repository/base.py`) and a web layer (e.g. FastAPI) that reuses `Catalog`, `stats` and the templates are needed. A `seed-mongo` command could import the JSON files into the database. Since MongoDB does not check references, `validate` should then also be run against the database.
+
+**Package releases (required with a database).** As long as the data lives in this repository, every push to `main` is a complete release: code and data are published together by `pages.yml`. Once the data moves to a database, the repository only contains code, and the app (and the generated site) is deployed from a released package version instead of the current state of `main`. Releases are then a requirement, not an option:
+
+- *Release workflow (planned, not implemented yet):* a workflow `.github/workflows/release.yml` triggered by `push` of tags `v*`. It checks out with `fetch-depth: 0`, runs `uv build` and creates a GitHub release with wheel and sdist attached. Publishing to PyPI via trusted publishing can be added to the same workflow if the package is meant to be used by others.
+- *Deployment:* installs the released version (a fixed tag) rather than building from `main`, so code and database schema stay in step.
+- *Versioning:* the tag defines the version, see [Versioning and releases](#versioning-and-releases). A change to the data contract (models) should result in a new release.
 
 A tasting set document contains either `members` or `groups[].members`. Queries over all bottles (statistics) must therefore not read `members` directly, but go through `Catalog` / `TastingSet.all_members`, or the `MongoRepository` stores a flat member list in addition when writing; decide this when the `MongoRepository` is implemented. The group is deliberately not part of the fully qualified member name (`<set_id>/<member_id>`): the number is already unique in the set, and links stay stable if groups are rearranged.
 
