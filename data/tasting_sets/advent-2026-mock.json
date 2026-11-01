@@ -1,6 +1,6 @@
 {
-  "_id": "advent-2026",
-  "name": "Adventskalender 2026",
+  "_id": "advent-2026-mock",
+  "name": "Dummy Adventskalender 2026",
   "year": 2026,
   "groups": [
     {
