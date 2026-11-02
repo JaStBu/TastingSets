@@ -1,0 +1,123 @@
+{
+  "_id": "advent-2019",
+  "names": { "de": "Whisky-Adventskalender 2019", "en": "Whisky Advent Calendar 2019" },
+  "year": 2019,
+  "groups": [
+    {
+      "group_id": "flora-fauna",
+      "names": { "de": "Flora & Fauna", "en": "Flora & Fauna" },
+      "description": {
+        "de": "Unter der Flora-&-Fauna-Serie füllt der Eigentümer Diageo ausgesuchte Fässer weniger Brennereien jeweils einzeln als Single Malt ab. Die Serie gilt bei Sammlern als Original-Abfüllung, falls es keine anderen Original-Abfüllungen gibt.",
+        "en": "For the Flora & Fauna series, owner Diageo bottles selected casks from a small number of distilleries individually as single malts. Collectors regard the series as an official bottling where no other official bottlings exist."
+      },
+      "members": [
+        {
+          "member_id": "11",
+          "spirit_id": "auchroisk-10-flora-fauna",
+          "notes": { "de": "Aroma: Aromatisch und durch Zitrusfrüchte geprägt. Geschmack: Sehr weich und süß. Abgang: Im Abgang trockener werdend." }
+        },
+        {
+          "member_id": "12",
+          "spirit_id": "strathmill-12-flora-fauna",
+          "notes": { "de": "Aroma: Voll und schwer. Geschmack: Angenehm und würzig mit Sherry, Malz und Karamell. Abgang: Lang und aromatisch." }
+        },
+        {
+          "member_id": "13",
+          "spirit_id": "blair-athol-12",
+          "notes": { "de": "Aroma: Leicht und süßlich, etwas Rauch. Geschmack: Süß und rauchig, wärmend. Abgang: Lang, mit dezenter Süße." }
+        },
+        {
+          "member_id": "14",
+          "spirit_id": "benrinnes-15-flora-fauna",
+          "notes": { "de": "Aroma: Süß mit dunklen Beeren. Geschmack: Würzig und leicht rauchig, mit Orange, Eiche, Schokolade und Kaffee. Abgang: Lang und trocken mit Eichennoten." }
+        }
+      ]
+    },
+    {
+      "group_id": "gordon-macphail",
+      "names": { "de": "Gordon & MacPhail Discovery", "en": "Gordon & MacPhail Discovery" },
+      "description": {
+        "de": "Gordon & MacPhail ist ein unabhängiger Abfüller. Die 2018 neu ins Sortiment aufgenommene Discovery-Serie umfasst die Geschmacksprofile Bourbonfass, Sherryfass und rauchig.",
+        "en": "Gordon & MacPhail is an independent bottler. Added to its range in 2018, the Discovery series covers the flavour profiles bourbon cask, sherry cask and smoky."
+      },
+      "members": [
+        {
+          "member_id": "21",
+          "spirit_id": "bunnahabhain-11-gm-discovery",
+          "notes": { "de": "Aroma: Süße Aromen nach Sherry, Orangenmarmelade, Trockenobst und feinen Gewürzen mit cremigem Vanille-Toffee. Geschmack: Süß und cremig mit Datteln, geschmorten Pflaumen, Walnussnoten und Zimtgewürz. Abgang: Lang mit Milchschokolade, getrockneten Früchten und Nüssen." }
+        },
+        {
+          "member_id": "22",
+          "spirit_id": "glenrothes-11-gm-discovery",
+          "notes": { "de": "Aroma: Reiche Toffee-Noten mit Fruchtkompott, sherrytönig mit Waldfrüchten, Zimt und Schokolade. Geschmack: Himbeeren und Brombeeren mit Zimt und gerösteter Eiche. Abgang: Mittellang und cremig mit Milchschokolade und Orange." }
+        },
+        {
+          "member_id": "23",
+          "spirit_id": "caol-ila-13-gm-discovery",
+          "notes": { "de": "Aroma: Süß und herzhaft mit geräuchertem Fleisch, glasierter Marillenmarmelade und Vanille; im Hintergrund leichte Rauchnoten. Geschmack: Tropische Früchte wie Ananas, Kiwi und Banane, dazu leichte Noten von Malz und Zitronenschale. Abgang: Lang und rauchig nach Lagerfeuer." }
+        },
+        {
+          "member_id": "24",
+          "spirit_id": "ledaig-12-gm-discovery",
+          "notes": { "de": "Aroma: Rauch mit geräuchertem Ahornholz, Toffee und Bratäpfeln; im Hintergrund maritime Noten von Seegras und Meersalz. Geschmack: Geschmorte Früchte, Sultaninen und Johannisbeeren mit Milchschokolade, Crème Brûlée, Toffee und Zitrusfrüchten. Abgang: Lang mit Eiche und Zitrus." }
+        }
+      ]
+    },
+    {
+      "group_id": "older-bottlings",
+      "names": { "de": "Ältere Abfüllungen", "en": "Older Bottlings" },
+      "description": {
+        "de": "Eher ältere Abfüllungen von bekanntem Whisky, mehrheitlich aus vorherigen Adventskalendern.",
+        "en": "Rather older bottlings of familiar whiskies, mostly from previous advent calendars."
+      },
+      "members": [
+        {
+          "member_id": "31",
+          "spirit_id": "redbreast-15",
+          "notes": { "de": "Aroma: Voll und aromatisch, schön ausbalanciert mit Beeren und aromatischen Ölen. Geschmack: Rund und weich mit saftigen Früchten, Vanille, Gewürzen und Eichennoten. Abgang: Lang anhaltend." }
+        },
+        {
+          "member_id": "32",
+          "spirit_id": "glencadam-18",
+          "notes": { "de": "Aroma: Komplex und würzig mit Ananas und Banane, etwas Zigarrenbox und Pfeffer. Geschmack: Floral, fruchtig und würzig mit Malz und Muskat. Abgang: Würzig und leicht pfeffrig." }
+        },
+        {
+          "member_id": "33",
+          "spirit_id": "old-pulteney-17",
+          "notes": { "de": "Aroma: Süß mit Spuren von Äpfeln und Birnen, leichter Eiche und etwas Butterscotch. Geschmack: Voller Körper mit etwas Vanille und blumigen Noten im Hintergrund. Abgang: Eindrucksvoll und lang anhaltend." }
+        },
+        {
+          "member_id": "34",
+          "spirit_id": "ancnoc-18",
+          "notes": { "de": "Aroma: Milde Gewürze und intensive Süße mit getrockneten Früchten, Schokolade, reifen Orangen und geöltem Leder. Geschmack: Voller Körper, kräftig, mit aromatischen Gewürzen, Stollen und kandierter Zitrone, gefolgt von Vanille, Honig und Karamell. Abgang: Pfeffrig und heiß, dann delikat süß und sanft." }
+        }
+      ]
+    },
+    {
+      "group_id": "getting-smoky",
+      "names": { "de": "Langsam wird es rauchig", "en": "Getting Smoky" },
+      "members": [
+        {
+          "member_id": "41",
+          "spirit_id": "clynelish-14",
+          "notes": { "de": "Aroma: Leicht, Kerzenwachs mit etwas Zucker, floral und aromatisch, getrocknete Blumen am Strand, gefolgt von braunem Zucker. Geschmack: Angenehmes Gaumengefühl, zartölig mit maritimem Charakter. Abgang: Leichter Salzgeschmack, trocken mit Eiche." }
+        },
+        {
+          "member_id": "42",
+          "spirit_id": "oban-14",
+          "notes": { "de": "Aroma: Zart torfig-rauchig mit Früchten und einer Spur Salz. Geschmack: Anhaltend sanft und salzig. Abgang: Trocken, rauchig und delikat." }
+        },
+        {
+          "member_id": "43",
+          "spirit_id": "laphroaig-15",
+          "notes": { "de": "Aroma: Torfrauch mit Grapefruit und frischer Minze. Geschmack: Rosa Pfeffer und Torfrauch, leicht trocken mit Tabak und Meersalz. Abgang: Weich und rauchig." }
+        },
+        {
+          "member_id": "44",
+          "spirit_id": "laphroaig-18",
+          "notes": { "de": "Aroma: Anklänge von Karamell mit Gewürzen, gefolgt von Seegras, Früchten, Salz und kräftigem Torfrauch. Geschmack: Rauch vermischt sich mit blumigen Noten und Eichenholz; im Hintergrund ein Hauch Vanille. Abgang: Mittellang bis lang, ölig mit kräftigem Rauch und Gewürzen." }
+        }
+      ]
+    }
+  ]
+}

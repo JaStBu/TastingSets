@@ -40,5 +40,12 @@
   { "_id": "tomintoul", "name": "Tomintoul", "country": "GB-SCT", "region": "Speyside" },
   { "_id": "ardmore", "name": "Ardmore", "country": "GB-SCT", "region": "Highland" },
   { "_id": "glenallachie", "name": "Glenallachie", "country": "GB-SCT", "region": "Speyside" },
-  { "_id": "talisker", "name": "Talisker", "country": "GB-SCT", "region": "Island" }
+  { "_id": "talisker", "name": "Talisker", "country": "GB-SCT", "region": "Island" },
+  { "_id": "auchroisk", "name": "Auchroisk", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "clynelish", "name": "Clynelish", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "glencadam", "name": "Glencadam", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "glenrothes", "name": "Glenrothes", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "oban", "name": "Oban", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "old-pulteney", "name": "Old Pulteney", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "strathmill", "name": "Strathmill", "country": "GB-SCT", "region": "Speyside" }
 ]
