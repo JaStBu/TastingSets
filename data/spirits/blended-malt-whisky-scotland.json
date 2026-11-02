@@ -3,7 +3,7 @@
     "_id": "murray-mcdavid-cult-of-islay-9",
     "name": "Murray McDavid Cult of Islay 9 Years",
     "category_id": "blended-malt-whisky",
-    "distillery_name": "Unknown",
+    "distillery_id": "unknown-scotland",
     "abv": 50.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/221572/cult-of-islay-2012-mm"
   },
@@ -11,7 +11,7 @@
     "_id": "murray-mcdavid-stout-cask-finish",
     "name": "Murray McDavid Stout Cask Finish",
     "category_id": "blended-malt-whisky",
-    "distillery_name": "Unknown",
+    "distillery_id": "unknown-scotland",
     "abv": 46.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/223035/half-n-half-2010-mm"
   }

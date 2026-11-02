@@ -28,5 +28,6 @@
   { "_id": "benrinnes", "name": "Benrinnes", "country": "GB-SCT", "region": "Speyside" },
   { "_id": "loch-lomond", "name": "Loch Lomond", "country": "GB-SCT", "region": "Highland" },
   { "_id": "lochranza", "name": "Lochranza", "country": "GB-SCT", "region": "Island" },
-  { "_id": "knockdhu", "name": "Knockdhu", "country": "GB-SCT", "region": "Speyside" }
+  { "_id": "knockdhu", "name": "Knockdhu", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "unknown-scotland", "name": "Unknown", "country": "GB-SCT" }
 ]

@@ -163,7 +163,7 @@
     "_id": "juniper-hill-moscatel",
     "name": "Murray McDavid Juniper Hill Moscatel",
     "category_id": "single-malt-whisky",
-    "distillery_name": "Unknown",
+    "distillery_id": "unknown-scotland",
     "abv": 51.9,
     "url": "https://www.whiskybase.com/whiskies/whisky/258802/juniper-hill-2015-mm"
   },
@@ -171,7 +171,7 @@
     "_id": "murray-mcdavid-safe-haven",
     "name": "Murray McDavid Safe Haven",
     "category_id": "single-malt-whisky",
-    "distillery_id": "tobermory",
+    "distillery_id": "unknown-scotland",
     "abv": 50.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/243372/safe-haven-2014-mm"
   },
@@ -323,7 +323,7 @@
     "_id": "peat-beast-px",
     "name": "Peat's Beast PX",
     "category_id": "single-malt-whisky",
-    "distillery_name": "Unknown",
+    "distillery_id": "unknown-scotland",
     "abv": 54.1,
     "url": null
   },
