@@ -66,6 +66,117 @@ def test_count_by_country_uses_exact_region_code(tmp_path):
     ]
 
 
+def _region_catalog(tmp_path, ardbeg, nonino):
+    from conftest import DISTILLERIES, make_data_dir
+
+    distilleries = [
+        {**DISTILLERIES[0], **ardbeg},
+        {**DISTILLERIES[1], **nonino},
+    ]
+    root = make_data_dir(tmp_path / "data", distilleries=distilleries)
+    return Catalog.from_repository(JsonRepository(root))
+
+
+def test_count_by_region_across_countries(catalog):
+    assert as_tuples(stats.count_by_region(catalog, lang="de")) == [
+        ("country:GB", "Vereinigtes Königreich, –", 3),
+        ("country:IT", "Italien, –", 1),
+        ("unknown", "unknown", 1),
+    ]
+
+
+def test_count_by_region_empty_without_members_from_country(catalog):
+    assert stats.count_by_region(catalog, country=stats.SCOTLAND) == []
+    assert stats.count_by_region(catalog, []) == []
+
+
+def test_count_by_region_ignores_case(tmp_path):
+    catalog = _region_catalog(
+        tmp_path,
+        {"country": "GB-SCT", "region": "Islay"},
+        {"country": "GB-SCT", "region": "ISLAY"},
+    )
+    result = stats.count_by_region(catalog, country=stats.SCOTLAND)
+    assert as_tuples(result) == [("region:GB-SCT:islay", "Islay", 4)]
+
+
+def test_count_by_region_filters_by_exact_country(tmp_path):
+    catalog = _region_catalog(
+        tmp_path,
+        {"country": "GB-SCT", "region": "Islay"},
+        {"country": "IT", "region": "Friuli"},
+    )
+    assert as_tuples(stats.count_by_region(catalog, country=stats.SCOTLAND)) == [
+        ("region:GB-SCT:islay", "Islay", 3)
+    ]
+    assert as_tuples(stats.count_by_region(catalog, ["advent-2025"], stats.SCOTLAND)) == [
+        ("region:GB-SCT:islay", "Islay", 1)
+    ]
+    assert as_tuples(stats.count_by_region(catalog, country="IT")) == [
+        ("region:IT:friuli", "Friuli", 1)
+    ]
+    assert stats.count_by_region(catalog, country="GB") == []
+    assert as_tuples(stats.count_by_region(catalog, lang="de")) == [
+        ("region:GB-SCT:islay", "Schottland, Islay", 3),
+        ("region:IT:friuli", "Italien, Friuli", 1),
+        ("unknown", "unknown", 1),
+    ]
+
+
+def test_count_by_region_separates_same_region_in_different_countries(tmp_path):
+    catalog = _region_catalog(
+        tmp_path,
+        {"country": "GB-SCT", "region": "Highland"},
+        {"country": "US", "region": "highland"},
+    )
+    assert as_tuples(stats.count_by_region(catalog, lang="de")) == [
+        ("region:GB-SCT:highland", "Schottland, Highland", 3),
+        ("unknown", "unknown", 1),  # ties are sorted by label
+        ("region:US:highland", "Vereinigte Staaten, highland", 1),
+    ]
+    labels = {e.key: e.label for e in stats.count_by_region(catalog, lang="en")}
+    assert labels == {
+        "region:GB-SCT:highland": "Scotland, Highland",
+        "region:US:highland": "United States, highland",
+        "unknown": "unknown",
+    }
+
+
+def test_count_by_region_without_region_is_unknown(tmp_path):
+    catalog = _region_catalog(
+        tmp_path,
+        {"country": "GB-SCT"},
+        {"country": "GB-SCT", "region": "Unknown"},
+    )
+    result = stats.count_by_region(catalog, country=stats.SCOTLAND)
+    assert as_tuples(result) == [
+        ("unknown", "unknown", 3),
+        ("region:GB-SCT:unknown", "Unknown", 1),
+    ]
+
+
+def test_build_report_region_countries(catalog, monkeypatch):
+    report = stats.build_report(catalog, region_countries=[None, "IT"])
+    assert report.by_region == [
+        stats.RegionStats(
+            None,
+            [
+                stats.CountEntry("country:GB", "Vereinigtes Königreich, –", 3),
+                stats.CountEntry("country:IT", "Italien, –", 1),
+                stats.CountEntry("unknown", "unknown", 1),
+            ],
+        ),
+        stats.RegionStats("IT", [stats.CountEntry("unknown", "unknown", 1)]),
+    ]
+    english = stats.build_report(catalog, lang="en", region_countries=[None])
+    assert english.by_region[0].entries[0].label.startswith("United Kingdom, ")
+
+    monkeypatch.setattr(stats, "REGION_STATS_COUNTRIES", ("IT",))
+    assert stats.build_report(catalog).by_region == [
+        stats.RegionStats("IT", [stats.CountEntry("unknown", "unknown", 1)])
+    ]
+
+
 def test_repeated_spirits_across_and_within_sets(catalog):
     (repeated,) = stats.repeated_spirits(catalog)
     assert repeated.spirit.id == "ardbeg-10"
@@ -103,6 +214,7 @@ def test_build_report_bundles_all_statistics(catalog):
     assert report.abv is not None
     assert [e.key for e in report.by_category] == ["single-malt", "grappa"]
     assert [e.key for e in report.by_distillery] == ["ardbeg", "nonino"]
+    assert report.by_region == [stats.RegionStats(stats.SCOTLAND, [])]
 
 
 def test_unknown_set_in_selection_raises(catalog):

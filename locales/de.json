@@ -31,6 +31,7 @@
   "stats.by_distillery": "Flaschen pro Brennerei",
   "stats.by_category": "Flaschen pro Art",
   "stats.by_country": "Flaschen pro Land",
+  "stats.by_region": "Flaschen pro Region",
   "stats.repeated": "Mehrfach vorkommende Schnäpse",
   "stats.no_repeated": "Kein Schnaps kommt mehrfach vor.",
   "stats.abv": "Alkoholgehalt",

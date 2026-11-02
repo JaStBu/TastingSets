@@ -31,6 +31,7 @@
   "stats.by_distillery": "Bottles per distillery",
   "stats.by_category": "Bottles per type",
   "stats.by_country": "Bottles per country",
+  "stats.by_region": "Bottles per region",
   "stats.repeated": "Spirits occurring more than once",
   "stats.no_repeated": "No spirit occurs more than once.",
   "stats.abv": "Alcohol content",

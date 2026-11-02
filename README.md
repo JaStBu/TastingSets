@@ -31,7 +31,7 @@ Each folder under `data/` is one collection (= later one MongoDB collection). In
 | Folder | Document | Fields |
 | --- | --- | --- |
 | `data/categories/` | kind of spirit | `_id`, `names` (language → name, default language required) |
-| `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2 such as `DE`, or ISO 3166-2 such as `GB-SCT`), `region`? (free text for non-ISO regions such as `Islay` or `Speyside`, not translated) |
+| `data/distilleries/` | distillery | `_id`, `name`, `display_name`?, `country` (ISO 3166-1 alpha-2 such as `DE`, or ISO 3166-2 such as `GB-SCT`), `region`? (free text for non-ISO regions such as `Islay` or `Speyside`, not translated, used for the region statistics, compared case-insensitively) |
 | `data/spirits/` | spirit | `_id`, `name`, `display_name`?, `category_id`, `abv` (0–100), `distillery_id`?, `distillery_name`?, `url`? |
 | `data/tasting_sets/` | tasting set | `_id`, `names` (language → name, default language required), `year`?, and **either** `members` **or** `groups` |
 
@@ -140,12 +140,15 @@ The JSON files have the same structure as the MongoDB documents (`model_dump()` 
 
 A tasting set document contains either `members` or `groups[].members`. Queries over all bottles (statistics) must therefore not read `members` directly, but go through `Catalog` / `TastingSet.all_members`, or the `MongoRepository` stores a flat member list in addition when writing; decide this when the `MongoRepository` is implemented. The group is deliberately not part of the fully qualified member name (`<set_id>/<member_id>`): the number is already unique in the set, and links stay stable if groups are rearranged.
 
-**Region statistics (planned, not implemented yet).** Besides the existing statistics per country (`count_by_country`, counted by the exact `country` code, so `GB` and `GB-SCT` are separate entries), there should be a second evaluation per region, i.e. bottles per `region` of the distillery (e.g. `Islay`, `Speyside`):
+**Region statistics.** Besides the statistics per country (`count_by_country`, counted by the exact `country` code, so `GB` and `GB-SCT` are separate entries), bottles are also counted per `region` of the distillery (e.g. `Islay`, `Speyside`):
 
-- *Data:* uses the optional free-text `region` field of `data/distilleries/`. Bottles whose distillery has no entry or no `region` are grouped under `unknown`, like in the country statistics.
-- *Code:* a new function `count_by_region(catalog, set_ids)` in `src/tastingsets/stats.py` with the same signature and `CountEntry` result as `count_by_country`, and a new field `by_region` in `StatsReport`.
-- *Site:* an additional table "Bottles per region" (`stats.by_region` in `locales/*.json`) next to "Bottles per country" in the statistics macros, for each set and for all sets.
-- *Open point:* `region` is free text, so spelling variants (`Islay` vs. `islay`) count as separate entries unless they are compared case-insensitively, as `count_by_distillery` does for `distillery_name`.
+- *Code:* `count_by_region(catalog, set_ids, country=None, lang)` in `src/tastingsets/stats.py` counts bottles by the free-text `region`, case-insensitively (the label is the first spelling found). A region always belongs to its country, so `GB-SCT`/`Highland` and `US`/`Highland` are separate entries.
+  - With `country` (exact code, `GB-SCT` is not `GB`) only bottles of that country are counted; bottles without a distillery entry are left out. The label is just the region; if the distillery has no region, the entry is `unknown`.
+  - With `None` the count runs across countries. The label is `<localized country name>, <region>`, e.g. `Scotland, Islay`. If the region is missing, the label is `<country name>, –`; bottles without a distillery entry count as `unknown`.
+- *Report:* `StatsReport.by_region` is a list of `RegionStats(country, entries)`, one per entry of `REGION_STATS_COUNTRIES` (currently `(SCOTLAND,)` with `SCOTLAND = "GB-SCT"`; `None` stands for the cross-country table). The constant is read when `build_report` is called, or can be passed as `region_countries`.
+- *Site:* after "Bottles per country", every non-empty `RegionStats` gets a table on the set pages and on the statistics page. The title comes from the single locale key `stats.by_region`, extended with ` (<localized country name>)`, e.g. "Bottles per region (Scotland)"; the cross-country table has no suffix. A table only appears if the selection contains at least one bottle from that country.
+- *More countries:* add the code to `REGION_STATS_COUNTRIES`; locale files and templates stay unchanged. The cross-country table is supported and tested but not enabled.
+- *Limits:* `region` is free text. Only upper/lower case is normalized, so whitespace or typos (`"Islay "`, `"Isaly"`) still result in separate entries, and validation does not warn about spelling variants. The format "<title> (<country>)" is assumed to fit all languages; a language that needs a different word order would need a second locale key with a `{country}` placeholder.
 
 **Configurable default language (not implemented yet).** Today the default language is a constant in `src/tastingsets/languages.py`; changing it means changing code. If the project is used as a package by others, it could become a setting instead:
 
