@@ -94,5 +94,157 @@
     "distillery_id": "bruichladdich",
     "abv": 50.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/112320/port-charlotte-10-year-old"
+  },
+  {
+    "_id": "edradour-barbaresco-cask-2011-2023",
+    "name": "Edradour Barbaresco Cask 2011/2023",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "edradour",
+    "abv": 48.2,
+    "url": "https://www.whiskybase.com/whiskies/whisky/237359/edradour-2011"
+  },
+  {
+    "_id": "ballechin-chardonnay-cask-2010-2023",
+    "name": "Ballechin Chardonnay Cask 2010/2023",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "edradour",
+    "abv": 48.2,
+    "url": "https://www.whiskybase.com/whiskies/whisky/247981/ballechin-2010"
+  },
+  {
+    "_id": "wolfburn-morven",
+    "name": "Wolfburn Morven",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "wolfburn",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/239968/wolfburn-morven"
+  },
+  {
+    "_id": "lagg-corriecravie-edition",
+    "name": "Lagg Corriecravie Edition",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "lagg",
+    "abv": 55.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/236689/lagg-corriecravie-edition"
+  },
+  {
+    "_id": "torabhaig-allt-gleann",
+    "name": "Torabhaig Allt Gleann",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "torabhaig",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/215007/torabhaig-allt-gleann"
+  },
+  {
+    "_id": "lochlea-our-barley",
+    "name": "Lochlea Our Barley",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "lochlea",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/214264/lochlea-our-barley"
+  },
+  {
+    "_id": "glen-scotia-unpeated-10",
+    "name": "Glen Scotia Unpeated 10 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "glen-scotia",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/223477/glen-scotia-10-year-old"
+  },
+  {
+    "_id": "royal-brackla-12",
+    "name": "Royal Brackla 12 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "royal-brackla",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/231761/royal-brackla-12-year-old"
+  },
+  {
+    "_id": "juniper-hill-moscatel",
+    "name": "Murray McDavid Juniper Hill Moscatel",
+    "category_id": "single-malt-scotch",
+    "distillery_name": "Unknown",
+    "abv": 51.9,
+    "url": "https://www.whiskybase.com/whiskies/whisky/258802/juniper-hill-2015-mm"
+  },
+  {
+    "_id": "murray-mcdavid-safe-haven",
+    "name": "Murray McDavid Safe Haven",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "tobermory",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/243372/safe-haven-2014-mm"
+  },
+  {
+    "_id": "ledaig-sinclair-series-rioja",
+    "name": "Ledaig Sinclair Series Rioja",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "tobermory",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/197418/ledaig-rioja-cask-finish"
+  },
+  {
+    "_id": "bruichladdich-laddie-eight",
+    "name": "Bruichladdich The Laddie Eight 8 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "bruichladdich",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/235823/bruichladdich-the-laddie-eight"
+  },
+  {
+    "_id": "bunnahabhain-12",
+    "name": "Bunnahabhain 12 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "bunnahabhain",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/241634/bunnahabhain-12-year-old"
+  },
+  {
+    "_id": "caol-ila-justinos-madeira-2018-2024",
+    "name": "Caol Ila Murray McDavid Justino's 2018/2024",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "caol-ila",
+    "abv": 56.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/245724/caol-ila-2018-mm"
+  },
+  {
+    "_id": "laphroaig-sherry-oak-10",
+    "name": "Laphroaig Sherry Oak 10 Years",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "laphroaig",
+    "abv": 48.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/242643/laphroaig-10-year-old"
+  },
+  {
+    "_id": "ardbeg-ten",
+    "name": "Ardbeg Ten",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "ardbeg",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/246529/ardbeg-ten"
+  },
+  {
+    "_id": "linkwood-oloroso-2012-2023",
+    "name": "Linkwood Murray McDavid Oloroso 2012/2023",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "linkwood",
+    "abv": 57.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/239997/linkwood-2012-mm"
+  },
+  {
+    "_id": "dailuaine-calvados-2007-2024",
+    "name": "Dailuaine Berry Bros & Rudd Calvados 2007/2024",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "dailuaine",
+    "abv": 55.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/255283/dailuaine-2007-br"
+  },
+  {
+    "_id": "ledaig-murray-mcdavid-rum-2005-2023",
+    "name": "Ledaig Murray McDavid Rum 2005/2023",
+    "category_id": "single-malt-scotch",
+    "distillery_id": "tobermory",
+    "abv": 54.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/239988/ledaig-2005-mm"
   }
 ]
