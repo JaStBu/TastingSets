@@ -16,6 +16,14 @@
     "url": null
   },
   {
+    "_id": "gold-of-mauritius",
+    "name": "Gold of Mauritius",
+    "category_id": "rum",
+    "distillery_name": "Blue Liqueurs Ltd.",
+    "abv": 40.0,
+    "url": null
+  },
+  {
     "_id": "hampden-estate-8",
     "name": "Hampden Estate 8 Years",
     "category_id": "rum",
@@ -53,14 +61,6 @@
     "category_id": "rum",
     "distillery_name": "Rhum J.M",
     "abv": 45.0,
-    "url": null
-  },
-  {
-    "_id": "gold-of-mauritius",
-    "name": "Gold of Mauritius",
-    "category_id": "rum",
-    "distillery_name": "Blue Liqueurs Ltd.",
-    "abv": 40.0,
     "url": null
   },
   {

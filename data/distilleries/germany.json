@@ -1,10 +1,10 @@
 [
-  { "_id": "augustus-rex", "name": "Augustus Rex", "country": "DE" },
-  { "_id": "emill-scheibel", "name": "EMILL (Scheibel)", "country": "DE", "region": "Baden-Württemberg" },
-  { "_id": "finch", "name": "Finch", "country": "DE", "region": "Baden-Württemberg" },
-  { "_id": "elch-whisky", "name": "Elch Whisky", "country": "DE", "region": "Bayern" },
-  { "_id": "kleine-destillerie", "name": "Die kleine Destillerie", "country": "DE", "region": "Baden-Württemberg" },
-  { "_id": "gerhards-hobbykellerei", "name": "Gerhards Hobbykellerei", "country": "DE", "region": "Baden-Württemberg" },
-  { "_id": "the-duke", "name": "The Duke Destillerie", "country": "DE", "region": "Bayern" },
-  { "_id": "ziegler", "name": "Ziegler", "country": "DE", "region": "Baden-Württemberg" }
+  {"_id": "augustus-rex", "name": "Augustus Rex", "country": "DE"},
+  {"_id": "kleine-destillerie", "name": "Die kleine Destillerie", "country": "DE", "region": "Baden-Württemberg"},
+  {"_id": "elch-whisky", "name": "Elch Whisky", "country": "DE", "region": "Bayern"},
+  {"_id": "emill-scheibel", "name": "EMILL (Scheibel)", "country": "DE", "region": "Baden-Württemberg"},
+  {"_id": "finch", "name": "Finch", "country": "DE", "region": "Baden-Württemberg"},
+  {"_id": "gerhards-hobbykellerei", "name": "Gerhards Hobbykellerei", "country": "DE", "region": "Baden-Württemberg"},
+  {"_id": "the-duke", "name": "The Duke Destillerie", "country": "DE", "region": "Bayern"},
+  {"_id": "ziegler", "name": "Ziegler", "country": "DE", "region": "Baden-Württemberg"}
 ]
