@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "fassbind-vieille-poire",
+    "name": "Fassbind Vieille Poire Alte Birne",
+    "category_id": "fruit-brandy",
+    "distillery_id": "fassbind",
+    "abv": 40.0,
+    "url": null
+  },
+  {
+    "_id": "gerhards-weissacher-zwetschgenwasser",
+    "name": "Gerhards Hobbykellerei Weissacher Zwetschgenwasser",
+    "category_id": "fruit-brandy",
+    "distillery_id": "gerhards-hobbykellerei",
+    "abv": 42.0,
+    "url": null
+  }
+]

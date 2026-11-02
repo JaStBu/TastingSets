@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "compass-box-oak-cross",
+    "name": "Compass Box Oak Cross",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/30852/oak-cross-the-signature-range-cb"
+  },
+  {
+    "_id": "compass-box-spice-tree",
+    "name": "Compass Box Spice Tree",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/97039/the-spice-tree-the-signature-range-cb"
+  },
+  {
+    "_id": "compass-box-peat-monster",
+    "name": "Compass Box The Peat Monster",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/212582/the-peat-monster-2nd-edition-cb"
+  },
+  {
+    "_id": "timorous-beastie",
+    "name": "Douglas Laing Timorous Beastie",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/58110/timorous-beastie-dl"
+  },
+  {
+    "_id": "murray-mcdavid-cult-of-islay-9",
+    "name": "Murray McDavid Cult of Islay 9 Years",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/221572/cult-of-islay-2012-mm"
+  },
+  {
+    "_id": "murray-mcdavid-stout-cask-finish",
+    "name": "Murray McDavid Half-n-Half 2010 Stout Cask Finish",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/223035/half-n-half-2010-mm"
+  }
+]

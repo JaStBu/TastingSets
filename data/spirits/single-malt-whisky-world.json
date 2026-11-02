@@ -1,0 +1,98 @@
+[
+  {
+    "_id": "aureum-1865-grave-digger",
+    "name": "Aureum 1865 Grave Digger Edition",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "ziegler",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/58844/aureum-1865-06-year-old"
+  },
+  {
+    "_id": "elch-whisky-torf-vom-dorf",
+    "name": "Elch Whisky Torf vom Dorf",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "elch-whisky",
+    "abv": 50.2,
+    "url": "https://www.whiskybase.com/whiskies/whisky/223282/elch-whisky-torf-vom-dorf"
+  },
+  {
+    "_id": "emill-stockwerk",
+    "name": "EMILL Stockwerk",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "emill-scheibel",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/227652/emill-stockwerk"
+  },
+  {
+    "_id": "finch-10-smoky",
+    "name": "Finch 10 Years Smoky",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "finch",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/232183/finch-10-year-old"
+  },
+  {
+    "_id": "finch-single-malt",
+    "name": "Finch Single Malt",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "finch",
+    "abv": 42.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/80141/finch-single-malt"
+  },
+  {
+    "_id": "hellyers-road-double-cask",
+    "name": "Hellyers Road Double Cask",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "hellyers-road",
+    "abv": 46.2,
+    "url": "https://www.whiskybase.com/whiskies/whisky/247278/hellyers-road-double-cask"
+  },
+  {
+    "_id": "kavalan-triple-sherry-cask",
+    "name": "Kavalan Triple Sherry Cask",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "kavalan",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/248025/kavalan-triple-sherry-cask"
+  },
+  {
+    "_id": "morris-smoked-muscat",
+    "name": "Morris Distillery Smoked Muscat",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "morris-rutherglen",
+    "abv": 48.5,
+    "url": "https://www.whiskybase.com/whiskies/whisky/220496/morris-smoked-muscat"
+  },
+  {
+    "_id": "penderyn-sherrywood",
+    "name": "Penderyn Sherrywood",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "penderyn",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/71567/penderyn-sherrywood"
+  },
+  {
+    "_id": "puni-gold",
+    "name": "Puni Gold",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "puni",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/114686/puni-gold-05-year-old"
+  },
+  {
+    "_id": "puni-vina",
+    "name": "Puni Vina",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "puni",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/114687/puni-vina-05-year-old"
+  },
+  {
+    "_id": "remstal-whisky-maehdrescher",
+    "name": "Remstal Whisky Mähdrescher",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "kleine-destillerie",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/110821/remstal-whisky-single-malt"
+  }
+]

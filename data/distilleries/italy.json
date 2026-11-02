@@ -1,0 +1,6 @@
+[
+  { "_id": "bonaventura-maschio", "name": "Bonaventura Maschio", "country": "IT", "region": "Venetien" },
+  { "_id": "marzadro", "name": "Marzadro", "country": "IT", "region": "Trentino" },
+  { "_id": "puni", "name": "Puni", "country": "IT", "region": "Südtirol" },
+  { "_id": "villa-de-varda", "name": "Villa de Varda", "country": "IT", "region": "Trentino" }
+]

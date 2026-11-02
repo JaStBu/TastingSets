@@ -1,0 +1,47 @@
+{
+  "_id": "advent-2017",
+  "names": { "de": "Whisky-Adventskalender 2017", "en": "Whisky Advent Calendar 2017" },
+  "year": 2017,
+  "groups": [
+    {
+      "group_id": "from-sweet-to-smoky",
+      "names": { "de": "Von Süße zu Rauch", "en": "From Sweet to Smoky" },
+      "members": [
+        { "member_id": "11", "spirit_id": "balvenie-caribbean-cask-14" },
+        { "member_id": "12", "spirit_id": "benromach-10" },
+        { "member_id": "13", "spirit_id": "kilchoman-100-islay-2010-2017" },
+        { "member_id": "14", "spirit_id": "talisker-18" }
+      ]
+    },
+    {
+      "group_id": "wine-cask-finish",
+      "names": { "de": "Weinfass-Finish", "en": "Wine Cask Finish" },
+      "members": [
+        { "member_id": "21", "spirit_id": "tullibardine-228-burgundy-finish" },
+        { "member_id": "22", "spirit_id": "benromach-sassicaia-finish" },
+        { "member_id": "23", "spirit_id": "benromach-chateau-cissac-finish" },
+        { "member_id": "24", "spirit_id": "benromach-hermitage-finish" }
+      ]
+    },
+    {
+      "group_id": "clash-of-the-giants",
+      "names": { "de": "Das Duell der Giganten", "en": "Clash of the Giants" },
+      "members": [
+        { "member_id": "31", "spirit_id": "macallan-sherry-cask-12" },
+        { "member_id": "32", "spirit_id": "macallan-sherry-cask-18-1997" },
+        { "member_id": "33", "spirit_id": "caol-ila-12" },
+        { "member_id": "34", "spirit_id": "caol-ila-18" }
+      ]
+    },
+    {
+      "group_id": "juniper-botanicals",
+      "names": { "de": "Wacholder & Botanicals", "en": "Juniper & Botanicals" },
+      "members": [
+        { "member_id": "41", "spirit_id": "harris-isle-of-harris-gin" },
+        { "member_id": "42", "spirit_id": "bruichladdich-botanist-gin" },
+        { "member_id": "43", "spirit_id": "hammer-son-old-english-gin" },
+        { "member_id": "44", "spirit_id": "scheibel-original-gin" }
+      ]
+    }
+  ]
+}

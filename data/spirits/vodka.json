@@ -1,0 +1,10 @@
+[
+  {
+    "_id": "the-duke-lions-vodka",
+    "name": "The Duke Lion's Vodka",
+    "category_id": "vodka",
+    "distillery_id": "the-duke",
+    "abv": 42.0,
+    "url": null
+  }
+]

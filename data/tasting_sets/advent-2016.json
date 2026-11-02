@@ -1,0 +1,31 @@
+{
+  "_id": "advent-2016",
+  "names": { "de": "Whisky-Adventskalender 2016", "en": "Whisky Advent Calendar 2016" },
+  "year": 2016,
+  "members": [
+    { "member_id": "1", "spirit_id": "penderyn-sherrywood" },
+    { "member_id": "2", "spirit_id": "redbreast-12" },
+    { "member_id": "3", "spirit_id": "connemara-12-peated" },
+    { "member_id": "4", "spirit_id": "bushmills-21-madeira-finish" },
+    { "member_id": "5", "spirit_id": "clockers-gin" },
+    { "member_id": "6", "spirit_id": "zufanek-omg-gin" },
+    { "member_id": "7", "spirit_id": "ancnoc-12" },
+    { "member_id": "8", "spirit_id": "tobermory-10" },
+    { "member_id": "9", "spirit_id": "springbank-10" },
+    { "member_id": "10", "spirit_id": "ardbeg-corryvreckan" },
+    { "member_id": "11", "spirit_id": "octomore-07-1-208" },
+    { "member_id": "12", "spirit_id": "plantation-nicaragua-old-reserve-2003" },
+    { "member_id": "13", "spirit_id": "botucal-reserva-exclusiva-12" },
+    { "member_id": "14", "spirit_id": "arran-sauternes-cask-finish" },
+    { "member_id": "15", "spirit_id": "jura-turas-mara" },
+    { "member_id": "16", "spirit_id": "auchentoshan-three-wood" },
+    { "member_id": "17", "spirit_id": "glenfarclas-oloroso-sherry-cask-1996-2015" },
+    { "member_id": "18", "spirit_id": "balvenie-doublewood-17" },
+    { "member_id": "19", "spirit_id": "ballechin-10" },
+    { "member_id": "20", "spirit_id": "longrow-red-12" },
+    { "member_id": "21", "spirit_id": "bowmore-18" },
+    { "member_id": "22", "spirit_id": "talisker-distillers-edition-2005-2015" },
+    { "member_id": "23", "spirit_id": "benriach-solstice-17-edition-2" },
+    { "member_id": "24", "spirit_id": "caol-ila-25" }
+  ]
+}

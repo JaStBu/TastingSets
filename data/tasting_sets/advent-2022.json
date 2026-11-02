@@ -1,0 +1,76 @@
+{
+  "_id": "advent-2022",
+  "names": { "de": "Whisky-Adventskalender 2022", "en": "Whisky Advent Calendar 2022" },
+  "year": 2022,
+  "groups": [
+    {
+      "group_id": "benriach-core-range",
+      "names": { "de": "Benriach Core Range", "en": "Benriach Core Range" },
+      "members": [
+        { "member_id": "1", "spirit_id": "benriach-10-original-ten", "notes": { "de": "Aroma: Reichhaltig nach Früchten, Honig und getoasteter Eiche. Geschmack: Reife Birne, Nektarine und süßes Malz. Abgang: Mittellang mit Noten von Vanille und würzigen Mandeln." } },
+        { "member_id": "2", "spirit_id": "benriach-12-the-twelve", "notes": { "de": "Aroma: Ahornsirup, Kakao und Waldfrüchte. Geschmack: Maraschino-Kirschen, gebackene Orangen und Haselnüsse. Abgang: Mittellang nach Sultaninen und würzigem Mokka." } },
+        { "member_id": "3", "spirit_id": "benriach-10-smoky-ten", "notes": { "de": "Aroma: Reife, süße Früchte, geräucherter Honig und Eichenwürze. Geschmack: Geräuchertes Apfelbaumholz, Honig, Ahornsirup und gewürzte Birnen. Abgang: Lang anhaltende Fruchtnoten und geräucherte Eiche." } },
+        { "member_id": "4", "spirit_id": "benriach-12-smoky-twelve", "notes": { "de": "Aroma: Geräucherte Vanille, Orangen und geröstete Mandeln. Geschmack: Dunkle Schokolade, Obstschalen, brauner Zucker und geräucherte Eiche. Abgang: Anhaltend rauchig nach Kakao und Orangen." } }
+      ]
+    },
+    {
+      "group_id": "puni",
+      "names": { "de": "Puni", "en": "Puni" },
+      "description": { "de": "Eine Auswahl an Whiskys der Brennerei aus dem Vinschgau.", "en": "A selection of whiskies from the distillery in Vinschgau." },
+      "members": [
+        { "member_id": "5", "spirit_id": "puni-gold", "notes": { "de": "Aroma: Vanille- und Honigaromen mit hellen Fruchtnoten. Geschmack: Süß und fruchtig nach Erdbeeren, Kirschen, Aprikosen, Himbeeren und Mango sowie Vanille und würziger Eiche. Abgang: Lang anhaltend süß und fruchtig mit einer Spur Pfeffer." } },
+        { "member_id": "6", "spirit_id": "puni-vina", "notes": { "de": "Aroma: Christstollen, süße Rosinen, Zimt und cremige Walnüsse. Geschmack: Fruchtig nach Pflaumen, Kirschkompott, Orangenschalen und Zimt. Abgang: Vollmundig, süß und fruchtig." } }
+      ]
+    },
+    {
+      "group_id": "less-known-distilleries",
+      "names": { "de": "Etwas weniger bekannte Brennereien", "en": "Less Known Distilleries" },
+      "members": [
+        { "member_id": "7", "spirit_id": "ncnean-organic-batch-15", "notes": { "de": "Aroma: Blumig-frisch mit Zitrusfrüchten, tiefen Gewürznoten, etwas Sandelholz und dezenten Tabakblättern. Geschmack: Zimt und Lakritze, süßes Malz, Getreide und Salz-Karamell. Abgang: Feine Eichenwürze, Anis und Früchtekompott." } },
+        { "member_id": "8", "spirit_id": "inchgower-14-flora-fauna", "notes": { "de": "Aroma: Saure Limone verbindet sich mit Salz, bevor eine weiche Fruchtigkeit überwiegt. Geschmack: Trocken und würzig. Abgang: Sauber und lang." } },
+        { "member_id": "9", "spirit_id": "aultmore-12-foggie-moss", "notes": { "de": "Aroma: Ätherisch mit reifen Früchten, Geißblattblüten, Thymian und Kerbel. Geschmack: Süß mit Noten von Vanille und Keksen. Abgang: Langanhaltend." } },
+        { "member_id": "10", "spirit_id": "mortlach-12-wee-witchie", "notes": { "de": "Aroma: Kräftig mit Eiche und Sandelholz, gefolgt von Gewürznoten, Toffee und roten Beeren. Geschmack: Süß und würzig mit Noten von braunem Rohrzucker, dunkler Schokolade und Tabak. Abgang: Weich und trocken." } }
+      ]
+    },
+    {
+      "group_id": "bella-italia",
+      "names": { "de": "Bella Italia", "en": "Bella Italia" },
+      "description": { "de": "Grappa aus unterschiedlichen Trauben und Brennereien.", "en": "Grappa from different grapes and distilleries." },
+      "members": [
+        { "member_id": "11", "spirit_id": "grappa-903-barrique", "notes": { "de": "Aroma: Reife Früchte und Würze. Geschmack: Weich und ausgewogen. Abgang: Langanhaltend. Fass: Französische Eichenfässer." } },
+        { "member_id": "12", "spirit_id": "grappa-le-diciotto-lune", "notes": { "de": "Aus Marzemino, Teroldego, Merlot, Muskat und Chardonnay. Über 18 Monate in kleinen Kirschbaum-, Eschen-, Eichen- und Akazienfässern gereift; mit Vanillenoten." } },
+        { "member_id": "13", "spirit_id": "grappa-pinot-nero-riserva", "notes": { "de": "Aus 100 % Pinot Nero, in französischen 225-Liter-Holzfässern gereift. Nachhaltig, weich, nobel und reichhaltig mit Noten von Brotkruste, Gewürzen, Kakao, Walnüssen, Kaffee und Mandeln." } }
+      ]
+    },
+    {
+      "group_id": "irish-whiskey",
+      "names": { "de": "Irish Whiskey", "en": "Irish Whiskey" },
+      "description": { "de": "Single Malts und Single Pots mit Altersangabe, sláinte.", "en": "Single malts and single pots with age statements, sláinte." },
+      "members": [
+        { "member_id": "14", "spirit_id": "irishman-12", "notes": { "de": "Aroma: Voll und fruchtig mit Vanille, Zimt und frischem Heu. Geschmack: Süß und leicht würzig mit Vanille, Früchten und einer Prise Pfeffer. Abgang: Vielschichtig und leicht süß." } },
+        { "member_id": "15", "spirit_id": "yellow-spot-12", "notes": { "de": "Aroma: Frisch gemähtes Heu, Honig und Pfirsich. Geschmack: Süßer Honig, Kaffee, Apfel und Eiche. Abgang: Mix aus roten Trauben und Gerste." } },
+        { "member_id": "16", "spirit_id": "west-cork-16", "notes": { "de": "Aroma: Reife Birne, grüne Äpfel, Orange und helle Eichentöne. Geschmack: Helle Früchte und Vanillepudding, Eiche, helle Mandeln und Butterkeks; danach würziger mit weißem Pfeffer. Abgang: Mittellang." } },
+        { "member_id": "17", "spirit_id": "tyrconnell-15-madeira", "notes": { "de": "Aroma: Süße Vanille, Bananenbrot und rote Früchte. Geschmack: Ausbalanciert und weich mit Würze, Pfirsich und frischen Kräutern. Abgang: Lang mit fruchtigen Noten." } }
+      ]
+    },
+    {
+      "group_id": "sweet-fruity-classics",
+      "names": { "de": "Süße und fruchtige Klassiker", "en": "Sweet and Fruity Classics" },
+      "members": [
+        { "member_id": "18", "spirit_id": "cardhu-12", "notes": { "de": "Aroma: Kraftvoll mit Heide, Harz und Honig, im Hintergrund Eiche und ein Hauch Rauch. Geschmack: Ausgewogen, weich, süß und vollmundig. Abgang: Mittellang und leicht trocken." } },
+        { "member_id": "19", "spirit_id": "dalmore-12", "notes": { "de": "Aroma: Zitrusfrüchte, Schokolade und aromatische Gewürze. Geschmack: Deutliche Zitrusnoten mit Orange, im Hintergrund Vanille. Abgang: Gerösteter Kaffee und Schokolade." } },
+        { "member_id": "20", "spirit_id": "cardhu-15", "notes": { "de": "Aroma: Elegant, süß und fruchtig mit feinen Malznoten und einem Hauch Rauch. Geschmack: Würzig mit süßer Vanille, reifen Früchten und Malz. Abgang: Mittellang und leicht trocken." } },
+        { "member_id": "21", "spirit_id": "dalmore-15", "notes": { "de": "Aroma: Muskat mit Zimt und Orangenmarmelade. Geschmack: Voll, süß und würzig mit Ingwer, Mandarine und Vanille. Abgang: Eichennoten mit weihnachtlichen Gewürzen." } }
+      ]
+    },
+    {
+      "group_id": "benriach-cask-finishes",
+      "names": { "de": "Benriach Cask Finishes", "en": "Benriach Cask Finishes" },
+      "members": [
+        { "member_id": "22", "spirit_id": "benriach-21-twenty-one", "notes": { "de": "Aroma: Fruchtige Beeren, Äpfel und Honig mit würziger Eiche. Geschmack: Kandierte Trauben und Kakao. Abgang: Mittellang nach karamellisierter Birne und leicht rauchigem Honig." } },
+        { "member_id": "23", "spirit_id": "benriach-22-albariza", "notes": { "de": "Aroma: Pfirsiche und reife Bananen; zarter Torfrauch verbindet sich mit sanften, süßen Eichengewürzen. Geschmack: Karamellisierte Früchte, Torfrauch, Gerste, Zitrusschalen und weißer Pfeffer. Abgang: Langanhaltend, rauchig-süß mit karamellisierten Früchten und Eiche." } },
+        { "member_id": "24", "spirit_id": "benriach-22-dunder-peated-rum", "notes": { "de": "Aroma: Reife Bananen, kandierter Ingwer, Sahnekaramellnoten und erdiger Torfrauch. Geschmack: Gegrillte Banane, süße Ananas, milde Aprikose, Vanillekipferl und Sahnebonbons; im Hintergrund verbranntes Heidekraut. Abgang: Lang mit Crème brûlée und Kokosnuss." } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "_id": "advent-2018",
+  "names": {
+    "de": "Whisky-Adventskalender 2018",
+    "en": "Whisky Advent Calendar 2018"
+  },
+  "year": 2018,
+  "groups": [
+    {
+      "group_id": "compass-box",
+      "names": { "de": "Compass Box", "en": "Compass Box" },
+      "members": [
+        {
+          "member_id": "11",
+          "spirit_id": "compass-box-hedonism"
+        },
+        {
+          "member_id": "12",
+          "spirit_id": "compass-box-asyla"
+        },
+        {
+          "member_id": "13",
+          "spirit_id": "compass-box-oak-cross"
+        },
+        {
+          "member_id": "14",
+          "spirit_id": "compass-box-spice-tree"
+        }
+      ]
+    },
+    {
+      "group_id": "arran",
+      "names": { "de": "Arran", "en": "Arran" },
+      "members": [
+        {
+          "member_id": "21",
+          "spirit_id": "arran-10"
+        },
+        {
+          "member_id": "22",
+          "spirit_id": "arran-14"
+        },
+        {
+          "member_id": "23",
+          "spirit_id": "arran-18"
+        },
+        {
+          "member_id": "24",
+          "spirit_id": "arran-machrie-moor"
+        }
+      ]
+    },
+    {
+      "group_id": "smoky-malts",
+      "names": { "de": "Rauchige Malts", "en": "Smoky Malts" },
+      "members": [
+        {
+          "member_id": "31",
+          "spirit_id": "kilchoman-sanaig"
+        },
+        {
+          "member_id": "32",
+          "spirit_id": "compass-box-peat-monster"
+        },
+        {
+          "member_id": "33",
+          "spirit_id": "ardbeg-an-oa"
+        },
+        {
+          "member_id": "34",
+          "spirit_id": "bowmore-25"
+        }
+      ]
+    },
+    {
+      "group_id": "glengoyne",
+      "names": { "de": "Glengoyne", "en": "Glengoyne" },
+      "members": [
+        {
+          "member_id": "41",
+          "spirit_id": "glengoyne-12"
+        },
+        {
+          "member_id": "42",
+          "spirit_id": "glengoyne-15"
+        },
+        {
+          "member_id": "43",
+          "spirit_id": "glengoyne-18"
+        },
+        {
+          "member_id": "44",
+          "spirit_id": "glengoyne-21"
+        }
+      ]
+    }
+  ]
+}

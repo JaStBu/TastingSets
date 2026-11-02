@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "bruichladdich-botanist-gin",
+    "name": "Bruichladdich The Botanist Islay Dry Gin",
+    "category_id": "gin",
+    "distillery_id": "bruichladdich",
+    "abv": 46.0,
+    "url": null
+  },
+  {
+    "_id": "clockers-gin",
+    "name": "Clockers Gin",
+    "category_id": "gin",
+    "distillery_id": "augustus-rex",
+    "abv": 44.0,
+    "url": null
+  },
+  {
+    "_id": "gvine-floraison",
+    "name": "G'Vine Floraison",
+    "category_id": "gin",
+    "distillery_id": "g-vine",
+    "abv": 40.0,
+    "url": null
+  },
+  {
+    "_id": "hammer-son-old-english-gin",
+    "name": "Hammer & Son Old English Gin",
+    "category_id": "gin",
+    "distillery_name": "Hammer & Son",
+    "abv": 44.0,
+    "url": null
+  },
+  {
+    "_id": "harris-isle-of-harris-gin",
+    "name": "Isle of Harris Gin",
+    "category_id": "gin",
+    "distillery_id": "harris",
+    "abv": 45.0,
+    "url": null
+  },
+  {
+    "_id": "prof-cornelius-bathtub-gin",
+    "name": "Prof. Cornelius Ampleforth's Bathtub Gin",
+    "category_id": "gin",
+    "distillery_name": "Prof. Cornelius Ampleforth's",
+    "abv": 43.0,
+    "url": null
+  },
+  {
+    "_id": "scheibel-original-gin",
+    "name": "Scheibel The OriGINal",
+    "category_id": "gin",
+    "distillery_id": "emill-scheibel",
+    "abv": 43.0,
+    "url": null
+  },
+  {
+    "_id": "zufanek-omg-gin",
+    "name": "Žufánek OMG - Oh My Gin",
+    "category_id": "gin",
+    "distillery_id": "zufanek",
+    "abv": 45.0,
+    "url": null
+  }
+]

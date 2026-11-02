@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "redbreast-12",
+    "name": "Redbreast 12 Years",
+    "category_id": "single-pot-whiskey",
+    "distillery_id": "midleton",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/28100/redbreast-12-year-old"
+  },
+  {
+    "_id": "redbreast-15",
+    "name": "Redbreast 15 Years",
+    "category_id": "single-pot-whiskey",
+    "distillery_id": "midleton",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/78095/redbreast-15-year-old"
+  },
+  {
+    "_id": "yellow-spot-12",
+    "name": "Yellow Spot 12 Years",
+    "category_id": "single-pot-whiskey",
+    "distillery_id": "midleton",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/33205/yellow-spot-12-year-old"
+  }
+]

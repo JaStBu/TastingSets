@@ -1,0 +1,94 @@
+{
+  "_id": "advent-2024",
+  "names": { "de": "Whisky-Adventskalender 2024", "en": "Whisky Advent Calendar 2024" },
+  "year": 2024,
+  "groups": [
+    {
+      "group_id": "edradour",
+      "names": { "de": "Edradour", "en": "Edradour" },
+      "description": { "de": "Abseits der Core-Range.", "en": "Away from the core range." },
+      "members": [
+        { "member_id": "1", "spirit_id": "edradour-barbaresco-cask-2011-2023" },
+        { "member_id": "2", "spirit_id": "ballechin-chardonnay-cask-2010-2023" }
+      ]
+    },
+    {
+      "group_id": "taiwan-australia",
+      "names": { "de": "Taiwan und Australien", "en": "Taiwan and Australia" },
+      "description": { "de": "Eine Auswahl an Whiskys verschiedener Brennereien.", "en": "A selection of whiskies from different distilleries." },
+      "members": [
+        { "member_id": "3", "spirit_id": "kavalan-triple-sherry-cask" },
+        { "member_id": "4", "spirit_id": "hellyers-road-double-cask" },
+        { "member_id": "5", "spirit_id": "morris-smoked-muscat" }
+      ]
+    },
+    {
+      "group_id": "peated-whisky",
+      "names": { "de": "Rauchiger Whisky", "en": "Peated Whisky" },
+      "description": { "de": "Unbekanntere Brennereien.", "en": "Less familiar distilleries." },
+      "members": [
+        { "member_id": "6", "spirit_id": "wolfburn-morven" },
+        { "member_id": "7", "spirit_id": "lagg-corriecravie-edition" },
+        { "member_id": "8", "spirit_id": "torabhaig-allt-gleann" }
+      ]
+    },
+    {
+      "group_id": "kyro",
+      "names": { "de": "Kyrö", "en": "Kyrö" },
+      "description": { "de": "Eine Auswahl aus der Core-Range.", "en": "A selection from the core range." },
+      "members": [
+        { "member_id": "9", "spirit_id": "kyro-oloroso" },
+        { "member_id": "10", "spirit_id": "kyro-wood-smoke" }
+      ]
+    },
+    {
+      "group_id": "lesser-known-distilleries",
+      "names": { "de": "Unbekanntere Brennereien", "en": "Less familiar distilleries" },
+      "description": { "de": "Eine Auswahl an Whiskys verschiedener Brennereien.", "en": "A selection of whiskies from different distilleries." },
+      "members": [
+        { "member_id": "11", "spirit_id": "lochlea-our-barley" },
+        { "member_id": "12", "spirit_id": "glen-scotia-unpeated-10" },
+        { "member_id": "13", "spirit_id": "royal-brackla-12" }
+      ]
+    },
+    {
+      "group_id": "wine-finish",
+      "names": { "de": "Wein-Finish", "en": "Wine Finish" },
+      "description": { "de": "Eine Auswahl an Whiskys verschiedener Brennereien.", "en": "A selection of whiskies from different distilleries." },
+      "members": [
+        { "member_id": "14", "spirit_id": "juniper-hill-moscatel" },
+        { "member_id": "15", "spirit_id": "murray-mcdavid-safe-haven" },
+        { "member_id": "16", "spirit_id": "ledaig-sinclair-series-rioja" }
+      ]
+    },
+    {
+      "group_id": "islay-no-smoke",
+      "names": { "de": "Islay, ohne Rauch", "en": "Islay, No Smoke" },
+      "description": { "de": "Eine Auswahl an Whiskys verschiedener Brennereien.", "en": "A selection of whiskies from different distilleries." },
+      "members": [
+        { "member_id": "17", "spirit_id": "bruichladdich-laddie-eight" },
+        { "member_id": "18", "spirit_id": "bunnahabhain-12" }
+      ]
+    },
+    {
+      "group_id": "islay-smoke",
+      "names": { "de": "Islay, Rauch", "en": "Islay, Smoke" },
+      "description": { "de": "Eine Auswahl an Whiskys verschiedener Brennereien.", "en": "A selection of whiskies from different distilleries." },
+      "members": [
+        { "member_id": "19", "spirit_id": "caol-ila-justinos-madeira-2018-2024" },
+        { "member_id": "20", "spirit_id": "laphroaig-sherry-oak-10" },
+        { "member_id": "21", "spirit_id": "ardbeg-ten" }
+      ]
+    },
+    {
+      "group_id": "distilleries-and-finishes",
+      "names": { "de": "Brennereien und Finishs", "en": "Distilleries and Finishes" },
+      "description": { "de": "Mal wieder andere Brennereien und teilweise auch andere Finishs.", "en": "Different distilleries again, with some different cask finishes too." },
+      "members": [
+        { "member_id": "22", "spirit_id": "linkwood-oloroso-2012-2023" },
+        { "member_id": "23", "spirit_id": "dailuaine-calvados-2007-2024" },
+        { "member_id": "24", "spirit_id": "ledaig-murray-mcdavid-rum-2005-2023" }
+      ]
+    }
+  ]
+}
