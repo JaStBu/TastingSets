@@ -606,5 +606,125 @@
     "distillery_id": "tomintoul",
     "abv": 40.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/163488/tomintoul-16-year-old"
+  },
+  {
+    "_id": "ardmore-12-port-wood-finish",
+    "name": "Ardmore 12 Years Port Wood Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "ardmore",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/161317/ardmore-12-year-old"
+  },
+  {
+    "_id": "balvenie-21-portwood",
+    "name": "Balvenie 21 Years PortWood",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "balvenie",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/93447/balvenie-21-year-old"
+  },
+  {
+    "_id": "benriach-10-curiositas",
+    "name": "BenRiach 10 Years Curiositas",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/136496/benriach-10-year-old"
+  },
+  {
+    "_id": "glenallachie-9-rye-wood-finish",
+    "name": "Glenallachie 9 Years Rye Wood Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenallachie",
+    "abv": 48.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/152145/glenallachie-09-year-old"
+  },
+  {
+    "_id": "glenallachie-11-moscatel-wood-finish",
+    "name": "Glenallachie 11 Years Moscatel Wood Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenallachie",
+    "abv": 48.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/152143/glenallachie-11-year-old"
+  },
+  {
+    "_id": "glenallachie-12",
+    "name": "Glenallachie 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenallachie",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/163783/glenallachie-12-year-old"
+  },
+  {
+    "_id": "glenallachie-15",
+    "name": "Glenallachie 15 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenallachie",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/167542/glenallachie-15-year-old"
+  },
+  {
+    "_id": "glenallachie-18",
+    "name": "Glenallachie 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenallachie",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/142082/glenallachie-18-year-old"
+  },
+  {
+    "_id": "lagavulin-8",
+    "name": "Lagavulin 8 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lagavulin",
+    "abv": 48.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/135296/lagavulin-08-year-old"
+  },
+  {
+    "_id": "laphroaig-brodir",
+    "name": "Laphroaig Brodir",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "laphroaig",
+    "abv": 48.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/160893/laphroaig-brodir"
+  },
+  {
+    "_id": "port-askaig-8",
+    "name": "Port Askaig 8 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 45.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/144771/port-askaig-08-year-old-eld"
+  },
+  {
+    "_id": "smokehead-rum-rebel",
+    "name": "Smokehead Rum Rebel",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/163536/smokehead-rum-rebel-im"
+  },
+  {
+    "_id": "talisker-port-ruighe",
+    "name": "Talisker Port Ruighe",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "talisker",
+    "abv": 45.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/157362/talisker-port-ruighe"
+  },
+  {
+    "_id": "tobermory-12-manzanilla-finish",
+    "name": "Tobermory 12 Years Manzanilla Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tobermory",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/92200/tobermory-12-year-old"
+  },
+  {
+    "_id": "tobermory-15-spanish-oak-finish",
+    "name": "Tobermory 15 Years Spanish Oak Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tobermory",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/104714/tobermory-15-year-old"
   }
 ]

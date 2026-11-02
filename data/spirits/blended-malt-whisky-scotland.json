@@ -14,5 +14,13 @@
     "distillery_id": "unknown-scotland",
     "abv": 46.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/223035/half-n-half-2010-mm"
+  },
+  {
+    "_id": "timorous-beastie",
+    "name": "Douglas Laing Timorous Beastie",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/58110/timorous-beastie-dl"
   }
 ]

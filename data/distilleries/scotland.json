@@ -37,5 +37,8 @@
   { "_id": "mortlach", "name": "Mortlach", "country": "GB-SCT", "region": "Speyside" },
   { "_id": "lagavulin", "name": "Lagavulin", "country": "GB-SCT", "region": "Islay" },
   { "_id": "mannochmore", "name": "Mannochmore", "country": "GB-SCT", "region": "Speyside" },
-  { "_id": "tomintoul", "name": "Tomintoul", "country": "GB-SCT", "region": "Speyside" }
+  { "_id": "tomintoul", "name": "Tomintoul", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "ardmore", "name": "Ardmore", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "glenallachie", "name": "Glenallachie", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "talisker", "name": "Talisker", "country": "GB-SCT", "region": "Island" }
 ]

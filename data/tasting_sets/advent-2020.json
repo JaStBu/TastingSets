@@ -1,0 +1,51 @@
+{
+  "_id": "advent-2020",
+  "names": { "de": "Whisky-Adventskalender 2020", "en": "Whisky Advent Calendar 2020" },
+  "year": 2020,
+  "groups": [
+    {
+      "group_id": "glenallachie",
+      "names": { "de": "GlenAllachie", "en": "GlenAllachie" },
+      "members": [
+        { "member_id": "11", "spirit_id": "glenallachie-9-rye-wood-finish", "notes": { "de": "Aroma: Zimt und Muskatnuss, dazu viel Honig, Sirup und Orange. Geschmack: Intensive Gewürze, wiederum mit Honig sowie Karamellbonbons, Sirup, Orangenschalen und einem Hauch Nelken. Abgang: Mittellang." } },
+        { "member_id": "12", "spirit_id": "glenallachie-12", "notes": { "de": "Aroma: Im Vordergrund Butterscotch und Honig, dazu Rosinen und Mokka. Geschmack: Süß nach Honig, Marzipan und Bananen. Gefolgt von Butterscotch und Rosinen mit einer leichten Mokkanote. Abgang: Mittellang." } },
+        { "member_id": "13", "spirit_id": "glenallachie-15", "notes": { "de": "Aroma: Intensiv mit Rosinen, Karamellbonbons und süßen Gewürzen. Geschmack: Erneut süße Gewürze, Rosinen und Karamell. Es folgen Banane, Orangenschale und dunkle Schokolade. Abgang: Mittellang." } },
+        { "member_id": "14", "spirit_id": "glenallachie-18", "notes": { "de": "Aroma: Frische Vanille und Toffee mit Gewürzen und Butterscotch. Geschmack: Süße Aromen mit Rosinen, Marzipan, Heidekraut und Honig. Gefolgt von starken Aromen mit Kirschen, Gewürzen und zarten Noten von dunkler Schokolade. Abgang: Mittellang." } }
+      ]
+    },
+    {
+      "group_id": "young-smoky-whiskies",
+      "names": { "de": "Junge rauchige Whiskys", "en": "Young Smoky Whiskies" },
+      "description": {
+        "de": "Blends und Brennerei-Abfüllungen, weder lagen diese Whiskys sonderlich lange im Fass noch war das Fass besonders ausgefallen. Ehrliche, junge Raucher eben.",
+        "en": "Blends and distillery bottlings; these whiskies have spent neither a particularly long time in cask nor in especially unusual casks. Straightforward, young smoky whiskies."
+      },
+      "members": [
+        { "member_id": "21", "spirit_id": "timorous-beastie", "notes": { "de": "Enthält u. a. Blair Athol, Dalmore und Glengoyne. Aroma: Anfangs süß. Es folgen florale Noten, Gerste und würziger Honig. Geschmack: Würzig, weich und fruchtig mit Zucker und Fudge sowie Rosinen. Abgang: Wiederum süß mit Kampfer-Hustenbonbons, etwas Eiche und Müsli. Im Nachklang Baiser." } },
+        { "member_id": "22", "spirit_id": "port-askaig-8", "notes": { "de": "Aroma: Frisch und belebend mit Zitronenöl und maritimen Noten. Leicht rauchig nach Lagerfeuerglut und Kohle. Geschmack: Reich mit Zitrus- und Meeresfrüchten. Ausbalanciert mit Islay-Rauch, subtiler Honigsüße sowie Kräuternoten im Hintergrund. Abgang: Mittellang und süß-malzig mit Rauchnoten." } },
+        { "member_id": "23", "spirit_id": "lagavulin-8", "notes": { "de": "Aroma: Weich und frisch mit Milchschokolade und Zitrus. Im Hintergrund maritim und leicht rauchig mit Getreide. Geschmack: Wärmend, süß und rauchig mit scharfen Noten. Zum Ende hin trocken mit mehr Rauch. Abgang: Lang und rauchig." } },
+        { "member_id": "24", "spirit_id": "benriach-10-curiositas", "notes": { "de": "Aroma: Starker Torfrauch mit Früchten, Blumen und Heide im Hintergrund. Geschmack: Perfekte Balance zwischen bittersüßem Torf und spürbarer Eiche. Abgang: Aromatischer Rauch verbindet sich mit Eiche zu einem mittellangen Abgang." } }
+      ]
+    },
+    {
+      "group_id": "unusual-finishes",
+      "names": { "de": "Ausgefallene Finishs", "en": "Unusual Finishes" },
+      "members": [
+        { "member_id": "31", "spirit_id": "glenallachie-11-moscatel-wood-finish", "notes": { "de": "Aroma: Pfirsich und Zimt, ausbalanciert mit Heidehonig und Mokka. Geschmack: Eine reichhaltige Kombination aus Heidehonig, Orangenschalen und Pfirsich. Im Hintergrund Noten von Zimt und Kaffee. Abgang: Mittellang." } },
+        { "member_id": "32", "spirit_id": "tobermory-12-manzanilla-finish", "notes": { "de": "Aroma: Zitrusfrüchte, Trockenfrüchte und Toffee mit subtilen Gewürzen. Geschmack: Süß, ölig und etwas würzig. Orangen, Rosinen und Kaffee mit dunkler Schokolade. Abgang: Lang, fruchtig und leicht trocken." } },
+        { "member_id": "33", "spirit_id": "tobermory-15-spanish-oak-finish", "notes": { "de": "Aroma: Sehr fruchtig mit Orangen und kandierten Früchten. Dazu Toffee, dunkle Schokolade und Kaffee. Geschmack: Weich und süß mit Trockenfrüchten, Orangen und Trauben. Wieder Schokolade, dazu salzig-maritime Noten. Abgang: Lang, trocken und maritim mit Früchten." } },
+        { "member_id": "34", "spirit_id": "smokehead-rum-rebel", "notes": { "de": "Abfüller: Ian MacLeod. Aroma: Zunächst deutlicher Torfrauch, gefolgt von süßen Noten wie gerösteten Marshmallows, karamellisierter Ananas und Banane, dazu gebratener Speck. Geschmack: Salzig-öliger, intensiver und medizinischer Rauch, dazu etwas Honig und Zitrone. Abgang: Mittellang und rauchig mit Eichennoten. Leicht fruchtige Töne." } }
+      ]
+    },
+    {
+      "group_id": "port-finish",
+      "names": { "de": "Port Finish", "en": "Port Finish" },
+      "members": [
+        { "member_id": "41", "spirit_id": "ardmore-12-port-wood-finish", "notes": { "de": "Aroma: Sommerlich fruchtig mit Erdbeeren. Dazu Orangen, Zimt und etwas Pfeffer. Geschmack: Süß und leicht rauchig mit Äpfeln und Honig. Abgang: Weich, rauchig und trocken." } },
+        { "member_id": "42", "spirit_id": "balvenie-21-portwood", "notes": { "de": "Aroma: Süß mit etwas Rauch, Rosinen und Nüssen. Geschmack: Cremig süß mit Malz, Honig und viel Portwein-Aroma. Abgang: Lang, weich und nussig." } },
+        { "member_id": "43", "spirit_id": "talisker-port-ruighe", "notes": { "de": "Aroma: Ausbalanciert und süß mit Lagerfeuernoten und Pflaumen. Dazu süßes Malz und Toffee. Geschmack: Rauchig, pikant und würzig mit dunklen Früchten und Pfeffer. Abgang: Voll und anhaltend mit Rauch und trockenem Kakao." } },
+        { "member_id": "44", "spirit_id": "laphroaig-brodir", "notes": { "de": "Aroma: Eine Mischung aus Malz, Rauch und Salz steigt in die Nase, darin die Düfte von Eiche, Honig, Wiesenblumen und Zitrone. Geschmack: Kräftig und geschmeidig im Mund, Asche und Rauch münden in Zitrone, Honig und Salz. Abgang: Sehr lang und reich an Eiche und Rauch." } }
+      ]
+    }
+  ]
+}
