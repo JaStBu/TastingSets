@@ -2,6 +2,8 @@
   { "_id": "single-malt-whisky", "names": { "de": "Single Malt Whisky", "en": "Single Malt Whisky" } },
   { "_id": "rye-whisky", "names": { "de": "Rye Whisky", "en": "Rye Whisky" } },
   { "_id": "blended-malt-whisky", "names": { "de": "Blended Malt Whisky", "en": "Blended Malt Whisky" } },
+  { "_id": "blended-scotch-whisky", "names": { "de": "Blended Scotch Whisky", "en": "Blended Scotch Whisky" } },
+  { "_id": "grain-whisky", "names": { "de": "Grain Whisky", "en": "Grain Whisky" } },
   { "_id": "grappa", "names": { "de": "Grappa", "en": "Grappa" } },
   { "_id": "single-pot-whiskey", "names": { "de": "Single Pot Whiskey", "en": "Single Pot Whiskey" } },
   { "_id": "rum", "names": { "de": "Rum", "en": "Rum" } },

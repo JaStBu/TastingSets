@@ -22,5 +22,29 @@
     "distillery_id": "unknown-scotland",
     "abv": 46.8,
     "url": "https://www.whiskybase.com/whiskies/whisky/58110/timorous-beastie-dl"
+  },
+  {
+    "_id": "compass-box-oak-cross",
+    "name": "Compass Box Oak Cross",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/30852/oak-cross-the-signature-range-cb"
+  },
+  {
+    "_id": "compass-box-peat-monster",
+    "name": "Compass Box The Peat Monster",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/212582/the-peat-monster-2nd-edition-cb"
+  },
+  {
+    "_id": "compass-box-spice-tree",
+    "name": "Compass Box Spice Tree",
+    "category_id": "blended-malt-whisky",
+    "distillery_id": "unknown-scotland",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/97039/the-spice-tree-the-signature-range-cb"
   }
 ]

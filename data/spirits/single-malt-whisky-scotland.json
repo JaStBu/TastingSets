@@ -838,5 +838,93 @@
     "distillery_id": "strathmill",
     "abv": 43.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/370/strathmill-12-year-old"
+  },
+  {
+    "_id": "ardbeg-an-oa",
+    "name": "Ardbeg An Oa",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "ardbeg",
+    "abv": 46.6,
+    "url": "https://www.whiskybase.com/whiskies/whisky/99885/ardbeg-an-oa"
+  },
+  {
+    "_id": "arran-10",
+    "name": "Arran 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lochranza",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/226620/arran-10-year-old"
+  },
+  {
+    "_id": "arran-14",
+    "name": "Arran 14 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lochranza",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/55100/arran-14-year-old"
+  },
+  {
+    "_id": "arran-18",
+    "name": "Arran 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lochranza",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/79561/arran-18-year-old"
+  },
+  {
+    "_id": "arran-machrie-moor",
+    "name": "Arran Machrie Moor",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lochranza",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/102098/machrie-moor-eighth-edition"
+  },
+  {
+    "_id": "bowmore-25",
+    "name": "Bowmore 25 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "bowmore",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/100284/bowmore-25-year-old"
+  },
+  {
+    "_id": "glengoyne-12",
+    "name": "Glengoyne 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glengoyne",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/38609/glengoyne-12-year-old"
+  },
+  {
+    "_id": "glengoyne-15",
+    "name": "Glengoyne 15 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glengoyne",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/38608/glengoyne-15-year-old"
+  },
+  {
+    "_id": "glengoyne-18",
+    "name": "Glengoyne 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glengoyne",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/38137/glengoyne-18-year-old"
+  },
+  {
+    "_id": "glengoyne-21",
+    "name": "Glengoyne 21 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glengoyne",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/114612/glengoyne-21-year-old"
+  },
+  {
+    "_id": "kilchoman-sanaig",
+    "name": "Kilchoman Sanaig",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "kilchoman",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/94043/kilchoman-sanaig"
   }
 ]
