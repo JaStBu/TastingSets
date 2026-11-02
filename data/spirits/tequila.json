@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "aha-toro-anejo",
+    "name": "Aha Toro Añejo",
+    "category_id": "tequila",
+    "distillery_id": "aha-toro",
+    "abv": 40.0,
+    "url": null
+  },
+  {
+    "_id": "herencia-de-plata-anejo",
+    "name": "Herencia de Plata Añejo",
+    "category_id": "tequila",
+    "distillery_id": "herencia-de-plata",
+    "abv": 38.0,
+    "url": null
+  },
+  {
+    "_id": "herencia-de-plata-reposado",
+    "name": "Herencia de Plata Reposado",
+    "category_id": "tequila",
+    "distillery_id": "herencia-de-plata",
+    "abv": 38.0,
+    "url": null
+  },
+  {
+    "_id": "terralta-anejo",
+    "name": "Terralta Añejo",
+    "category_id": "tequila",
+    "distillery_id": "terralta",
+    "abv": 40.0,
+    "url": null
+  }
+]

@@ -34,5 +34,8 @@
   { "_id": "cardhu", "name": "Cardhu", "country": "GB-SCT", "region": "Speyside" },
   { "_id": "dalmore", "name": "Dalmore", "country": "GB-SCT", "region": "Highland" },
   { "_id": "inchgower", "name": "Inchgower", "country": "GB-SCT", "region": "Speyside" },
-  { "_id": "mortlach", "name": "Mortlach", "country": "GB-SCT", "region": "Speyside" }
+  { "_id": "mortlach", "name": "Mortlach", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "lagavulin", "name": "Lagavulin", "country": "GB-SCT", "region": "Islay" },
+  { "_id": "mannochmore", "name": "Mannochmore", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "tomintoul", "name": "Tomintoul", "country": "GB-SCT", "region": "Speyside" }
 ]

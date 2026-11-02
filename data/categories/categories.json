@@ -3,5 +3,7 @@
   { "_id": "rye-whisky", "names": { "de": "Rye Whisky", "en": "Rye Whisky" } },
   { "_id": "blended-malt-whisky", "names": { "de": "Blended Malt Whisky", "en": "Blended Malt Whisky" } },
   { "_id": "grappa", "names": { "de": "Grappa", "en": "Grappa" } },
-  { "_id": "single-pot-whiskey", "names": { "de": "Single Pot Whiskey", "en": "Single Pot Whiskey" } }
+  { "_id": "single-pot-whiskey", "names": { "de": "Single Pot Whiskey", "en": "Single Pot Whiskey" } },
+  { "_id": "rum", "names": { "de": "Rum", "en": "Rum" } },
+  { "_id": "tequila", "names": { "de": "Tequila", "en": "Tequila" } }
 ]

@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "el-dorado-15",
+    "name": "El Dorado 15 Years",
+    "category_id": "rum",
+    "distillery_name": "El Dorado",
+    "abv": 45.0,
+    "url": null
+  },
+  {
+    "_id": "hampden-estate-8",
+    "name": "Hampden Estate 8 Years",
+    "category_id": "rum",
+    "distillery_name": "Hampden",
+    "abv": 45.0,
+    "url": null
+  },
+  {
+    "_id": "malecon-15-reserva-superior",
+    "name": "Malecon 15 Years Reserva Superior",
+    "category_id": "rum",
+    "distillery_name": "Malecon",
+    "abv": 40.0,
+    "url": null
+  },
+  {
+    "_id": "plantation-barbados-xo",
+    "name": "Plantation Barbados XO",
+    "category_id": "rum",
+    "distillery_name": "Plantation",
+    "abv": 45.0,
+    "url": null
+  },
+  {
+    "_id": "rhum-jm-xo-tres-vieux",
+    "name": "Rhum J.M XO Tres Vieux",
+    "category_id": "rum",
+    "distillery_name": "Rhum J.M",
+    "abv": 45.0,
+    "url": null
+  }
+]

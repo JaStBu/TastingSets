@@ -502,5 +502,109 @@
     "distillery_id": "ncnean",
     "abv": 46.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/212070/ncnean-2018"
+  },
+  {
+    "_id": "aultmore-2006-old-particular",
+    "name": "Aultmore 2006 Douglas Laing Old Particular 14 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "aultmore",
+    "abv": 48.4,
+    "url": "https://www.whiskybase.com/whiskies/whisky/174647/aultmore-2006-dl"
+  },
+  {
+    "_id": "blair-athol-22-old-particular",
+    "name": "Blair Athol 22 Years Douglas Laing Old Particular",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "blair-athol",
+    "abv": 52.1,
+    "url": "https://www.whiskybase.com/whiskies/whisky/143136/blair-athol-22-year-old-dl"
+  },
+  {
+    "_id": "dailuaine-2008-old-particular",
+    "name": "Dailuaine 2008 Douglas Laing Old Particular 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "dailuaine",
+    "abv": 48.4,
+    "url": "https://www.whiskybase.com/whiskies/whisky/164423/dailuaine-2008-dl"
+  },
+  {
+    "_id": "lagavulin-16",
+    "name": "Lagavulin 16 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lagavulin",
+    "abv": 43.0,
+    "url": null
+  },
+  {
+    "_id": "ledaig-10",
+    "name": "Ledaig 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tobermory",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/18211/ledaig-10-year-old"
+  },
+  {
+    "_id": "ledaig-18",
+    "name": "Ledaig 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tobermory",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/299412/ledaig-18-year-old"
+  },
+  {
+    "_id": "mannochmore-2008-old-particular",
+    "name": "Mannochmore 2008 Douglas Laing Old Particular 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "mannochmore",
+    "abv": 48.4,
+    "url": "https://www.whiskybase.com/whiskies/whisky/184847/mannochmore-2008-dl"
+  },
+  {
+    "_id": "octomore-10-2016-second-limited-release",
+    "name": "Octomore 10 Years 2016 Second Limited Release 167 ppm",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "bruichladdich",
+    "abv": 57.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/86882/octomore-10-year-old"
+  },
+  {
+    "_id": "old-ballantruan-10",
+    "name": "Old Ballantruan 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tomintoul",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/36319/old-ballantruan-10-year-old"
+  },
+  {
+    "_id": "tobermory-12",
+    "name": "Tobermory 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tobermory",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/172195/tobermory-12-year-old"
+  },
+  {
+    "_id": "tobermory-18",
+    "name": "Tobermory 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tobermory",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/84332/tobermory-18-year-old"
+  },
+  {
+    "_id": "tomintoul-10",
+    "name": "Tomintoul 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tomintoul",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/165419/tomintoul-10-year-old"
+  },
+  {
+    "_id": "tomintoul-16",
+    "name": "Tomintoul 16 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tomintoul",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/163488/tomintoul-16-year-old"
   }
 ]
