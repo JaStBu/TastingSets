@@ -382,5 +382,125 @@
     "distillery_id": "knockdhu",
     "abv": 46.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/230571/ancnoc-24-year-old"
+  },
+  {
+    "_id": "aultmore-12-foggie-moss",
+    "name": "Aultmore 12 Years Foggie Moss",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "aultmore",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/206107/aultmore-12-year-old"
+  },
+  {
+    "_id": "benriach-10-original-ten",
+    "name": "BenRiach The Original Ten",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/190842/benriach-10-year-old"
+  },
+  {
+    "_id": "benriach-10-smoky-ten",
+    "name": "BenRiach The Smoky Ten",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/165511/benriach-10-year-old"
+  },
+  {
+    "_id": "benriach-12-smoky-twelve",
+    "name": "BenRiach The Smoky Twelve",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/165513/benriach-12-year-old"
+  },
+  {
+    "_id": "benriach-12-the-twelve",
+    "name": "BenRiach The Twelve",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/198424/benriach-12-year-old"
+  },
+  {
+    "_id": "benriach-21-twenty-one",
+    "name": "BenRiach The Twenty One",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/165509/benriach-21-year-old"
+  },
+  {
+    "_id": "benriach-22-albariza",
+    "name": "BenRiach 22 Years Peated Albariza",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/103311/benriach-22-year-old"
+  },
+  {
+    "_id": "benriach-22-dunder-peated-rum",
+    "name": "BenRiach 22 Years Dunder Peated Rum",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/103312/benriach-22-year-old"
+  },
+  {
+    "_id": "cardhu-12",
+    "name": "Cardhu 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "cardhu",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/173719/cardhu-12-year-old"
+  },
+  {
+    "_id": "cardhu-15",
+    "name": "Cardhu 15 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "cardhu",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/137364/cardhu-15-year-old"
+  },
+  {
+    "_id": "dalmore-12",
+    "name": "Dalmore 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "dalmore",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/173117/dalmore-12-year-old"
+  },
+  {
+    "_id": "dalmore-15",
+    "name": "Dalmore 15 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "dalmore",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/210126/dalmore-15-year-old"
+  },
+  {
+    "_id": "inchgower-14-flora-fauna",
+    "name": "Inchgower 14 Years Flora & Fauna",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "inchgower",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/183009/inchgower-14-year-old"
+  },
+  {
+    "_id": "mortlach-12-wee-witchie",
+    "name": "Mortlach The Wee Witchie 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "mortlach",
+    "abv": 43.4,
+    "url": "https://www.whiskybase.com/whiskies/whisky/185417/mortlach-12-year-old"
+  },
+  {
+    "_id": "ncnean-organic-batch-15",
+    "name": "Nc'nean Organic Batch 15",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "ncnean",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/212070/ncnean-2018"
   }
 ]

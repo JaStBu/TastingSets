@@ -62,5 +62,45 @@
     "distillery_id": "finch",
     "abv": 46.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/232183/finch-10-year-old"
+  },
+  {
+    "_id": "irishman-12",
+    "name": "The Irishman 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "walsh",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/145760/the-irishman-12-year-old"
+  },
+  {
+    "_id": "puni-gold",
+    "name": "Puni Gold",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "puni",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/114686/puni-gold-05-year-old"
+  },
+  {
+    "_id": "puni-vina",
+    "name": "Puni Vina",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "puni",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/114687/puni-vina-05-year-old"
+  },
+  {
+    "_id": "tyrconnell-15-madeira",
+    "name": "Tyrconnell 15 Years Madeira Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tyrconnell",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/114172/tyrconnell-15-year-old"
+  },
+  {
+    "_id": "west-cork-16",
+    "name": "West Cork 16 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "west-cork",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/146503/west-cork-16-year-old"
   }
 ]

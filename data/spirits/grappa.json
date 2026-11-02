@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "grappa-903-barrique",
+    "name": "Grappa 903 Barrique",
+    "category_id": "grappa",
+    "distillery_id": "bonaventura-maschio",
+    "abv": 40.0,
+    "url": null
+  },
+  {
+    "_id": "grappa-le-diciotto-lune",
+    "name": "Marzdaro Grappa Le Diciotto Lune",
+    "category_id": "grappa",
+    "distillery_id": "marzadro",
+    "abv": 41.0,
+    "url": null
+  },
+  {
+    "_id": "grappa-pinot-nero-riserva",
+    "name": "Villa de Varda Grappa Pinot Nero Riserva",
+    "category_id": "grappa",
+    "distillery_id": "villa-de-varda",
+    "abv": 40.0,
+    "url": null
+  }
+]
