@@ -58,6 +58,10 @@
   {{ count_table(t('stats.by_distillery'), report.by_distillery) }}
   {{ count_table(t('stats.by_category'), report.by_category) }}
   {{ count_table(t('stats.by_country'), report.by_country) }}
+  {% for region in report.by_region if region.entries %}
+  {% set title = t('stats.by_region') ~ (' (' ~ country_name(region.country) ~ ')' if region.country else '') %}
+  {{ count_table(title, region.entries) }}
+  {% endfor %}
   {{ abv_box(report.abv) }}
   {{ repeated_table(report.repeated) }}
 </div>

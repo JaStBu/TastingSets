@@ -103,6 +103,72 @@ def test_set_page_shows_region_name_and_free_text_region(tmp_path):
     assert "Islay" in de and "Islay" in en
 
 
+def test_scotland_region_stats_only_for_sets_with_scottish_members(tmp_path):
+    from conftest import DISTILLERIES, TASTING_SETS, make_data_dir
+
+    distilleries = [{**DISTILLERIES[0], "country": "GB-SCT", "region": "Islay"}, DISTILLERIES[1]]
+    grappa_set = {
+        "_id": "grappa-2026",
+        "names": {"de": "Grappa 2026"},
+        "members": [{"member_id": "1", "spirit_id": "nonino-grappa"}],
+    }
+    root = make_data_dir(
+        tmp_path / "data", distilleries=distilleries, tasting_sets=[*TASTING_SETS, grappa_set]
+    )
+    out = tmp_path / "dist"
+    build(JsonRepository(root), out, languages=["de", "en"])
+    title = "Flaschen pro Region (Schottland)"
+    set_html = (out / "de" / "sets" / "advent-2025" / "index.html").read_text(encoding="utf-8")
+    stats_html = (out / "de" / "stats" / "index.html").read_text(encoding="utf-8")
+    assert title in set_html and title in stats_html
+    assert "<td>Islay</td>" in stats_html
+    assert set_html.index("Flaschen pro Land") < set_html.index(title)
+    assert stats_html.index("Flaschen pro Land") < stats_html.index(title)
+    en_stats = (out / "en" / "stats" / "index.html").read_text(encoding="utf-8")
+    assert "Bottles per region (Scotland)" in en_stats
+    grappa_html = (out / "de" / "sets" / "grappa-2026" / "index.html").read_text(encoding="utf-8")
+    assert "Flaschen pro Land" in grappa_html
+    assert "Flaschen pro Region" not in grappa_html
+
+
+def test_region_stats_hidden_without_members_from_country(data_dir, tmp_path):
+    out = tmp_path / "dist"
+    build(JsonRepository(data_dir), out)
+    for page in (Path("stats"), Path("sets") / "advent-2025"):
+        html = (out / "de" / page / "index.html").read_text(encoding="utf-8")
+        assert "Flaschen pro Region" not in html
+
+
+def test_region_stats_title_and_labels_for_countries_and_across(tmp_path, monkeypatch):
+    from conftest import DISTILLERIES, make_data_dir
+    from tastingsets import stats
+
+    distilleries = [
+        {**DISTILLERIES[0], "country": "GB-SCT", "region": "Islay"},
+        {**DISTILLERIES[1], "region": "Friuli"},
+    ]
+    root = make_data_dir(tmp_path / "data", distilleries=distilleries)
+    monkeypatch.setattr(stats, "REGION_STATS_COUNTRIES", (None, stats.SCOTLAND, "IT"))
+    out = tmp_path / "dist"
+    build(JsonRepository(root), out, languages=["de"])
+    html = (out / "de" / "stats" / "index.html").read_text(encoding="utf-8")
+    assert "<h3>Flaschen pro Region</h3>" in html
+    assert "Flaschen pro Region (Schottland)" in html
+    assert "Flaschen pro Region (Italien)" in html
+    markers = [
+        "Flaschen pro Land",
+        "<h3>Flaschen pro Region</h3>",
+        "<td>Schottland, Islay</td>",
+        "Flaschen pro Region (Schottland)",
+        "<td>Islay</td>",
+        "Flaschen pro Region (Italien)",
+        "<td>Friuli</td>",
+    ]
+    positions = [html.index(marker) for marker in markers]
+    assert positions == sorted(positions)
+    assert "<td>Italien, Friuli</td>" in html
+
+
 def test_set_name_and_notes_are_localized(data_dir, tmp_path):
     out = tmp_path / "dist"
     build(JsonRepository(data_dir), out, languages=["de", "en"])

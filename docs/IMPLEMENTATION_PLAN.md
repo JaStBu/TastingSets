@@ -172,7 +172,7 @@ Dasselbe Set mit optionalen Gruppen (statt `members` steht `groups`):
 5. `Distillery(Document)`:
    - `name: str`, optional `display_name: str | None`.
    - `country`: ISO-3166-1-Alpha-2-Code (`DE`) oder ISO-3166-2-Regionscode (`GB-SCT`) in Großbuchstaben. Der Länderteil wird gegen die Babel-Länderliste, der Regionscode gegen `pycountry.subdivisions` geprüft. Die Statistik zählt nach dem exakten Code (`GB` und `GB-SCT` sind getrennt).
-   - `region: str | None`: optionaler Freitext für Nicht-ISO-Regionen (z.B. `Islay`, `Speyside`). Wie `name` ein Eigenname und nicht übersetzt; keine Auswirkung auf die Statistik.
+   - `region: str | None`: optionaler Freitext für Nicht-ISO-Regionen (z.B. `Islay`, `Speyside`). Wie `name` ein Eigenname und nicht übersetzt; wird für die Regionen-Statistik genutzt (siehe Phase 5a).
 6. `Spirit(Document)`:
    - Pflicht: `name: str`, `category_id: str`, `abv: float` (größer 0, höchstens 100).
    - Optional: `display_name`, `distillery_id`, `distillery_name`, `url: HttpUrl`.
@@ -257,9 +257,25 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
     - `count_by_distillery`: zählt bei fehlendem Eintrag nach `distillery_name`.
     - `count_by_category`
     - `count_by_country`: Schnäpse ohne Brennerei-Eintrag zählen als „unbekannt“.
+    - `count_by_region`: Flaschen pro `region` innerhalb ihres Landes, optional auf ein Land eingeschränkt (exakter Code, Label nur die Region), sonst länderübergreifend (Label „Land, Region“); ohne Groß-/Kleinschreibung.
     - `repeated_spirits`: Schnäpse, die mehr als einmal vorkommen, jeweils mit der Liste der FQNs, innerhalb eines Sets und über mehrere Sets hinweg.
     - `abv_summary`: Minimum, Maximum, Durchschnitt.
     - Rückgabe als kleine Dataclasses, z.B. `CountEntry(key, label, count)`, sortiert nach Anzahl absteigend und bei Gleichstand nach Label.
+
+### Phase 5a – Regionen-Statistik (nachträglich ergänzt)
+
+*Hängt an Phase 5 und 6.*
+
+- `count_by_region(catalog, set_ids=None, country=None, lang=DEFAULT_LANGUAGE)` in `stats.py`:
+  - Filter: exaktes Land (`GB-SCT` ≠ `GB`; Flaschen ohne Brennerei-Eintrag fehlen dann) oder länderübergreifend (`country=None`, alle Flaschen).
+  - Keys: `region:<country>:<region.casefold()>`, `country:<country>` (länderübergreifend, Brennerei ohne Region) und `unknown` (länderspezifisch ohne Region; länderübergreifend ohne Brennerei-Eintrag). Eine Region, die wörtlich `Unknown` heißt, kollidiert nicht mit `unknown`. Weil das Land im Key steckt, sind gleichnamige Regionen verschiedener Länder getrennt.
+  - Labels: länderspezifisch die Region, länderübergreifend „<Land>, <Region>“ bzw. „<Land>, –“ (`MISSING_REGION`, entspricht der Darstellung einer fehlenden Region auf der Set-Seite), jeweils in der Schreibweise des ersten Vorkommens. `lang` wirkt nur auf den Ländernamen; die Region selbst ist ein Eigenname und wird nicht übersetzt.
+  - Das Label entsteht in `stats.py`, damit Sortierung (nach Label) und Anzeige übereinstimmen und `count_table` unverändert bleibt. Leere Liste, wenn keine Flasche passt.
+- `RegionStats(country, entries)`, `StatsReport.by_region` (ein Eintrag pro Land aus `region_countries`, in dieser Reihenfolge, auch mit leeren `entries`) und `build_report(..., region_countries=None)`. Bei `None` gilt `REGION_STATS_COUNTRIES` (heute `(SCOTLAND,)` mit `SCOTLAND = "GB-SCT"`; `None` als Eintrag = länderübergreifend). Die Konstante wird erst beim Aufruf gelesen, nicht als Default-Argument gebunden; dadurch bleibt `site/builder.py` unverändert, Tests können andere Länder per `monkeypatch` aktivieren und eine spätere Konfiguration kann den Wert übergeben.
+- Template (`_stats_macros.html`, Makro `report_grid`): direkt nach „Flaschen pro Land“ eine Tabelle pro nicht leerem `RegionStats`. Der Titel kommt aus dem einen Locale-Schlüssel `stats.by_region`; ist ein Land gesetzt, ergänzt das Template ` (<lokalisierter Ländername>)` über `country_name`. Eine Tabelle erscheint also nur, wenn die Auswahl (ein Set oder alle Sets) mindestens eine Flasche aus dem Land enthält. Betroffen sind die Set-Seiten und die Statistikseite, nicht die Übersichtsseite. Ein weiteres Land braucht nur einen Eintrag in `REGION_STATS_COUNTRIES`, keinen neuen Locale-Schlüssel und keine Template-Änderung.
+- Alternative, nicht umgesetzt: ein zweiter Schlüssel mit Platzhalter (z.B. „Flaschen pro Region ({country})“) für Sprachen mit anderer Satzstellung. Ein Wechsel betrifft nur Template und Locales, nicht `stats.py`.
+- Tests: `tests/test_stats.py` (Zählung, Groß-/Kleinschreibung, exakter Ländercode, getrennte Länder, fehlende Region, `build_report`) und `tests/test_builder.py` (Anzeige nur bei schottischen Flaschen, Reihenfolge nach „Flaschen pro Land“, Titel und Zeilenbeschriftung für weitere Länder und länderübergreifend).
+- Grenzen: Schreibvarianten über die Groß-/Kleinschreibung hinaus (Leerzeichen, Bindestriche, Tippfehler) werden nicht normalisiert und von der Validierung nicht gemeldet. `StatsReport` hat ein neues Pflichtfeld; wer es direkt konstruiert (im Repository nur `build_report`), muss `by_region` angeben. Länderübergreifend wird nach dem Label sortiert, das mit dem lokalisierten Ländernamen beginnt; bei gleicher Anzahl hängt die Reihenfolge daher von der Sprache ab.
 
 ### Phase 6 – i18n und Seitengenerator
 
@@ -387,7 +403,8 @@ Alle Dateien sind neu.
 - Die Statistik wird vorab gerendert, pro Set und gesamt. Eine freie Auswahl von Sets kommt erst mit der dynamischen App.
 - Mehrsprachigkeit ist technisch vorbereitet, gebaut wird in v1 nur Deutsch.
 - Tooling: uv, `pyproject.toml`, pytest, ruff, Python 3.12 oder neuer.
-- **Nicht enthalten:** FastAPI-App, `MongoRepository`, Import-Skript für Mongo, Filter im Browser, englische Inhalte, Statistik pro Gruppe, mehrstufige Gruppen, Gruppen, die über mehrere Sets hinweg wiederverwendet werden.
+- Regionen-Statistik generisch (ein Land oder länderübergreifend), in der Seite vorerst nur für Schottland (`GB-SCT`). „Aus Schottland“ heißt: aufgelöste Brennerei mit exakt `country == "GB-SCT"`; Brennereien mit `GB` oder Flaschen ohne Brennerei-Eintrag zählen nicht. Regionen werden ohne Groß-/Kleinschreibung verglichen und gehören immer zu ihrem Land; länderübergreifend lautet die Zeile „Land, Region“, länderspezifisch nur „Region“. Der Titel kommt aus einem einzigen Locale-Schlüssel, das Land wird dynamisch ergänzt. Eine Tabelle erscheint nur, wenn die Auswahl mindestens eine Flasche aus dem Land enthält. Weitere Länder über `REGION_STATS_COUNTRIES`.
+- **Nicht enthalten:** FastAPI-App, `MongoRepository`, Import-Skript für Mongo, Filter im Browser, englische Inhalte, Statistik pro Gruppe, mehrstufige Gruppen, Gruppen, die über mehrere Sets hinweg wiederverwendet werden, Anzeige der Regionen-Statistik für weitere Länder oder länderübergreifend, Normalisierung von Regionsnamen über Groß-/Kleinschreibung hinaus.
 
 ## Further Considerations
 
@@ -400,3 +417,4 @@ Alle Dateien sind neu.
 3. **Gruppen und MongoDB:** Ein Set-Dokument enthält entweder `members` oder `groups[].members`. Abfragen über alle Flaschen dürfen daher nicht direkt auf `members` lesen, sondern gehen über `Catalog` bzw. `TastingSet.all_members`. Alternativ schreibt das `MongoRepository` beim Speichern zusätzlich eine flache Member-Liste; das wird erst bei dessen Umsetzung entschieden. Die Gruppe steht bewusst nicht im FQN (`advent-2026/wine-finish/3` wurde verworfen): die Nummer ist im Set bereits eindeutig und Links bleiben stabil, wenn Gruppen umgebaut werden.
 4. **Einstellbare Standardsprache (Stufe 2):** siehe README, Abschnitt „Architecture and outlook“. Umsetzung erst bei konkretem Bedarf.
 5. **Sortierung der Member:** Reihenfolge wie in der Datei (empfohlen, Standard) oder natürliche Sortierung nach `member_id` (1, 2, … 10 statt 1, 10, 2). Kann man im Template umschaltbar machen.
+6. **Regionen-Statistik erweitern:** Soll länderübergreifend statt „Land, –“ „Land, unbekannt“ erscheinen, braucht `CountEntry` (oder ein eigener Eintragstyp) Land und Region getrennt, damit das Template übersetzen kann. Braucht eine Sprache eine andere Satzstellung als „Text (Land)“, einen zweiten Locale-Schlüssel mit Platzhalter `{country}` einführen.

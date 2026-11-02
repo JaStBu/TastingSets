@@ -13,8 +13,14 @@ from tastingsets.catalog import Catalog, ResolvedMember
 from tastingsets.languages import DEFAULT_LANGUAGE
 from tastingsets.models import Spirit
 
-#: Key used for members whose country is not known (no distillery entry).
+#: Key used for members whose country or region is not known.
 UNKNOWN_KEY = "unknown"
+#: ISO 3166-2 code of Scotland.
+SCOTLAND = "GB-SCT"
+#: Countries (exact codes) that get a region table in reports; ``None`` means all countries.
+REGION_STATS_COUNTRIES: tuple[str | None, ...] = (SCOTLAND,)
+#: Shown instead of the region in cross-country labels when a distillery has no region.
+MISSING_REGION = "–"
 
 
 @dataclass(frozen=True)
@@ -24,6 +30,14 @@ class CountEntry:
     key: str
     label: str
     count: int
+
+
+@dataclass(frozen=True)
+class RegionStats:
+    """Bottles per region within one country (exact code) or across all countries (``None``)."""
+
+    country: str | None
+    entries: list[CountEntry]
 
 
 @dataclass(frozen=True)
@@ -113,6 +127,48 @@ def count_by_country(
     return _count(selected_members(catalog, set_ids), group)
 
 
+def count_by_region(
+    catalog: Catalog,
+    set_ids: Iterable[str] | None = None,
+    country: str | None = None,
+    lang: str = DEFAULT_LANGUAGE,
+) -> list[CountEntry]:
+    """Bottles per free-text ``region`` of the distillery; a region always belongs to its country.
+
+    ``country`` restricts the count to one exact country code (``GB-SCT`` is not ``GB``). Bottles
+    from other countries and bottles without distillery entry are then not counted, and the label
+    is just the region. With ``None`` all bottles are counted across countries and the label is
+    ``<country name>, <region>``, with the country name localized with ``lang``.
+
+    Regions are compared case-insensitively; the label uses the first spelling found. A missing
+    region is grouped under ``unknown`` (one country) or shown as ``<country name>, –`` (across
+    countries); across countries, bottles without distillery entry count as ``unknown``.
+    Returns an empty list if no bottle matches.
+    """
+    from tastingsets.i18n import country_name
+
+    members = selected_members(catalog, set_ids)
+    if country is not None:
+        members = [m for m in members if m.country == country]
+
+    def group(member: ResolvedMember) -> tuple[str, str]:
+        if member.country is None:
+            return UNKNOWN_KEY, UNKNOWN_KEY
+        if member.region is None:
+            if country is not None:
+                return UNKNOWN_KEY, UNKNOWN_KEY
+            return (
+                f"country:{member.country}",
+                f"{country_name(member.country, lang)}, {MISSING_REGION}",
+            )
+        key = f"region:{member.country}:{member.region.casefold()}"
+        if country is not None:
+            return key, member.region
+        return key, f"{country_name(member.country, lang)}, {member.region}"
+
+    return _count(members, group)
+
+
 def repeated_spirits(
     catalog: Catalog, set_ids: Iterable[str] | None = None
 ) -> list[RepeatedSpirit]:
@@ -156,20 +212,31 @@ class StatsReport:
     by_distillery: list[CountEntry]
     by_category: list[CountEntry]
     by_country: list[CountEntry]
+    by_region: list[RegionStats]
     repeated: list[RepeatedSpirit]
     abv: AbvSummary | None
 
 
 def build_report(
-    catalog: Catalog, set_ids: Iterable[str] | None = None, lang: str = DEFAULT_LANGUAGE
+    catalog: Catalog,
+    set_ids: Iterable[str] | None = None,
+    lang: str = DEFAULT_LANGUAGE,
+    region_countries: Iterable[str | None] | None = None,
 ) -> StatsReport:
-    """Compute every statistic for the selected sets (all sets if ``set_ids`` is ``None``)."""
+    """Compute every statistic for the selected sets (all sets if ``set_ids`` is ``None``).
+
+    ``region_countries`` lists the countries (exact codes, ``None`` = across countries) that get
+    a region statistic, in that order. If ``None``, ``REGION_STATS_COUNTRIES`` is used as it is
+    when this function is called.
+    """
     ids = list(catalog.tasting_sets) if set_ids is None else list(set_ids)
+    countries = REGION_STATS_COUNTRIES if region_countries is None else region_countries
     return StatsReport(
         totals=totals(catalog, ids),
         by_distillery=count_by_distillery(catalog, ids),
         by_category=count_by_category(catalog, ids, lang),
         by_country=count_by_country(catalog, ids, lang),
+        by_region=[RegionStats(c, count_by_region(catalog, ids, c, lang)) for c in countries],
         repeated=repeated_spirits(catalog, ids),
         abv=abv_summary(catalog, ids),
     )
