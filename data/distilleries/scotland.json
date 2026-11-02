@@ -21,5 +21,12 @@
   { "_id": "royal-brackla", "name": "Royal Brackla", "country": "GB-SCT", "region": "Highland" },
   { "_id": "tobermory", "name": "Tobermory", "country": "GB-SCT", "region": "Island" },
   { "_id": "torabhaig", "name": "Torabhaig", "country": "GB-SCT", "region": "Island" },
-  { "_id": "wolfburn", "name": "Wolfburn", "country": "GB-SCT", "region": "Highland" }
+  { "_id": "wolfburn", "name": "Wolfburn", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "glenglassaugh", "name": "Glenglassaugh", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "deanston", "name": "Deanston", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "tomatin", "name": "Tomatin", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "benrinnes", "name": "Benrinnes", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "loch-lomond", "name": "Loch Lomond", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "lochranza", "name": "Lochranza", "country": "GB-SCT", "region": "Island" },
+  { "_id": "knockdhu", "name": "Knockdhu", "country": "GB-SCT", "region": "Speyside" }
 ]

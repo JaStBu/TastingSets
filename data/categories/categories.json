@@ -1,4 +1,5 @@
 [
   { "_id": "single-malt-whisky", "names": { "de": "Single Malt Whisky", "en": "Single Malt Whisky" } },
-  { "_id": "rye-whisky", "names": { "de": "Rye Whisky", "en": "Rye Whisky" } }
+  { "_id": "rye-whisky", "names": { "de": "Rye Whisky", "en": "Rye Whisky" } },
+  { "_id": "blended-malt-whisky", "names": { "de": "Blended Malt Whisky", "en": "Blended Malt Whisky" } }
 ]

@@ -246,5 +246,141 @@
     "distillery_id": "tobermory",
     "abv": 54.8,
     "url": "https://www.whiskybase.com/whiskies/whisky/239988/ledaig-2005-mm"
+  },
+  {
+    "_id": "glenglassaugh-12",
+    "name": "Glenglassaugh 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenglassaugh",
+    "abv": 45.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/233639/glenglassaugh-12-year-old"
+  },
+  {
+    "_id": "glenglassaugh-sandend",
+    "name": "Glenglassaugh Sandend",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenglassaugh",
+    "abv": 50.5,
+    "url": "https://www.whiskybase.com/whiskies/whisky/233597/glenglassaugh-sandend"
+  },
+  {
+    "_id": "glenglassaugh-portsoy",
+    "name": "Glenglassaugh Portsoy",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenglassaugh",
+    "abv": 49.1,
+    "url": "https://www.whiskybase.com/whiskies/whisky/233638/glenglassaugh-portsoy"
+  },
+  {
+    "_id": "deanston-10-bordeaux-red-wine-cask",
+    "name": "Deanston 10 Years Bordeaux Cask",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "deanston",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/233707/deanston-10-year-old"
+  },
+  {
+    "_id": "deanston-12",
+    "name": "Deanston 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "deanston",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/236231/deanston-12-year-old"
+  },
+  {
+    "_id": "deanston-15-tequila-cask",
+    "name": "Deanston 15 Years Tequila Cask",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "deanston",
+    "abv": 52.5,
+    "url": "https://www.whiskybase.com/whiskies/whisky/230818/deanston-15-year-old"
+  },
+  {
+    "_id": "tomatin-12",
+    "name": "Tomatin 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tomatin",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/215742/tomatin-12-year-old"
+  },
+  {
+    "_id": "tomatin-18",
+    "name": "Tomatin 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tomatin",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/211853/tomatin-18-year-old"
+  },
+  {
+    "_id": "tomatin-cu-bocan-creation-4",
+    "name": "Tomatin Cù Bòcan Creation #4",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tomatin",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/203063/tomatin-c-bcan"
+  },
+  {
+    "_id": "peat-beast-px",
+    "name": "Peat's Beast PX",
+    "category_id": "single-malt-whisky",
+    "distillery_name": "Unknown",
+    "abv": 54.1,
+    "url": null
+  },
+  {
+    "_id": "dailuaine-murray-mcdavid-bourbon-cask-finish",
+    "name": "Dailuaine Murray McDavid Bourbon Cask Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "dailuaine",
+    "abv": 44.5,
+    "url": "https://www.whiskybase.com/whiskies/whisky/218300/dailuaine-bourbon-finish-mm"
+  },
+  {
+    "_id": "benrinnes-murray-mcdavid-port-cask-finish",
+    "name": "Benrinnes Murray McDavid Port Cask Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benrinnes",
+    "abv": 44.5,
+    "url": "https://www.whiskybase.com/whiskies/whisky/234285/benrinnes-port-finish-mm"
+  },
+  {
+    "_id": "croftengea-murray-mcdavid-marsala-cask-finish",
+    "name": "Croftengea Murray McDavid Marsala Cask Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "loch-lomond",
+    "abv": 44.5,
+    "url": "https://www.whiskybase.com/whiskies/whisky/215163/croftengea-marsala-finish-mm"
+  },
+  {
+    "_id": "balvenie-madeira-cask-15",
+    "name": "Balvenie Madeira Cask 15 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "balvenie",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/220950/balvenie-15-year-old"
+  },
+  {
+    "_id": "balvenie-week-of-peat-14",
+    "name": "Balvenie Week of Peat 14 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "balvenie",
+    "abv": 48.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/218474/balvenie-14-year-old"
+  },
+  {
+    "_id": "arran-21",
+    "name": "Arran 21 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lochranza",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/219779/arran-21-year-old"
+  },
+  {
+    "_id": "ancnoc-24",
+    "name": "anCnoc 24 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "knockdhu",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/230571/ancnoc-24-year-old"
   }
 ]

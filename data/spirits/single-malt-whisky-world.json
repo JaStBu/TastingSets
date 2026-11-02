@@ -22,5 +22,45 @@
     "distillery_id": "morris-rutherglen",
     "abv": 48.5,
     "url": "https://www.whiskybase.com/whiskies/whisky/220496/morris-smoked-muscat"
+  },
+  {
+    "_id": "remstal-whisky-maehdrescher",
+    "name": "Remstal Whisky Mähdrescher",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "kleine-destillerie",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/110821/remstal-whisky-single-malt"
+  },
+  {
+    "_id": "emill-stockwerk",
+    "name": "EMILL Stockwerk",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "emill-scheibel",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/227652/emill-stockwerk"
+  },
+  {
+    "_id": "finch-single-malt",
+    "name": "Finch Single Malt",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "finch",
+    "abv": 42.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/80141/finch-single-malt"
+  },
+  {
+    "_id": "elch-whisky-torf-vom-dorf",
+    "name": "Elch Whisky Torf vom Dorf",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "elch-whisky",
+    "abv": 50.2,
+    "url": "https://www.whiskybase.com/whiskies/whisky/223282/elch-whisky-torf-vom-dorf"
+  },
+  {
+    "_id": "finch-10-smoky",
+    "name": "Finch 10 Years Smoky",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "finch",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/232183/finch-10-year-old"
   }
 ]

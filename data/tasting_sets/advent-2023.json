@@ -1,0 +1,89 @@
+{
+  "_id": "advent-2023",
+  "names": { "de": "Whisky-Adventskalender 2023", "en": "Whisky Advent Calendar 2023" },
+  "year": 2023,
+  "groups": [
+    {
+      "group_id": "glenglassaugh",
+      "names": { "de": "Glenglassaugh Core-Range", "en": "Glenglassaugh core range" },
+      "members": [
+        { "member_id": "1", "spirit_id": "glenglassaugh-12" },
+        { "member_id": "2", "spirit_id": "glenglassaugh-sandend" },
+        { "member_id": "3", "spirit_id": "glenglassaugh-portsoy" }
+      ]
+    },
+    {
+      "group_id": "wuerttemberg",
+      "names": { "de": "Württembergischer Whisky", "en": "Whisky from Württemberg" },
+      "members": [
+        { "member_id": "4", "spirit_id": "remstal-whisky-maehdrescher" },
+        { "member_id": "5", "spirit_id": "emill-stockwerk" },
+        { "member_id": "6", "spirit_id": "finch-single-malt" }
+      ]
+    },
+    {
+      "group_id": "deanston",
+      "names": { "de": "Deanston Core-Range und Sonderabfüllungen", "en": "Deanston core range and special bottlings" },
+      "members": [
+        { "member_id": "7", "spirit_id": "deanston-10-bordeaux-red-wine-cask" },
+        { "member_id": "8", "spirit_id": "deanston-12" },
+        { "member_id": "9", "spirit_id": "deanston-15-tequila-cask" }
+      ]
+    },
+    {
+      "group_id": "german-moors",
+      "names": { "de": "Deutsche Moore", "en": "German Peatlands" },
+      "members": [
+        { "member_id": "10", "spirit_id": "elch-whisky-torf-vom-dorf" },
+        { "member_id": "11", "spirit_id": "finch-10-smoky" }
+      ]
+    },
+    {
+      "group_id": "tomatin",
+      "names": { "de": "Tomatin", "en": "Tomatin" },
+      "description": { "de": "Core-Range und Sonderabfüllungen.", "en": "Core range and special bottlings." },
+      "members": [
+        { "member_id": "12", "spirit_id": "tomatin-12" },
+        { "member_id": "13", "spirit_id": "tomatin-18" },
+        { "member_id": "14", "spirit_id": "tomatin-cu-bocan-creation-4" }
+      ]
+    },
+    {
+      "group_id": "smoky-interlude",
+      "names": { "de": "Rauchiges Intermezzo", "en": "A Smoky Interlude" },
+      "description": { "de": "Nicht allzu rauchige Malts.", "en": "Not-too-smoky malts." },
+      "members": [
+        { "member_id": "15", "spirit_id": "peat-beast-px" },
+        { "member_id": "16", "spirit_id": "murray-mcdavid-cult-of-islay-9" }
+      ]
+    },
+    {
+      "group_id": "cask-influence",
+      "names": { "de": "Fasseinfluss", "en": "Cask Influence" },
+      "description": { "de": "Whisky in unterschiedlichen Fässern gefinished.", "en": "Whiskies finished in different casks." },
+      "members": [
+        { "member_id": "17", "spirit_id": "dailuaine-murray-mcdavid-bourbon-cask-finish" },
+        { "member_id": "18", "spirit_id": "benrinnes-murray-mcdavid-port-cask-finish" },
+        { "member_id": "19", "spirit_id": "murray-mcdavid-stout-cask-finish" },
+        { "member_id": "20", "spirit_id": "croftengea-murray-mcdavid-marsala-cask-finish" }
+      ]
+    },
+    {
+      "group_id": "balvenie",
+      "names": { "de": "Balvenie Sonderabfüllungen", "en": "Balvenie Special Bottlings" },
+      "members": [
+        { "member_id": "21", "spirit_id": "balvenie-madeira-cask-15" },
+        { "member_id": "22", "spirit_id": "balvenie-week-of-peat-14" }
+      ]
+    },
+    {
+      "group_id": "aged-sherry",
+      "names": { "de": "Alter Sherry", "en": "Aged Sherry" },
+      "description": { "de": "Die jüngeren Core-Range Abfüllungen hatten wir bereits im Kalender, jetzt mal das obere Ende der Altersskala.", "en": "The younger core-range releases have already appeared in the calendar; now for the upper end of the age range." },
+      "members": [
+        { "member_id": "23", "spirit_id": "arran-21" },
+        { "member_id": "24", "spirit_id": "ancnoc-24" }
+      ]
+    }
+  ]
+}
