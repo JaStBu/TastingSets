@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "bruichladdich-botanist-gin",
+    "name": "Bruichladdich The Botanist Islay Dry Gin",
+    "category_id": "gin",
+    "distillery_id": "bruichladdich",
+    "abv": 46.0,
+    "url": null
+  },
+  {
+    "_id": "hammer-son-old-english-gin",
+    "name": "Hammer & Son Old English Gin",
+    "category_id": "gin",
+    "distillery_name": "Hammer & Son",
+    "abv": 44.0,
+    "url": null
+  },
+  {
+    "_id": "harris-isle-of-harris-gin",
+    "name": "Isle of Harris Gin",
+    "category_id": "gin",
+    "distillery_id": "harris",
+    "abv": 45.0,
+    "url": null
+  },
+  {
+    "_id": "scheibel-original-gin",
+    "name": "Scheibel The OriGINal",
+    "category_id": "gin",
+    "distillery_id": "emill-scheibel",
+    "abv": 43.0,
+    "url": null
+  }
+]

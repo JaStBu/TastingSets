@@ -926,5 +926,101 @@
     "distillery_id": "kilchoman",
     "abv": 46.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/94043/kilchoman-sanaig"
+  },
+  {
+    "_id": "balvenie-caribbean-cask-14",
+    "name": "Balvenie Caribbean Cask 14 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "balvenie",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/35830/balvenie-14-year-old"
+  },
+  {
+    "_id": "benromach-10",
+    "name": "Benromach 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benromach",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/99302/benromach-10-year-old"
+  },
+  {
+    "_id": "benromach-chateau-cissac-finish",
+    "name": "Benromach Château Cissac Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benromach",
+    "abv": 45.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/61910/benromach-2006"
+  },
+  {
+    "_id": "benromach-hermitage-finish",
+    "name": "Benromach Hermitage Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benromach",
+    "abv": 45.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/73172/benromach-2005"
+  },
+  {
+    "_id": "benromach-sassicaia-finish",
+    "name": "Benromach Sassicaia Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benromach",
+    "abv": 45.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/93413/benromach-2009"
+  },
+  {
+    "_id": "caol-ila-12",
+    "name": "Caol Ila 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "caol-ila",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/23/caol-ila-12-year-old"
+  },
+  {
+    "_id": "caol-ila-18",
+    "name": "Caol Ila 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "caol-ila",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/47393/caol-ila-18-year-old"
+  },
+  {
+    "_id": "kilchoman-100-islay-2010-2017",
+    "name": "Kilchoman 100% Islay 2010/2017",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "kilchoman",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/96144/kilchoman-07-year-old"
+  },
+  {
+    "_id": "macallan-sherry-cask-12",
+    "name": "The Macallan 12 Years Sherry Cask",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "macallan",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/70674/macallan-12-year-old"
+  },
+  {
+    "_id": "macallan-sherry-cask-18-1997",
+    "name": "The Macallan 18 Years Sherry Cask 1997",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "macallan",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/96896/macallan-18-year-old"
+  },
+  {
+    "_id": "talisker-18",
+    "name": "Talisker 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "talisker",
+    "abv": 45.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/89148/talisker-18-year-old"
+  },
+  {
+    "_id": "tullibardine-228-burgundy-finish",
+    "name": "Tullibardine 228 Burgundy Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tullibardine",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/40744/tullibardine-228"
   }
 ]
