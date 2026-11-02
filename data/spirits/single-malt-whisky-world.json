@@ -22,21 +22,5 @@
     "distillery_id": "morris-rutherglen",
     "abv": 48.5,
     "url": "https://www.whiskybase.com/whiskies/whisky/220496/morris-smoked-muscat"
-  },
-  {
-    "_id": "kyro-oloroso",
-    "name": "Kyrö Oloroso",
-    "category_id": "rye-whisky",
-    "distillery_id": "kyro",
-    "abv": 47.2,
-    "url": "https://www.whiskybase.com/whiskies/whisky/246583/kyr-malt-oloroso"
-  },
-  {
-    "_id": "kyro-wood-smoke",
-    "name": "Kyrö Wood Smoke",
-    "category_id": "rye-whisky",
-    "distillery_id": "kyro",
-    "abv": 47.2,
-    "url": "https://www.whiskybase.com/whiskies/whisky/249539/kyr-wood-smoke"
   }
 ]

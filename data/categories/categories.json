@@ -1,6 +1,4 @@
 [
-  { "_id": "single-malt-scotch", "names": { "de": "Single Malt Scotch Whisky", "en": "Single Malt Scotch Whisky" } },
-  { "_id": "blended-scotch", "names": { "de": "Blended Scotch Whisky", "en": "Blended Scotch Whisky" } },
   { "_id": "single-malt-whisky", "names": { "de": "Single Malt Whisky", "en": "Single Malt Whisky" } },
   { "_id": "rye-whisky", "names": { "de": "Rye Whisky", "en": "Rye Whisky" } }
 ]
