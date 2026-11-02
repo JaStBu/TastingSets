@@ -53,5 +53,8 @@
   { "_id": "benromach", "name": "Benromach", "country": "GB-SCT", "region": "Speyside" },
   { "_id": "harris", "name": "Harris", "country": "GB-SCT", "region": "Island" },
   { "_id": "macallan", "name": "Macallan", "country": "GB-SCT", "region": "Speyside" },
-  { "_id": "tullibardine", "name": "Tullibardine", "country": "GB-SCT", "region": "Highland" }
+  { "_id": "tullibardine", "name": "Tullibardine", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "auchentoshan", "name": "Auchentoshan", "country": "GB-SCT", "region": "Lowland" },
+  { "_id": "jura", "name": "Jura", "country": "GB-SCT", "region": "Island" },
+  { "_id": "springbank", "name": "Springbank", "country": "GB-SCT", "region": "Campbeltown" }
 ]

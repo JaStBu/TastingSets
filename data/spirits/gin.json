@@ -8,6 +8,14 @@
     "url": null
   },
   {
+    "_id": "clockers-gin",
+    "name": "Clockers Gin",
+    "category_id": "gin",
+    "distillery_id": "augustus-rex",
+    "abv": 44.0,
+    "url": null
+  },
+  {
     "_id": "hammer-son-old-english-gin",
     "name": "Hammer & Son Old English Gin",
     "category_id": "gin",
@@ -29,6 +37,14 @@
     "category_id": "gin",
     "distillery_id": "emill-scheibel",
     "abv": 43.0,
+    "url": null
+  },
+  {
+    "_id": "zufanek-omg-gin",
+    "name": "Žufánek OMG - Oh My Gin",
+    "category_id": "gin",
+    "distillery_id": "zufanek",
+    "abv": 45.0,
     "url": null
   }
 ]

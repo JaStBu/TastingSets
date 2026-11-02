@@ -1,4 +1,5 @@
 [
+  { "_id": "augustus-rex", "name": "Augustus Rex", "country": "DE" },
   { "_id": "emill-scheibel", "name": "EMILL (Scheibel)", "country": "DE", "region": "Baden-Württemberg" },
   { "_id": "finch", "name": "Finch", "country": "DE", "region": "Baden-Württemberg" },
   { "_id": "elch-whisky", "name": "Elch Whisky", "country": "DE", "region": "Bayern" },

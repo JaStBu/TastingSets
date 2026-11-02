@@ -102,5 +102,29 @@
     "distillery_id": "west-cork",
     "abv": 40.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/146503/west-cork-16-year-old"
+  },
+  {
+    "_id": "bushmills-21-madeira-finish",
+    "name": "Bushmills 21 Years Madeira Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "bushmills",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/56634/bushmills-21-year-old"
+  },
+  {
+    "_id": "connemara-12-peated",
+    "name": "Connemara 12 Years Peated",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "cooley",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/65770/connemara-12-year-old"
+  },
+  {
+    "_id": "penderyn-sherrywood",
+    "name": "Penderyn Sherrywood",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "penderyn",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/71567/penderyn-sherrywood"
   }
 ]

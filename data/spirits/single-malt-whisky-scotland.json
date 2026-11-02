@@ -1022,5 +1022,133 @@
     "distillery_id": "tullibardine",
     "abv": 43.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/40744/tullibardine-228"
+  },
+  {
+    "_id": "ancnoc-12",
+    "name": "anCnoc 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "knockdhu",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/239/ancnoc-12-year-old"
+  },
+  {
+    "_id": "ardbeg-corryvreckan",
+    "name": "Ardbeg Corryvreckan",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "ardbeg",
+    "abv": 57.1,
+    "url": "https://www.whiskybase.com/whiskies/whisky/84300/ardbeg-corryvreckan"
+  },
+  {
+    "_id": "arran-sauternes-cask-finish",
+    "name": "Arran Sauternes Cask Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lochranza",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/63987/arran-the-sauternes-cask-finish"
+  },
+  {
+    "_id": "auchentoshan-three-wood",
+    "name": "Auchentoshan Three Wood",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "auchentoshan",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/51888/auchentoshan-three-wood"
+  },
+  {
+    "_id": "ballechin-10",
+    "name": "Ballechin 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "edradour",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/58671/ballechin-10-year-old"
+  },
+  {
+    "_id": "balvenie-doublewood-17",
+    "name": "Balvenie DoubleWood 17 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "balvenie",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/38464/balvenie-17-year-old"
+  },
+  {
+    "_id": "benriach-solstice-17-edition-2",
+    "name": "BenRiach Solstice 17 Years Edition 2",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "benriach",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/29410/benriach-17-year-old"
+  },
+  {
+    "_id": "bowmore-18",
+    "name": "Bowmore 18 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "bowmore",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/199/bowmore-18-year-old"
+  },
+  {
+    "_id": "caol-ila-25",
+    "name": "Caol Ila 25 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "caol-ila",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/16393/caol-ila-25-year-old"
+  },
+  {
+    "_id": "glenfarclas-oloroso-sherry-cask-1996-2015",
+    "name": "Glenfarclas Oloroso Sherry Cask 1996/2015",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenfarclas",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/70636/glenfarclas-1996"
+  },
+  {
+    "_id": "jura-turas-mara",
+    "name": "Jura Turas-Mara",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "jura",
+    "abv": 42.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/41072/isle-of-jura-turas-mara"
+  },
+  {
+    "_id": "longrow-red-12",
+    "name": "Longrow Red 12 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "springbank",
+    "abv": 52.9,
+    "url": "https://www.whiskybase.com/whiskies/whisky/71395/longrow-12-year-old"
+  },
+  {
+    "_id": "octomore-07-1-208",
+    "name": "Octomore 07.1 5 Years 208 PPM",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "bruichladdich",
+    "abv": 59.5,
+    "url": "https://www.whiskybase.com/whiskies/whisky/67302/octomore-edition-071-208"
+  },
+  {
+    "_id": "springbank-10",
+    "name": "Springbank 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "springbank",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/5896/springbank-10-year-old"
+  },
+  {
+    "_id": "talisker-distillers-edition-2005-2015",
+    "name": "Talisker Distillers Edition 2005/2015",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "talisker",
+    "abv": 45.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/72895/talisker-2005"
+  },
+  {
+    "_id": "tobermory-10",
+    "name": "Tobermory 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "tobermory",
+    "abv": 46.3,
+    "url": "https://www.whiskybase.com/whiskies/whisky/16332/tobermory-10-year-old"
   }
 ]

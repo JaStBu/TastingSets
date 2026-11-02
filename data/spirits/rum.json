@@ -1,5 +1,13 @@
 [
   {
+    "_id": "botucal-reserva-exclusiva-12",
+    "name": "Botucal Reserva Exclusiva 12 Years",
+    "category_id": "rum",
+    "distillery_id": "destilerias-unidas",
+    "abv": 40.0,
+    "url": null
+  },
+  {
     "_id": "el-dorado-15",
     "name": "El Dorado 15 Years",
     "category_id": "rum",
@@ -29,6 +37,14 @@
     "category_id": "rum",
     "distillery_name": "Plantation",
     "abv": 45.0,
+    "url": null
+  },
+  {
+    "_id": "plantation-nicaragua-old-reserve-2003",
+    "name": "Plantation Nicaragua Old Reserve 2003 8 Years",
+    "category_id": "rum",
+    "distillery_name": "Plantation",
+    "abv": 42.0,
     "url": null
   },
   {
