@@ -56,5 +56,9 @@
   { "_id": "tullibardine", "name": "Tullibardine", "country": "GB-SCT", "region": "Highland" },
   { "_id": "auchentoshan", "name": "Auchentoshan", "country": "GB-SCT", "region": "Lowland" },
   { "_id": "jura", "name": "Jura", "country": "GB-SCT", "region": "Island" },
-  { "_id": "springbank", "name": "Springbank", "country": "GB-SCT", "region": "Campbeltown" }
+  { "_id": "springbank", "name": "Springbank", "country": "GB-SCT", "region": "Campbeltown" },
+  { "_id": "glenfiddich", "name": "Glenfiddich", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "glenlivet", "name": "Glenlivet", "country": "GB-SCT", "region": "Speyside" },
+  { "_id": "glenmorangie", "name": "Glenmorangie", "country": "GB-SCT", "region": "Highland" },
+  { "_id": "highland-park", "name": "Highland Park", "country": "GB-SCT", "region": "Island" }
 ]

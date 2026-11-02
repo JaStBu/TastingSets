@@ -46,5 +46,21 @@
     "distillery_id": "zufanek",
     "abv": 45.0,
     "url": null
+  },
+  {
+    "_id": "gvine-floraison",
+    "name": "G'Vine Floraison",
+    "category_id": "gin",
+    "distillery_id": "g-vine",
+    "abv": 40.0,
+    "url": null
+  },
+  {
+    "_id": "prof-cornelius-bathtub-gin",
+    "name": "Prof. Cornelius Ampleforth's Bathtub Gin",
+    "category_id": "gin",
+    "distillery_name": "Prof. Cornelius Ampleforth's",
+    "abv": 43.0,
+    "url": null
   }
 ]

@@ -8,6 +8,14 @@
     "url": null
   },
   {
+    "_id": "don-julio-blanco",
+    "name": "Don Julio Tequila Blanco",
+    "category_id": "tequila",
+    "distillery_id": "don-julio",
+    "abv": 38.0,
+    "url": null
+  },
+  {
     "_id": "herencia-de-plata-anejo",
     "name": "Herencia de Plata Añejo",
     "category_id": "tequila",

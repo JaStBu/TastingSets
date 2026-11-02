@@ -8,5 +8,12 @@
   { "_id": "grappa", "names": { "de": "Grappa", "en": "Grappa" } },
   { "_id": "single-pot-whiskey", "names": { "de": "Single Pot Whiskey", "en": "Single Pot Whiskey" } },
   { "_id": "rum", "names": { "de": "Rum", "en": "Rum" } },
-  { "_id": "tequila", "names": { "de": "Tequila", "en": "Tequila" } }
+  { "_id": "tequila", "names": { "de": "Tequila", "en": "Tequila" } },
+  { "_id": "blended-whisky", "names": { "de": "Blended Whisky", "en": "Blended Whisky" } },
+  { "_id": "cachaca", "names": { "de": "Cachaça", "en": "Cachaça" } },
+  { "_id": "cognac", "names": { "de": "Cognac", "en": "Cognac" } },
+  { "_id": "fruit-brandy", "names": { "de": "Obstbrand", "en": "Fruit Brandy" } },
+  { "_id": "liqueur", "names": { "de": "Likör", "en": "Liqueur" } },
+  { "_id": "pisco", "names": { "de": "Pisco", "en": "Pisco" } },
+  { "_id": "vodka", "names": { "de": "Wodka", "en": "Vodka" } }
 ]

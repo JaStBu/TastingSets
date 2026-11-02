@@ -1,0 +1,10 @@
+[
+  {
+    "_id": "ziegler-winterlikor",
+    "name": "Ziegler Winterlikör",
+    "category_id": "liqueur",
+    "distillery_id": "ziegler",
+    "abv": 20.0,
+    "url": null
+  }
+]

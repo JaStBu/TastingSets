@@ -1,0 +1,31 @@
+{
+  "_id": "advent-2015",
+  "names": { "de": "Whisky-Adventskalender 2015", "en": "Whisky Advent Calendar 2015" },
+  "year": 2015,
+  "members": [
+    { "member_id": "1", "spirit_id": "gerhards-weissacher-zwetschgenwasser" },
+    { "member_id": "2", "spirit_id": "glencadam-10" },
+    { "member_id": "3", "spirit_id": "magnifica-reserva-soleira" },
+    { "member_id": "4", "spirit_id": "aureum-1865-grave-digger" },
+    { "member_id": "5", "spirit_id": "fassbind-vieille-poire" },
+    { "member_id": "6", "spirit_id": "togouchi-12" },
+    { "member_id": "7", "spirit_id": "don-julio-blanco" },
+    { "member_id": "8", "spirit_id": "arran-amarone-cask-finish" },
+    { "member_id": "9", "spirit_id": "the-duke-lions-vodka" },
+    { "member_id": "10", "spirit_id": "glenfiddich-15-solera" },
+    { "member_id": "11", "spirit_id": "cascajal-quebranta" },
+    { "member_id": "12", "spirit_id": "laphroaig-quarter-cask" },
+    { "member_id": "13", "spirit_id": "pitaud-petite-champagne" },
+    { "member_id": "14", "spirit_id": "glenlivet-15-french-oak" },
+    { "member_id": "15", "spirit_id": "gvine-floraison" },
+    { "member_id": "16", "spirit_id": "glenfarclas-17" },
+    { "member_id": "17", "spirit_id": "prof-cornelius-bathtub-gin" },
+    { "member_id": "18", "spirit_id": "caol-ila-distillers-edition" },
+    { "member_id": "19", "spirit_id": "gold-of-mauritius" },
+    { "member_id": "20", "spirit_id": "glenmorangie-18-extremely-rare" },
+    { "member_id": "21", "spirit_id": "ron-zacapa-23-sistema-solera" },
+    { "member_id": "22", "spirit_id": "highland-park-dark-origins" },
+    { "member_id": "23", "spirit_id": "ziegler-winterlikor" },
+    { "member_id": "24", "spirit_id": "glendronach-21-parliament" }
+  ]
+}

@@ -54,5 +54,21 @@
     "distillery_name": "Rhum J.M",
     "abv": 45.0,
     "url": null
+  },
+  {
+    "_id": "gold-of-mauritius",
+    "name": "Gold of Mauritius",
+    "category_id": "rum",
+    "distillery_name": "Blue Liqueurs Ltd.",
+    "abv": 40.0,
+    "url": null
+  },
+  {
+    "_id": "ron-zacapa-23-sistema-solera",
+    "name": "Ron Zacapa 23 Years Sistema Solera",
+    "category_id": "rum",
+    "distillery_name": "Ron Zacapa",
+    "abv": 40.0,
+    "url": null
   }
 ]

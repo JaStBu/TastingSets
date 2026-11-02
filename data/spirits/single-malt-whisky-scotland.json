@@ -1150,5 +1150,85 @@
     "distillery_id": "tobermory",
     "abv": 46.3,
     "url": "https://www.whiskybase.com/whiskies/whisky/16332/tobermory-10-year-old"
+  },
+  {
+    "_id": "arran-amarone-cask-finish",
+    "name": "Arran Amarone Cask Finish",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "lochranza",
+    "abv": 50.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/67299/arran-the-amarone-cask-finish"
+  },
+  {
+    "_id": "caol-ila-distillers-edition",
+    "name": "Caol Ila Distillers Edition",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "caol-ila",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/59413/caol-ila-2002"
+  },
+  {
+    "_id": "glencadam-10",
+    "name": "Glencadam 10 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glencadam",
+    "abv": 46.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/44823/glencadam-10-year-old"
+  },
+  {
+    "_id": "glendronach-21-parliament",
+    "name": "The GlenDronach 21 Years Parliament",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glendronach",
+    "abv": 48.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/25341/glendronach-21-year-old"
+  },
+  {
+    "_id": "glenfarclas-17",
+    "name": "Glenfarclas 17 Years",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenfarclas",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/4014/glenfarclas-17-year-old"
+  },
+  {
+    "_id": "glenfiddich-15-solera",
+    "name": "Glenfiddich 15 Years Solera",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenfiddich",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/41469/glenfiddich-15-year-old"
+  },
+  {
+    "_id": "glenlivet-15-french-oak",
+    "name": "Glenlivet 15 Years French Oak Reserve",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenlivet",
+    "abv": 40.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/39497/glenlivet-15-year-old"
+  },
+  {
+    "_id": "glenmorangie-18-extremely-rare",
+    "name": "Glenmorangie 18 Years Extremely Rare",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "glenmorangie",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/11730/glenmorangie-18-year-old"
+  },
+  {
+    "_id": "highland-park-dark-origins",
+    "name": "Highland Park Dark Origins",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "highland-park",
+    "abv": 46.8,
+    "url": "https://www.whiskybase.com/whiskies/whisky/56087/highland-park-dark-origins"
+  },
+  {
+    "_id": "laphroaig-quarter-cask",
+    "name": "Laphroaig Quarter Cask",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "laphroaig",
+    "abv": 48.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/42887/laphroaig-quarter-cask"
   }
 ]

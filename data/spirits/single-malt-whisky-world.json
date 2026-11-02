@@ -126,5 +126,13 @@
     "distillery_id": "penderyn",
     "abv": 46.0,
     "url": "https://www.whiskybase.com/whiskies/whisky/71567/penderyn-sherrywood"
+  },
+  {
+    "_id": "aureum-1865-grave-digger",
+    "name": "Aureum 1865 Grave Digger Edition",
+    "category_id": "single-malt-whisky",
+    "distillery_id": "ziegler",
+    "abv": 43.0,
+    "url": "https://www.whiskybase.com/whiskies/whisky/58844/aureum-1865-06-year-old"
   }
 ]
