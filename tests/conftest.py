@@ -46,7 +46,7 @@ TASTING_SETS = [
         "year": 2025,
         "members": [
             {"member_id": "1", "spirit_id": "ardbeg-10"},
-            {"member_id": "2", "spirit_id": "secret-12", "notes": {"de": "cask strength"}},
+            {"member_id": "2", "spirit_id": "secret-12"},
         ],
     },
     {

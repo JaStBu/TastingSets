@@ -89,7 +89,7 @@ cli: validate | build | schema
   "year": 2026,
   "members": [
     { "member_id": "1", "spirit_id": "ardbeg-10" },
-    { "member_id": "2", "spirit_id": "secret-speyside-12", "notes": { "de": "Fassstärke" } }
+    { "member_id": "2", "spirit_id": "secret-speyside-12" }
   ]
 }
 ```
@@ -180,7 +180,7 @@ Dasselbe Set mit optionalen Gruppen (statt `members` steht `groups`):
 7. `SetMember(BaseModel)`:
    - Kein eigenes Dokument, sondern Teil des Tasting Sets. Gleiche Konfiguration wie oben, aber ohne `_id`.
    - `member_id: str` mit Regex `^[A-Za-z0-9_-]+$`.
-   - `spirit_id: str`, optional `notes: LocalizedText | None` (Nachtrag: Notizen sind beschreibender Text und werden übersetzt).
+   - `spirit_id: str`.
 8. `TastingSet(Document)`:
    - `names: LocalizedText` (Nachtrag: der Set-Name ist beschreibend und wird übersetzt, anders als die Eigennamen von Brennerei und Schnaps), optional `year: int | None`, `members: list[SetMember]`.
    - Ein Validator stellt sicher, dass `member_id` innerhalb des Sets eindeutig ist.
@@ -219,7 +219,7 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
 11. `catalog.py`:
     - `Catalog` (Dataclass) mit Dictionaries nach ID, gebaut aus einem Repository über `Catalog.from_repository(repo)`.
     - Auflösungs-Funktionen, die `ResolvedMember` liefern. Felder:
-      - `fqn`, `member_id`, `notes`
+      - `fqn`, `member_id`
       - `spirit`, `category`
       - `distillery: Distillery | None`
       - `distillery_label`: Anzeigename der Brennerei, sonst Rückfall auf `distillery_name`
@@ -413,7 +413,7 @@ Alle Dateien sind neu.
    - Ein Seed-Befehl `tastingsets seed-mongo` liest die JSON-Dateien über `JsonRepository`, validiert sie und spielt sie per Upsert nach `_id` ein.
    - FastAPI-Routen verwenden `Catalog`, `stats` und dieselben Templates.
    - Da MongoDB keine Referenzen prüft, läuft `validate` dann als Admin- oder CI-Befehl gegen die Datenbank.
-2. **Weitere Felder für später**, z.B. `volume_ml` und `cask` am Spirit oder `opened_on` am Member: `extra="forbid"` sorgt dafür, dass so etwas bewusst im Modell ergänzt wird. Vorschlag: zunächst weglassen.
+2. **Weitere Felder für später**, z.B. `tasting_notes`, `volume_ml` und `cask` am Spirit oder `opened_on` am Member: `extra="forbid"` sorgt dafür, dass so etwas bewusst im Modell ergänzt wird. Vorschlag: zunächst weglassen.
 3. **Gruppen und MongoDB:** Ein Set-Dokument enthält entweder `members` oder `groups[].members`. Abfragen über alle Flaschen dürfen daher nicht direkt auf `members` lesen, sondern gehen über `Catalog` bzw. `TastingSet.all_members`. Alternativ schreibt das `MongoRepository` beim Speichern zusätzlich eine flache Member-Liste; das wird erst bei dessen Umsetzung entschieden. Die Gruppe steht bewusst nicht im FQN (`advent-2026/wine-finish/3` wurde verworfen): die Nummer ist im Set bereits eindeutig und Links bleiben stabil, wenn Gruppen umgebaut werden.
 4. **Einstellbare Standardsprache (Stufe 2):** siehe README, Abschnitt „Architecture and outlook“. Umsetzung erst bei konkretem Bedarf.
 5. **Sortierung der Member:** Reihenfolge wie in der Datei (empfohlen, Standard) oder natürliche Sortierung nach `member_id` (1, 2, … 10 statt 1, 10, 2). Kann man im Template umschaltbar machen.

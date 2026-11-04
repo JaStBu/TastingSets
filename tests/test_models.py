@@ -131,14 +131,3 @@ def test_tasting_set_name_is_localized():
         TastingSet.model_validate(
             {"_id": "advent", "names": {"en": "Advent calendar"}, "members": []}
         )
-
-
-def test_set_member_notes_are_localized():
-    member = SetMember.model_validate(
-        {"member_id": "1", "spirit_id": "a", "notes": {"de": "Fassstärke", "en": "Cask strength"}}
-    )
-    assert member.notes == {"de": "Fassstärke", "en": "Cask strength"}
-    with pytest.raises(ValidationError):
-        SetMember.model_validate(
-            {"member_id": "1", "spirit_id": "a", "notes": {"en": "only english"}}
-        )

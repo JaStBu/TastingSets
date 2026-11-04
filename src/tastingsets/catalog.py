@@ -19,7 +19,6 @@ class ResolvedMember:
     set_id: str
     fqn: str
     member_id: str
-    notes: dict[str, str] | None
     spirit: Spirit
     category: Category
     distillery: Distillery | None
@@ -86,7 +85,6 @@ class Catalog:
             set_id=tasting_set.id,
             fqn=tasting_set.fqn(member),
             member_id=member.member_id,
-            notes=member.notes,
             spirit=spirit,
             category=category,
             distillery=distillery,

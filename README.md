@@ -35,10 +35,10 @@ Each folder under `data/` is one collection (= later one MongoDB collection). In
 | `data/spirits/` | spirit | `_id`, `name`, `display_name`?, `category_id`, `abv` (0–100), `distillery_id`?, `distillery_name`?, `url`? |
 | `data/tasting_sets/` | tasting set | `_id`, `names` (language → name, default language required), `year`?, and **either** `members` **or** `groups` |
 
-A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`, `notes`? (language → text, same format as `names`).
+A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`.
 
 - `member_id` is unique inside a set (also across groups). Across sets, a member is identified by its fully qualified name `<set_id>/<member_id>`, e.g. `advent-2026/24`.
-- **Names:** distillery and spirit names are proper nouns and are not translated (`name`, optional `display_name`). Tasting set names, group names and member notes are localized (`names`, `description`, `notes`), because they are descriptive text.
+- **Names:** distillery and spirit names are proper nouns and are not translated (`name`, optional `display_name`). Tasting set names and group names/descriptions are localized (`names`, `description`), because they are descriptive text.
 - **Groups (optional):** a set can be divided into display-only sub-groups, e.g. 4 groups of 3 bottles. Instead of `members`, the set then has `groups`, each with `group_id`, `names` (language → name, default language required), `description`? (same format) and its own `members`. So either all bottles of a set are in a group or none. Groups are shown on the set page (header row per group plus a sentence like "2 groups of 3 bottles each") and as a count on the overview page. They have no influence on statistics. Order is preserved: groups as defined, members as in the file.
 
 ```json
@@ -52,7 +52,7 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
       "description": { "de": "Gereift in Weinfässern" },
       "members": [
         { "member_id": "1", "spirit_id": "ardbeg-10" },
-        { "member_id": "2", "spirit_id": "ardbeg-uigeadail", "notes": { "de": "Fassstärke" } }
+        { "member_id": "2", "spirit_id": "ardbeg-uigeadail" }
       ]
     }
   ]
@@ -63,7 +63,7 @@ A *set member* is embedded in its tasting set: `member_id` (string), `spirit_id`
 
 ### Languages
 
-The default language is defined once in `src/tastingsets/languages.py` (currently `de`). It is required in every localized field (`names`, `description`, `notes`), it is the fallback for localized content and UI strings, it must always be built, and `/index.html` redirects to it. To use another default language (e.g. Spanish), change `DEFAULT_LANGUAGE`, add `locales/es.json` with the same keys as the other locale files, and add the language to all localized fields in `data/` (`uv run tastingsets validate` lists every affected document).
+The default language is defined once in `src/tastingsets/languages.py` (currently `de`). It is required in every localized field (`names`, `description`), it is the fallback for localized content and UI strings, it must always be built, and `/index.html` redirects to it. To use another default language (e.g. Spanish), change `DEFAULT_LANGUAGE`, add `locales/es.json` with the same keys as the other locale files, and add the language to all localized fields in `data/` (`uv run tastingsets validate` lists every affected document).
 
 ### Validation
 

@@ -86,7 +86,7 @@ def test_set_page_lists_members_with_details(data_dir, tmp_path):
     assert "Vereinigtes Königreich" in html  # localized country
     assert "Secret Distillery" in html  # distillery without entry
     assert "46,0 %" in html  # German number format
-    assert "cask strength" in html
+    assert "Anmerkung" not in html
     assert 'href="https://example.org/secret"' in html
 
 
@@ -169,13 +169,12 @@ def test_region_stats_title_and_labels_for_countries_and_across(tmp_path, monkey
     assert "<td>Italien, Friuli</td>" in html
 
 
-def test_set_name_and_notes_are_localized(data_dir, tmp_path):
+def test_set_name_is_localized(data_dir, tmp_path):
     out = tmp_path / "dist"
     build(JsonRepository(data_dir), out, languages=["de", "en"])
     de = (out / "de" / "sets" / "advent-2025" / "index.html").read_text(encoding="utf-8")
     en = (out / "en" / "sets" / "advent-2025" / "index.html").read_text(encoding="utf-8")
     assert "Advent 2025" in de and "Advent 2025" in en  # no English name -> fallback
-    assert "cask strength" in de and "cask strength" in en  # notes fall back too
     index_en = (out / "en" / "index.html").read_text(encoding="utf-8")
     assert "Advent 2026" in index_en
 

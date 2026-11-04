@@ -13,23 +13,19 @@
       "members": [
         {
           "member_id": "11",
-          "spirit_id": "auchroisk-10-flora-fauna",
-          "notes": { "de": "Aroma: Aromatisch und durch Zitrusfrüchte geprägt. Geschmack: Sehr weich und süß. Abgang: Im Abgang trockener werdend." }
+          "spirit_id": "auchroisk-10-flora-fauna"
         },
         {
           "member_id": "12",
-          "spirit_id": "strathmill-12-flora-fauna",
-          "notes": { "de": "Aroma: Voll und schwer. Geschmack: Angenehm und würzig mit Sherry, Malz und Karamell. Abgang: Lang und aromatisch." }
+          "spirit_id": "strathmill-12-flora-fauna"
         },
         {
           "member_id": "13",
-          "spirit_id": "blair-athol-12",
-          "notes": { "de": "Aroma: Leicht und süßlich, etwas Rauch. Geschmack: Süß und rauchig, wärmend. Abgang: Lang, mit dezenter Süße." }
+          "spirit_id": "blair-athol-12"
         },
         {
           "member_id": "14",
-          "spirit_id": "benrinnes-15-flora-fauna",
-          "notes": { "de": "Aroma: Süß mit dunklen Beeren. Geschmack: Würzig und leicht rauchig, mit Orange, Eiche, Schokolade und Kaffee. Abgang: Lang und trocken mit Eichennoten." }
+          "spirit_id": "benrinnes-15-flora-fauna"
         }
       ]
     },
@@ -43,23 +39,19 @@
       "members": [
         {
           "member_id": "21",
-          "spirit_id": "bunnahabhain-11-gm-discovery",
-          "notes": { "de": "Aroma: Süße Aromen nach Sherry, Orangenmarmelade, Trockenobst und feinen Gewürzen mit cremigem Vanille-Toffee. Geschmack: Süß und cremig mit Datteln, geschmorten Pflaumen, Walnussnoten und Zimtgewürz. Abgang: Lang mit Milchschokolade, getrockneten Früchten und Nüssen." }
+          "spirit_id": "bunnahabhain-11-gm-discovery"
         },
         {
           "member_id": "22",
-          "spirit_id": "glenrothes-11-gm-discovery",
-          "notes": { "de": "Aroma: Reiche Toffee-Noten mit Fruchtkompott, sherrytönig mit Waldfrüchten, Zimt und Schokolade. Geschmack: Himbeeren und Brombeeren mit Zimt und gerösteter Eiche. Abgang: Mittellang und cremig mit Milchschokolade und Orange." }
+          "spirit_id": "glenrothes-11-gm-discovery"
         },
         {
           "member_id": "23",
-          "spirit_id": "caol-ila-13-gm-discovery",
-          "notes": { "de": "Aroma: Süß und herzhaft mit geräuchertem Fleisch, glasierter Marillenmarmelade und Vanille; im Hintergrund leichte Rauchnoten. Geschmack: Tropische Früchte wie Ananas, Kiwi und Banane, dazu leichte Noten von Malz und Zitronenschale. Abgang: Lang und rauchig nach Lagerfeuer." }
+          "spirit_id": "caol-ila-13-gm-discovery"
         },
         {
           "member_id": "24",
-          "spirit_id": "ledaig-12-gm-discovery",
-          "notes": { "de": "Aroma: Rauch mit geräuchertem Ahornholz, Toffee und Bratäpfeln; im Hintergrund maritime Noten von Seegras und Meersalz. Geschmack: Geschmorte Früchte, Sultaninen und Johannisbeeren mit Milchschokolade, Crème Brûlée, Toffee und Zitrusfrüchten. Abgang: Lang mit Eiche und Zitrus." }
+          "spirit_id": "ledaig-12-gm-discovery"
         }
       ]
     },
@@ -73,23 +65,19 @@
       "members": [
         {
           "member_id": "31",
-          "spirit_id": "redbreast-15",
-          "notes": { "de": "Aroma: Voll und aromatisch, schön ausbalanciert mit Beeren und aromatischen Ölen. Geschmack: Rund und weich mit saftigen Früchten, Vanille, Gewürzen und Eichennoten. Abgang: Lang anhaltend." }
+          "spirit_id": "redbreast-15"
         },
         {
           "member_id": "32",
-          "spirit_id": "glencadam-18",
-          "notes": { "de": "Aroma: Komplex und würzig mit Ananas und Banane, etwas Zigarrenbox und Pfeffer. Geschmack: Floral, fruchtig und würzig mit Malz und Muskat. Abgang: Würzig und leicht pfeffrig." }
+          "spirit_id": "glencadam-18"
         },
         {
           "member_id": "33",
-          "spirit_id": "old-pulteney-17",
-          "notes": { "de": "Aroma: Süß mit Spuren von Äpfeln und Birnen, leichter Eiche und etwas Butterscotch. Geschmack: Voller Körper mit etwas Vanille und blumigen Noten im Hintergrund. Abgang: Eindrucksvoll und lang anhaltend." }
+          "spirit_id": "old-pulteney-17"
         },
         {
           "member_id": "34",
-          "spirit_id": "ancnoc-18",
-          "notes": { "de": "Aroma: Milde Gewürze und intensive Süße mit getrockneten Früchten, Schokolade, reifen Orangen und geöltem Leder. Geschmack: Voller Körper, kräftig, mit aromatischen Gewürzen, Stollen und kandierter Zitrone, gefolgt von Vanille, Honig und Karamell. Abgang: Pfeffrig und heiß, dann delikat süß und sanft." }
+          "spirit_id": "ancnoc-18"
         }
       ]
     },
@@ -99,23 +87,19 @@
       "members": [
         {
           "member_id": "41",
-          "spirit_id": "clynelish-14",
-          "notes": { "de": "Aroma: Leicht, Kerzenwachs mit etwas Zucker, floral und aromatisch, getrocknete Blumen am Strand, gefolgt von braunem Zucker. Geschmack: Angenehmes Gaumengefühl, zartölig mit maritimem Charakter. Abgang: Leichter Salzgeschmack, trocken mit Eiche." }
+          "spirit_id": "clynelish-14"
         },
         {
           "member_id": "42",
-          "spirit_id": "oban-14",
-          "notes": { "de": "Aroma: Zart torfig-rauchig mit Früchten und einer Spur Salz. Geschmack: Anhaltend sanft und salzig. Abgang: Trocken, rauchig und delikat." }
+          "spirit_id": "oban-14"
         },
         {
           "member_id": "43",
-          "spirit_id": "laphroaig-15",
-          "notes": { "de": "Aroma: Torfrauch mit Grapefruit und frischer Minze. Geschmack: Rosa Pfeffer und Torfrauch, leicht trocken mit Tabak und Meersalz. Abgang: Weich und rauchig." }
+          "spirit_id": "laphroaig-15"
         },
         {
           "member_id": "44",
-          "spirit_id": "laphroaig-18",
-          "notes": { "de": "Aroma: Anklänge von Karamell mit Gewürzen, gefolgt von Seegras, Früchten, Salz und kräftigem Torfrauch. Geschmack: Rauch vermischt sich mit blumigen Noten und Eichenholz; im Hintergrund ein Hauch Vanille. Abgang: Mittellang bis lang, ölig mit kräftigem Rauch und Gewürzen." }
+          "spirit_id": "laphroaig-18"
         }
       ]
     }
