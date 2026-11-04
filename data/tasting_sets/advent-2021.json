@@ -7,16 +7,16 @@
       "group_id": "tomintoul",
       "names": { "de": "Tomintoul Core-Range", "en": "Tomintoul Core Range" },
       "members": [
-        { "member_id": "1", "spirit_id": "tomintoul-10", "notes": { "de": "Aroma: Angenehm voll mit Nüssen und Gewürzen. Geschmack: Süßlich, malzig und angenehm weich. Abgang: Lang anhaltend und mild." } },
-        { "member_id": "2", "spirit_id": "tomintoul-16", "notes": { "de": "Aroma: Ausbalanciert und weich mit Haselnüssen und etwas Orangeat. Geschmack: Voll, nussig und würzig. Abgang: Anhaltend und cremig mit Gewürzen." } }
+        { "member_id": "1", "spirit_id": "tomintoul-10" },
+        { "member_id": "2", "spirit_id": "tomintoul-16" }
       ]
     },
     {
       "group_id": "peat-smoke",
       "names": { "de": "Ein rauchiges Experiment", "en": "A smoky experiment" },
       "members": [
-        { "member_id": "3", "spirit_id": "old-ballantruan-10", "notes": { "de": "Aroma: Leicht würzig, süß und cremig mit Torfrauch. Geschmack: Milder Torfrauch, süß, cremig und etwas Malz. Abgang: Süß mit köstlichem Torfrauch." } },
-        { "member_id": "4", "spirit_id": "lagavulin-16", "notes": { "de": "Aroma: Intensiver Torfrauch mit Noten von Jod und Seetang und reicher tiefer Süße. Geschmack: Trockener Torfrauch füllt den Gaumen mit einer sanften und kraftvollen Süße, um dann Noten von Meer und Salz mit Anflügen von Holz zu weichen. Abgang: Langes, elegantes, von Rauchigkeit erfülltes Finish mit viel Salz und Meeresalgen." } }
+        { "member_id": "3", "spirit_id": "old-ballantruan-10" },
+        { "member_id": "4", "spirit_id": "lagavulin-16" }
       ]
     },
     {
@@ -24,20 +24,20 @@
       "names": { "de": "Tequila", "en": "Tequila" },
       "description": { "de": "Reposado (mind. 2 Monate im Eichenfass) und Añejo (mind. 12 Monate im Eichenfass) verschiedener Brennereien.", "en": "Reposado (at least 2 months in oak) and Añejo (at least 12 months in oak) from different distilleries." },
       "members": [
-        { "member_id": "5", "spirit_id": "herencia-de-plata-reposado", "notes": { "de": "Aroma und Geschmack: 3-fach destilliert und für 8 Monate in einem Sherry-Fass gelagert. Ein runder Agavengeschmack mit einer fröhlichen Vanille-, Kokos- und Karamellnote bildet den Abgang." } },
-        { "member_id": "6", "spirit_id": "herencia-de-plata-anejo", "notes": { "de": "Aroma und Geschmack: Für 18 Monate in einem Sherry-Fass gelagert. Runder, leicht fruchtiger Körper, der etwas an Karamell erinnert. Im Finale schmeckt man würzige Agave und Chili." } },
-        { "member_id": "7", "spirit_id": "aha-toro-anejo", "notes": { "de": "Aroma und Geschmack: Für 2 Jahre in ehemaligen Jack Daniels Fässern gelagert. Geschmack von Chili, Roggen, Kaffee, braunem Zucker und Eichenholz sowie etwas Nougat." } },
-        { "member_id": "8", "spirit_id": "terralta-anejo", "notes": { "de": "Für 1 Jahr im Eichenfass gereift. Aroma: Whiskey/Eiche, etwas Agavensüße, helles Leder, grüner Apfel und eine leichte Fruchtpräsenz, helles Karamell, etwas Gewürz. Geschmack: Mittlere Wärme, einige Früchte mit grünen Äpfeln, etwas milder Rauch und eine Prise Vanille und Ahornsirup." } }
+        { "member_id": "5", "spirit_id": "herencia-de-plata-reposado" },
+        { "member_id": "6", "spirit_id": "herencia-de-plata-anejo" },
+        { "member_id": "7", "spirit_id": "aha-toro-anejo" },
+        { "member_id": "8", "spirit_id": "terralta-anejo" }
       ]
     },
     {
       "group_id": "tobermory",
       "names": { "de": "Tobermory & Ledaig Core-Range", "en": "Tobermory & Ledaig Core Range" },
       "members": [
-        { "member_id": "9", "spirit_id": "tobermory-12", "notes": { "de": "Aroma: Zitrusfrüchte und frische florale Noten mit subtilen Gewürzen und Vanille. Geschmack: Fruchtig nach Orange und Zitrone. Cremiges Karamell mit reichen Vanillenoten. Dazu leichte Würze von Zimt und Nelke. Abgang: Lang anhaltend mit Vanille und Gewürzen." } },
-        { "member_id": "10", "spirit_id": "tobermory-18", "notes": { "de": "Aroma: Leicht, süß und floral mit Getreide, Malzzucker und Vanille. Leicht pfeffrig mit Honig und etwas Eukalyptus. Geschmack: Weich und wieder floral mit süßen Akzenten. Dann Eiche und Salz. Abgang: Lakritz, Zimt und Apfelkompott mit Minze." } },
-        { "member_id": "11", "spirit_id": "ledaig-10", "notes": { "de": "Aroma: Torfrauch, malzige Noten, Datteln mit einem Hauch von Zitronen und reifen Früchten. Geschmack: Über den kräftigen Torfrauch entwickeln sich angenehme Noten von Karamell, Malz und Vanille. Abgang: Lang und anhaltend rauchig mit einer pfeffrigen Schärfe und maritimen Noten." } },
-        { "member_id": "12", "spirit_id": "ledaig-18", "notes": { "de": "Aroma: Voll, fruchtig und rauchig. Maritime Noten mit schwarzem Pfeffer, getrockneten Chilli Flocken und süßer Eiche. Geschmack: Kräftige Sherry- und Raucharomen gefolgt von Orangenschalen, Kaffee, Meersalz, Tabak und weißem Pfeffer. Abgang: Lang, scharf und anhaltend rauchig mit einem Hauch von Lakritz und maritimen Noten." } }
+        { "member_id": "9", "spirit_id": "tobermory-12" },
+        { "member_id": "10", "spirit_id": "tobermory-18" },
+        { "member_id": "11", "spirit_id": "ledaig-10" },
+        { "member_id": "12", "spirit_id": "ledaig-18" }
       ]
     },
     {
@@ -45,11 +45,11 @@
       "names": { "de": "Rum", "en": "Rum" },
       "description": { "de": "Spanischer Stil, französischer Stil, britischer Stil. Wenig Ester, viel Ester, gesüßt, ungesüßt, fruchtig, kräftig, süffig, komplex, lasst euch überraschen.", "en": "Spanish, French and British styles. Low or high ester, sweetened or unsweetened, fruity, bold, easy-drinking or complex: be surprised." },
       "members": [
-        { "member_id": "13", "spirit_id": "malecon-15-reserva-superior", "notes": { "de": "Aroma: Cremige Schokolade gepaart mit frischen Südfrüchten. Geschmack: Dominiert von fruchtigen Pflaumennoten angeschlossen an Bourbonvanille und sämiges Karamell. Abgang: Lang mit verweilenden Süßnoten." } },
-        { "member_id": "14", "spirit_id": "rhum-jm-xo-tres-vieux", "notes": { "de": "Aroma: Gebrannte Mandeln, Zitrone, Zimt und Salbei. Geschmack: Eierkuchen, Ingwer und überreife Mango überzogen mit Karamell, sowie leichte Pfeffrigkeit. Abgang: Mittellang und fruchtig weich mit anhaltenden Gewürznoten." } },
-        { "member_id": "15", "spirit_id": "el-dorado-15", "notes": { "de": "Aroma: Süß mit sanfter Vanille und Blütenhonig, zu denen sich feines Eichenholz und eine Spur von Gewürzen gesellt. Geschmack: Röstaromen und Salz werden von Zartbitterschokolade, Sahnetoffees und Trockenfrüchten begleitet. Abgang: Lang anhaltend und weich mit Karamell und wärmender Eiche im Abgang." } },
-        { "member_id": "16", "spirit_id": "plantation-barbados-xo", "notes": { "de": "Aroma: Toffee mit Marzipan und Kokosraspel. Geschmack: Mild mit intensiven Noten von Kokosraspeln, Schokolade, reifer Banane und Karamell. Abgang: Kurz und mild mit etwas frischer Mango." } },
-        { "member_id": "17", "spirit_id": "hampden-estate-8", "notes": { "de": "Aroma: Kraftvoll und fein mit Aromen von reifen Früchten wie Banane und Mango sowie kandierter Orange. Geschmack: Natürlich süß mit gerösteten Mandeln und Papaya. Dazu gesellen sich dunkle Fruchtnoten wie Pflaumen und Kirschen sowie Gewürze von rotem Pfeffer, Nelkengewürz und Anis. Abgang: Lang und fruchtig-würzig mit Eiche." } }
+        { "member_id": "13", "spirit_id": "malecon-15-reserva-superior" },
+        { "member_id": "14", "spirit_id": "rhum-jm-xo-tres-vieux" },
+        { "member_id": "15", "spirit_id": "el-dorado-15" },
+        { "member_id": "16", "spirit_id": "plantation-barbados-xo" },
+        { "member_id": "17", "spirit_id": "hampden-estate-8" }
       ]
     },
     {
@@ -57,10 +57,10 @@
       "names": { "de": "Douglas Laing Old Particular", "en": "Douglas Laing Old Particular" },
       "description": { "de": "Viele Brennereien produzieren primär für Blends und sind oft nur dank unabhängiger Abfüller „sortenrein“ trinkbar. Ein Sherry-lastiger Ausflug zu vier dieser eher unbekannten Brennereien.", "en": "Many distilleries primarily produce for blends and are often only available as single malts thanks to independent bottlers. A sherry-led journey through four lesser-known distilleries." },
       "members": [
-        { "member_id": "18", "spirit_id": "mannochmore-2008-old-particular", "notes": { "de": "Aroma: Haferkekse, warme buttrige Croissants und geröstete Nüsse. Geschmack: Saftige grüne Äpfel, reife Birnen, Honig und süßes Malz. Abgang: Nussig nach Krokant und Cashews mit würzigem Zimt und Orangenschale." } },
-        { "member_id": "19", "spirit_id": "dailuaine-2008-old-particular", "notes": { "de": "Aroma: Angekokelte Eiche, Erdnüsse, Mandeln, Frühlingsblumen und Mürbeteiggebäck. Geschmack: Fruchtig und zugleich trocken nach Ingwer und Rosinen. Abgang: Mittellang mit mehr Eichennoten, gerösteter Gerste, schwarzen Johannisbeeren und gepfefferten Erdbeeren." } },
-        { "member_id": "20", "spirit_id": "aultmore-2006-old-particular", "notes": { "de": "Aroma: Karamelläpfel, Weihnachtskuchen und süße Sahne, dazu getrocknete Früchte. Geschmack: Kandierte Nüsse, warmer Pekannusskuchen, Vanillesoße, Zitrusfrüchte und weißer Pfeffer. Abgang: Angekokelte Eiche und Gerste. Die fruchtigen Noten werden würziger." } },
-        { "member_id": "21", "spirit_id": "blair-athol-22-old-particular", "notes": { "de": "Aroma: Eichenwürze, dann geröstete Marshmallows, Butterkekse und süße Gerste. Geschmack: Wärmend mit Eichenwürze. Dazu Herbstfrüchte sowie leicht süße und erdige Noten. Abgang: Lang mit frischen Früchten, einem Hauch Gewürzen und cremigen Karamellbonbons." } }
+        { "member_id": "18", "spirit_id": "mannochmore-2008-old-particular" },
+        { "member_id": "19", "spirit_id": "dailuaine-2008-old-particular" },
+        { "member_id": "20", "spirit_id": "aultmore-2006-old-particular" },
+        { "member_id": "21", "spirit_id": "blair-athol-22-old-particular" }
       ]
     },
     {
@@ -68,9 +68,9 @@
       "names": { "de": "Bruichladdich", "en": "Bruichladdich" },
       "description": { "de": "Drei ähnlich lang gelagerte Abfüllungen aus komplett verschiedenen Serien der Brennerei von der Isle of Islay.", "en": "Three similarly aged releases from completely different series by the distillery on the Isle of Islay." },
       "members": [
-        { "member_id": "22", "spirit_id": "bruichladdich-laddie-eight", "notes": { "de": "Aroma: Fruchtig mit Apfel, Birne und Ananas. Noten von Malzzucker, Vanille und florale Noten. Geschmack: Würzig, süß und pfeffrig mit tropischen Früchten, Vanille und Toffee. Abgang: Eine frische Meeresbrise mit Zitrus, Vanille und Heidehonig." } },
-        { "member_id": "23", "spirit_id": "port-charlotte-10", "notes": { "de": "Aroma: Rauchig mit Zitrusfrüchten und Clementine. Gefolgt von floralen Aromen, wildem Thymian, Heidekraut und Meeresrosen. Geschmack: Zarte und weiche Textur. Rauch mit süßen Noten und Eiche. Eine Kombination aus Kokosnuss, Vanillepudding, Zitronenhonig und geräucherten Austern. Abgang: Lang, rauchig und leicht süß mit Früchten." } },
-        { "member_id": "24", "spirit_id": "octomore-10-2016-second-limited-release", "notes": { "de": "Aroma: Rauchig, fruchtig, getoastete Eiche, Noten von Jod, Leder, Nutella, Ingwersirup, Hauch von Walnüssen, Orangenschalen, Zitronen, Äpfeln. Geschmack: Ölig, ausgewogen, Rauch, Eiche, Früchte, Noten von gesalzenem Karamell, Marzipan, Vanille, knuspriges Malzbrot. Abgang: Lang anhaltend, rauchig." } }
+        { "member_id": "22", "spirit_id": "bruichladdich-laddie-eight" },
+        { "member_id": "23", "spirit_id": "port-charlotte-10" },
+        { "member_id": "24", "spirit_id": "octomore-10-2016-second-limited-release" }
       ]
     }
   ]

@@ -133,7 +133,6 @@ class SetMember(_Strict):
 
     member_id: Annotated[str, Field(pattern=MEMBER_ID_PATTERN)]
     spirit_id: Slug
-    notes: LocalizedText | None = None
 
 
 class SetGroup(_Strict):
