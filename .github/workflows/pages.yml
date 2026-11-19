@@ -22,6 +22,9 @@ jobs:
   # The deployment only starts if this succeeds.
   ci:
     uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+      code-quality: write
 
   build:
     needs: ci
