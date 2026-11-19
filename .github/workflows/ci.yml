@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      code-quality: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,24 +33,30 @@ jobs:
       - name: Check formatting
         run: uv run ruff format --check
 
-      # Coverage is reported in the job summary of the run (also for pull requests).
-      # There is no threshold: the job only fails if a test fails.
+      # Coverage is reported in the job summary and pull request comment; no coverage threshold is enforced.
       - name: Unit tests
         run: |
-          echo "## Code coverage" >> "$GITHUB_STEP_SUMMARY"
           uv run pytest \
             --cov=tastingsets \
             --cov-report=term-missing \
-            --cov-report=xml:cobertura.xml \
-            --cov-report=markdown-append:"$GITHUB_STEP_SUMMARY"
+            --cov-report=xml:cobertura.xml
 
-      - name: Upload coverage to GitHub Code Quality
-        uses: actions/upload-code-coverage@v1
+      - name: Generate Coverage Summary
+        uses: irongut/CodeCoverageSummary@v1.3.0
         with:
-          file: cobertura.xml
-          language: Python
-          label: code-coverage/pytest
-          fail-on-error: false
+          filename: cobertura.xml
+          badge: true
+          format: markdown
+          output: both
+
+      - name: Add Coverage Summary to Job Summary
+        run: cat code-coverage-results.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Add Coverage PR Comment
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: code-coverage-results.md
 
   data-test:
     runs-on: ubuntu-latest
