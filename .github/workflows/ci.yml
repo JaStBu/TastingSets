@@ -30,8 +30,15 @@ jobs:
       - name: Check formatting
         run: uv run ruff format --check
 
+      # Coverage is reported in the job summary of the run (also for pull requests).
+      # There is no threshold: the job only fails if a test fails.
       - name: Unit tests
-        run: uv run pytest
+        run: |
+          echo "## Code coverage" >> "$GITHUB_STEP_SUMMARY"
+          uv run pytest \
+            --cov=tastingsets \
+            --cov-report=term-missing \
+            --cov-report=markdown-append:"$GITHUB_STEP_SUMMARY"
 
       # Warnings (e.g. a spirit whose distillery has no entry) show up as annotations,
       # the job only fails on errors.
