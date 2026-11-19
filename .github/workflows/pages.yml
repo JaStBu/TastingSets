@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Lint, format, tests, data validation and a smoke build (see ci.yml).
+  # Code tests and data validation with a smoke build (see ci.yml).
   # The deployment only starts if this succeeds.
   ci:
     uses: ./.github/workflows/ci.yml
