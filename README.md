@@ -11,6 +11,7 @@ Requires [uv](https://docs.astral.sh/uv/).
 ```sh
 uv sync                       # install dependencies
 uv run pytest                 # run the tests
+uv run pytest --cov=tastingsets --cov-report=term-missing  # tests with coverage
 uv run tastingsets validate   # check the data in data/
 uv run tastingsets build      # generate the site into dist/
 python -m http.server -d dist # local preview, see http://localhost:8000/de/
@@ -112,12 +113,12 @@ The package version is not stored in `pyproject.toml`. It is derived from Git ta
 
 ## Publishing (GitHub Pages)
 
-- `.github/workflows/ci.yml` (job `check`) does lint, format check, tests, data validation (warnings appear as annotations, the job stays green) and a test build. It runs when a pull request is opened, when commits are pushed to a branch with an open pull request, and when a pull request is reopened. It is also a reusable workflow (`workflow_call`).
-- `.github/workflows/pages.yml` runs on every push to `main`, on every pushed tag `v*` (a release) and manually. It first calls `ci.yml`; only if the check is green, it builds the site and deploys it to GitHub Pages. A push to `main` or a tag is therefore checked exactly once, and a failing check never gets published.
+- `.github/workflows/ci.yml` has separate `code-test` and `data-test` jobs. `code-test` does lint, format check and tests; `data-test` validates the data (warnings appear as annotations, the job stays green) and performs a smoke build. The test step measures coverage of the `tastingsets` package, writes a Markdown summary to the job summary (tab "Summary"), and posts it as a comment on same-repository pull requests. No coverage minimum is enforced. It runs when a pull request is opened, when commits are pushed to a branch with an open pull request, and when a pull request is reopened. It is also a reusable workflow (`workflow_call`).
+- `.github/workflows/pages.yml` runs on every push to `main`, on every pushed tag `v*` (a release) and manually. It first calls `ci.yml`; only if both `code-test` and `data-test` are green, it builds the site and deploys it to GitHub Pages. A push to `main` or a tag is therefore checked exactly once, and a failing check never gets published.
 - **Same-commit caveat:** `actions/deploy-pages@v4` uses `GITHUB_SHA` as `pages_build_version`, which GitHub requires to be unique. If `main` has already deployed that commit, a later tag deployment reuses the same build version and does not replace the published artifact. For a release, let the tag run deploy before the `main` run, or use a unique build version.
 - Footer version: a run for `main` shows a dev version (`0.1.dev6+g86d1970`), a run for a release tag shows the clean version (`0.1.0`). A later push to `main` replaces the release build with a dev version again.
 - A push to a feature branch **without** a pull request runs nothing; open a pull request to get the check.
-- Recommended: in *Settings → Branches* (or *Rulesets*), require the status check `check` for `main`, so a pull request with a failing check cannot be merged.
+- Recommended: in *Settings → Branches* (or *Rulesets*), require the status checks `code-test` and `data-test` for `main`, so a pull request with a failing code or data check cannot be merged.
 - **One-time setup:** in the repository, go to *Settings → Pages* and set *Source* to **GitHub Actions**.
 - **One-time setup for tags:** the `github-pages` environment only allows deployments from `main` by default. Under *Settings → Environments → github-pages → Deployment branches and tags*, add a tag rule `v*`. Without it, the `deploy` job of a tag run is rejected.
 

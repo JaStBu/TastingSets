@@ -332,7 +332,7 @@ F. **Tests:** `tests/test_groups.py` (Modell, Laden, Catalog, Statistik, Seite),
       3. `uv sync`
       4. `uv run ruff check`
       5. `uv run ruff format --check`
-      6. `uv run pytest`
+      6. `uv run pytest --cov=tastingsets --cov-report=term-missing --cov-report=markdown-append:$GITHUB_STEP_SUMMARY`: zeigt die Coverage-Tabelle in der Job-Summary; kein Mindestwert.
       7. `uv run tastingsets validate`: Warnungen erscheinen als Annotation, der Job bleibt grün.
       8. `uv run tastingsets build --out dist` als Probe-Build.
 21. `.github/workflows/pages.yml`:
@@ -378,7 +378,7 @@ Alle Dateien sind neu.
 
 ## Verification
 
-1. `uv run pytest` ist grün und `uv run ruff check` ohne Befunde.
+1. `uv run pytest` ist grün und `uv run ruff check` ohne Befunde. `uv run pytest --cov=tastingsets --cov-report=term-missing` zeigt zusätzlich eine Coverage-Tabelle mit `TOTAL`-Zeile.
 2. Validierung:
    - `uv run tastingsets validate --data tests/fixtures/data` liefert genau die erwarteten Issue-Codes.
    - Gegen `data/` gibt es keine Fehler (die Anzahl der Warnungen hängt vom aktuellen Datenstand ab, es wird nicht per Test festgeschrieben).
