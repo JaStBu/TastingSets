@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>JaStBu/renovate-config:python-uv",
-    "github>JaStBu/renovate-config:github-actions"
+    "github>JaStBu/dependency-hub:python-uv",
+    "github>JaStBu/dependency-hub:github-actions"
   ]
 }
