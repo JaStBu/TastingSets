@@ -20,7 +20,7 @@ tastingsets = "tastingsets.cli:main"
 
 [dependency-groups]
 dev = [
-    "pytest>=8",
+    "pytest>=8.4.2",
     "pytest-cov>=7",
     "ruff>=0.6",
 ]
